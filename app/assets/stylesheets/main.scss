@@ -3,3 +3,8 @@
    margin: 0;
    width: 100%;
  }
+
+.primary-button {
+   @include primary-button
+   ;
+}

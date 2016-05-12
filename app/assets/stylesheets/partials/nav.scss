@@ -1,0 +1,15 @@
+.nav {
+  @include primary-font(20px);
+  @include display(flex);
+  @include flex-direction(row);
+  @include align-items(center);
+  width: 100%;
+  background: $primary;
+  color: $white;
+  height: 65px;
+}
+
+.nav-logo {
+  padding-left: 25px;
+  font-weight: 900;
+}

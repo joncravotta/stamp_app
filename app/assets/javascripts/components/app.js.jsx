@@ -1,7 +1,7 @@
 var App = React.createClass({
   getInitialState: function() {
     return {
-      imagePath: '',
+      urlPath: '',
       emailWidth: '',
       emailObject: {}
     };
@@ -48,6 +48,17 @@ var App = React.createClass({
     emailObjectNew[key].ahref = value;
     this.setState({emailObject: emailObjectNew});
   },
+
+  handleUrlPathChange: function(event) {
+    var value = event.target.value;
+    this.setState({urlPath: value});
+  },
+
+  handleEmailWidthChange: function(event) {
+    var value = event.target.value;
+    this.setState({emailWidth: value});
+  },
+
 /*
   renderSlices: function() {
     var mapObj = this.state.emailObject,
@@ -67,23 +78,18 @@ var App = React.createClass({
   },
 */
   render: function() {
-    if (this.state.submitted == 1) {
-      return this.renderSlices();
-    }
-    else if (this.state.submitted == 2) {
-      return (
-        <SailthruForm emailObject={this.state.emailObject} month={this.state.monthSelector} year={this.state.yearSelector} day={this.state.dayInput}/>
-      );
-    }
-    else {
-      return (
-        <div className="input-fields">
-          <form className="file-input-btn" encType="multipart/form-data">
-            <input type="file" onChange={this.handleFile} multiple/>
-          </form>
-          <div className="submit-btn" onClick={this.submitSlices}>SUBMIT</div>
-        </div>
-      );
-    }
+    console.log(this.state.urlPath);
+    return (
+      <div className="input-fields">
+        <form className="file-input-btn" encType="multipart/form-data">
+          <label className="control-label">Path to images</label>
+          <input type="text" placeholder="http://www.yoursite.com/folder/images/" onChange={this.handleUrlPathChange}/>
+          <label className="control-label">Email Width</label>
+          <input type="text" placeholder="600" onChange={this.handleEmailWidthChange}/>
+          <input type="file" onChange={this.handleFile} multiple/>
+        </form>
+        <div className="primary-button" onClick={this.submitSlices}>SUBMIT</div>
+      </div>
+    );
   }
 });

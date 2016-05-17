@@ -1,0 +1,38 @@
+.input-fields {
+  padding-top: 45px;
+  width: 60%;
+  @include display(flex);
+  @include flex-direction(column);
+  @include justify-content(center);
+  margin: auto;
+}
+
+.app-form-main {
+  @include display(flex);
+  @include flex-direction(column);
+  @include justify-content(center);
+
+  input {
+    margin-bottom: 25px;
+    height: 30px;
+    font-size: 18px;
+  }
+
+  label {
+    @include primary-font(20px);
+    padding-bottom: 5px;
+  }
+}
+
+.app-form-main-details {
+  @include display(flex);
+  @include align-items(flex-end);
+
+  label {
+    display: block;
+  }
+}
+
+.app-form-main-details-group {
+  padding-right: 25px;
+}

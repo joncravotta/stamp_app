@@ -94,6 +94,7 @@ var App = React.createClass({
         </form>
         <div className="primary-button" onClick={this.submitSlices}>SUBMIT</div>
       </div>
+
     );
   }
 });

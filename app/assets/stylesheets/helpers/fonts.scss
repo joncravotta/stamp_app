@@ -10,11 +10,3 @@
   font-size: $size;
   color: $black;
 }
-
-@mixin primary-button() {
-  @include secondary-font(18px);
-  color: $primary;
-  padding: 20px 50px;
-  border: 1px solid $primary;
-  border-radius: 25%;
-}

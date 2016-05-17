@@ -1,0 +1,13 @@
+@mixin primary-button() {
+  @include display(flex);
+  @include justify-content(center);
+  @include secondary-font(18px);
+  color: $white;
+  background-color: $secondary-light;
+  border-radius: 5px;
+  width: 200px;
+  padding: 10px;
+  margin: auto;
+  cursor: pointer;
+  // box-shadow: 0, -10, 10, 0, red;
+}

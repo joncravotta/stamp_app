@@ -81,12 +81,16 @@ var App = React.createClass({
     console.log(this.state.urlPath);
     return (
       <div className="input-fields">
-        <form className="file-input-btn" encType="multipart/form-data">
+        <form className="app-form-main" encType="multipart/form-data">
           <label className="control-label">Path to images</label>
           <input type="text" placeholder="http://www.yoursite.com/folder/images/" onChange={this.handleUrlPathChange}/>
-          <label className="control-label">Email Width</label>
-          <input type="text" placeholder="600" onChange={this.handleEmailWidthChange}/>
-          <input type="file" onChange={this.handleFile} multiple/>
+          <div className="app-form-main-details">
+            <div className="app-form-main-details-group">
+              <label className="control-label">Email Width (pixels)</label>
+              <input type="text" placeholder="600" onChange={this.handleEmailWidthChange}/>
+            </div>
+            <input type="file" onChange={this.handleFile} multiple/>
+          </div>
         </form>
         <div className="primary-button" onClick={this.submitSlices}>SUBMIT</div>
       </div>

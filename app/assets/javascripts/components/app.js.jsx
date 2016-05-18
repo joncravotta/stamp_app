@@ -1,8 +1,9 @@
 var App = React.createClass({
   getInitialState: function() {
     return {
+      submitted: 0,
       urlPath: '',
-      emailWidth: '',
+      emailWidth: '600',
       emailObject: {}
     };
   },
@@ -21,7 +22,7 @@ var App = React.createClass({
 
   handleFile: function (e) {
     var files = e.target.files,
-        url = 'https://cdn.rtrcdn.com/sites/default/files/sailthru/campaigns/' + this.state.yearSelector + '/' + this.state.monthSelector + '/',
+        url = this.state.urlPath,
         emailObjectInt = {},
         //creating email body object
         //each slice gets an obj
@@ -37,13 +38,13 @@ var App = React.createClass({
     this.setState({emailObject: emailObjectInt});
   },
 
-  handleSliceAltTagState: function(key, value) {
+  handleSliceAltTagUpdate: function(key, value) {
     var emailObjectNew = this.state.emailObject;
     emailObjectNew[key].altTag = value;
     this.setState({emailObject: emailObjectNew});
   },
 
-  handleSliceAhrefState: function(key, value) {
+  handleSliceAhrefUpdate: function(key, value) {
     var emailObjectNew = this.state.emailObject;
     emailObjectNew[key].ahref = value;
     this.setState({emailObject: emailObjectNew});
@@ -59,42 +60,54 @@ var App = React.createClass({
     this.setState({emailWidth: value});
   },
 
-/*
   renderSlices: function() {
     var mapObj = this.state.emailObject,
         item,
-        ahrefState = this.handleSliceAhrefState,
-        altTagState = this.handleSliceAltTagState;
+        ahrefState = this.handleSliceAhrefUpdate,
+        altTagState = this.handleSliceAltTagUpdate;
     var slicesLoop = Object.keys(mapObj).map(function (key) {
       item = mapObj[key];
-      return <ImageSlice key={key} id={key} altTag={item.altTag} ahref={item.ahref} imageUrl={item.image} updateAhrefState={ahrefState} updateAltTagState={altTagState}/>;
+      return <AppSlice key={key} id={key} altTag={item.altTag} ahref={item.ahref} imageUrl={item.image} updateAhrefState={ahrefState} updateAltTagState={altTagState}/>;
     });
     return (
       <div className="slices-container">
         {slicesLoop}
-        <div className="submit-btn centered-submit-btn margin-top-26px" onClick={this.handleSailthruForm}>SUBMIT CHANGES</div>
+        <div className="submit-btn centered-submit-btn margin-top-26px" onClick={this.handleSailthruForm}>CODE</div>
       </div>
     );
   },
-*/
+          // TODO needs to be named rebuild after the enail has been built
   render: function() {
-    console.log(this.state.urlPath);
+    var slices;
+    var rulerStyle = {
+      width: (this.state.emailWidth) + 'px'
+    };
+    if (this.state.submitted == 1){
+      slices = this.renderSlices();
+    }
     return (
-      <div className="input-fields">
-        <form className="app-form-main" encType="multipart/form-data">
-          <label className="control-label">Path to images</label>
-          <input type="text" placeholder="http://www.yoursite.com/folder/images/" onChange={this.handleUrlPathChange}/>
-          <div className="app-form-main-details">
-            <div className="app-form-main-details-group">
-              <label className="control-label">Email Width (pixels)</label>
-              <input type="text" placeholder="600" onChange={this.handleEmailWidthChange}/>
+      <div className="app-container">
+        <div className="input-fields">
+          <form className="app-form-main" encType="multipart/form-data">
+            <label className="control-label">Path to images</label>
+            <input type="text" placeholder="http://www.yoursite.com/folder/images/" onChange={this.handleUrlPathChange}/>
+            <div className="app-form-main-details">
+              <div className="app-form-main-details-group">
+                <label className="control-label">Email Width (pixels)</label>
+                <input type="text" placeholder="600" onChange={this.handleEmailWidthChange}/>
+              </div>
+              <input type="file" onChange={this.handleFile} multiple/>
             </div>
-            <input type="file" onChange={this.handleFile} multiple/>
-          </div>
-        </form>
-        <div className="primary-button" onClick={this.submitSlices}>SUBMIT</div>
-      </div>
-
+          </form>
+          <div className="primary-button" onClick={this.submitSlices}>BUILD</div>
+        </div>
+        <div className="width-ruler" style={rulerStyle}>
+        {this.state.emailWidth} px
+        </div>
+        <div className="email-slices" style={rulerStyle}>
+          {slices}
+        </div>
+    </div>
     );
   }
 });

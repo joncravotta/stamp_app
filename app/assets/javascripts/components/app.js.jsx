@@ -6,7 +6,9 @@ var App = React.createClass({
       showSlices: false,
       showLoadingIcon: false,
       showCodeBox: false,
-      emailObject: {}
+      codeBuildResponse: '',
+      emailObject: {},
+      apiObj: {}
     };
   },
 
@@ -40,6 +42,38 @@ var App = React.createClass({
     this.setState({emailObject: emailObjectInt});
   },
 
+  handleCodeBuildRequest: function() {
+    var self = this;
+    console.log(this.state.apiObj);
+    this.setState({showLoadingIcon: true});
+    $.ajax({
+      url: '/build/new',
+      method: "POST",
+      data: this.state.apiObj
+    })
+    .done(function(returnedJson){
+      console.log(returnedJson);
+      self.setState({codeBuildResponse: returnedJson});
+    })
+    .fail(function(returnedJson) {
+      console.log(returnedJson);
+      self.setState({codeBuildResponse: returnedJson.statusText});
+    });
+  },
+
+  setObject: function() {
+    console.log(this.state.emailObject);
+    this.setState({sent: 1});
+    var newApiObj = {};
+    newApiObj.emailBody = this.state.emailObject;
+    this.setState({apiObj: newApiObj});
+  },
+
+  codeEmail: function() {
+    this.setObject();
+    this.handleCodeBuildRequest();
+  },
+
   handleSliceAltTagUpdate: function(key, value) {
     var emailObjectNew = this.state.emailObject;
     emailObjectNew[key].altTag = value;
@@ -62,10 +96,6 @@ var App = React.createClass({
     this.setState({emailWidth: value});
   },
 
-  handleCodeRequest: function() {
-    // ajax
-  },
-
   renderSlices: function() {
     var mapObj = this.state.emailObject,
         item,
@@ -78,7 +108,7 @@ var App = React.createClass({
     return (
       <div className="slices-container">
         {slicesLoop}
-        <div className="submit-btn centered-submit-btn margin-top-26px" onClick={this.handleCodeRequest}>CODE</div>
+        <div className="primary-button" onClick={this.codeEmail}>CODE</div>
       </div>
     );
   },

@@ -105,11 +105,11 @@ var App = React.createClass({
         <div className="input-fields">
           <form className="app-form-main" encType="multipart/form-data">
             <label className="control-label">Path to images</label>
-            <input type="text" placeholder="http://www.yoursite.com/folder/images/" onChange={this.handleUrlPathChange}/>
+            <input className="input" type="text" placeholder="http://www.yoursite.com/folder/images/" onChange={this.handleUrlPathChange}/>
             <div className="app-form-main-details">
               <div className="app-form-main-details-group">
                 <label className="control-label">Email Width (pixels)</label>
-                <input type="text" placeholder="600" onChange={this.handleEmailWidthChange}/>
+                <input className="input" type="text" placeholder="600" onChange={this.handleEmailWidthChange}/>
               </div>
               <input type="file" onChange={this.handleFile} multiple/>
             </div>

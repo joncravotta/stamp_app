@@ -19,6 +19,11 @@
     height: 30px;
     font-size: 18px;
   }
+  .input {
+    outline: none;
+    border: 1px solid #e1e1e1;
+    box-shadow: 0;
+  }
 
   label {
     @include primary-font(20px);

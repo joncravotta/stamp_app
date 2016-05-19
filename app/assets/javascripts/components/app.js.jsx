@@ -1,15 +1,17 @@
 var App = React.createClass({
   getInitialState: function() {
     return {
-      submitted: 0,
       urlPath: '',
       emailWidth: '600',
+      showSlices: false,
+      showLoadingIcon: false,
+      showCodeBox: false,
       emailObject: {}
     };
   },
 
   submitSlices: function() {
-    this.setState({submitted: 1});
+    this.setState({showSlices: true});
   },
 
   handleSailthruForm: function() {
@@ -60,6 +62,10 @@ var App = React.createClass({
     this.setState({emailWidth: value});
   },
 
+  handleCodeRequest: function() {
+    // ajax
+  },
+
   renderSlices: function() {
     var mapObj = this.state.emailObject,
         item,
@@ -72,19 +78,28 @@ var App = React.createClass({
     return (
       <div className="slices-container">
         {slicesLoop}
-        <div className="submit-btn centered-submit-btn margin-top-26px" onClick={this.handleSailthruForm}>CODE</div>
+        <div className="submit-btn centered-submit-btn margin-top-26px" onClick={this.handleCodeRequest}>CODE</div>
       </div>
     );
   },
           // TODO needs to be named rebuild after the enail has been built
   render: function() {
     var slices;
+    var codeBox;
+    var loadingIcon;
     var rulerStyle = {
       width: (this.state.emailWidth) + 'px'
     };
-    if (this.state.submitted == 1){
+    if (this.state.showSlices === true){
       slices = this.renderSlices();
     }
+    if (this.state.showLoadingIcon === true){
+      loadingIcon = this.renderLoadingIcon();
+    }
+    if (this.state.showCodeBoxd === true){
+      codeBox = this.renderCodeBox();
+    }
+
     return (
       <div className="app-container">
         <div className="input-fields">

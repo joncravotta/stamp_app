@@ -8,6 +8,7 @@
   padding-bottom: 45px;
 }
 
+
 .app-form-main {
   @include display(flex);
   @include flex-direction(column);
@@ -52,6 +53,7 @@
 .email-slices {
   margin: auto;
   padding-top: 25px;
+  z-index: 10;
 }
 
 
@@ -65,6 +67,7 @@
   top: 0;
   left: 0;
   background-color: #fff;
+  z-index: 20;
 }
 
 .left-side-form {
@@ -98,5 +101,6 @@
 }
 
 .has-changed-border {
-  border: 1px solid $primary;
+  -webkit-filter: blur(2px) opacity(15%);
+	filter: blur(2px) opacity(15%);
 }

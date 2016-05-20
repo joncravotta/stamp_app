@@ -1,33 +1,37 @@
+require 'fastimage'
+
 class CreateEmail
-  attr_accessor :email_body, :email_string
+  attr_accessor :email_body, :email
   def initialize(template)
-    @email_body = template[:emailBody]
-    @email_string = ''
+    @email_body = template
+    @email = ''
     create_td
   end
 
   def create_td
-    emailArr = []
-    email_body.each do |_, value|
-      imageSize = FastImage.size(value[:image])
-      td = %(<a href="#{value[:ahref]}" target="_blank"><img src="#{value[:image]}" alt="#{value[:altTag]}" align="left" width="#{imageSize[0]}"height="#{imageSize[1]}" style="display: block; float: left; margin: 0; text-align: left; border: 0;"></a>)
-      emailArr.push(td)
+    email_arr = []
+    puts 'email body'
+    puts (email_body)
+    email_body['emailBody'].each do |_, value|
+      puts value
+      image_size = FastImage.size(value[:image])
+      td = %(<a href="#{value[:ahref]}" target="_blank"><img src="#{value[:image]}" alt="#{value[:altTag]}" align="left" width="#{image_size[0]}"height="#{image_size[1]}" style="display: block; float: left; margin: 0; text-align: left; border: 0;"></a>)
+      email_arr.push(td)
     end
-    stringify_email(emailArr)
+    stringify_email(email_arr)
   end
 
-  def stringify_email(emailArr)
-    emailString = ''
-    emailArr.each do |td|
-      emailString += td + "\n"
+  def stringify_email(email_arr)
+    email_string = ''
+    email_arr.each do |td|
+      email_string += td + "\n"
     end
-    build_email(emailString)
+    build_email(email_string)
   end
 
-  def build_email(emailString)
+  def build_email(email_string)
     top = %(<table cellpadding="0" cellspacing="0" border="0" align="center" width="600"><tr><td style="min-width: 600px">)
     bottom = %(</td></tr></table>)
-    email = top + emailString + bottom
-    email_string = email
+    @email = top + email_string + bottom
   end
 end

@@ -43,21 +43,25 @@ var App = React.createClass({
   },
 
   handleCodeBuildRequest: function() {
-    var self = this;
-    console.log(this.state.apiObj);
-    this.setState({showLoadingIcon: true});
+    var newApiObj = {};
+    newApiObj.emailBody = this.state.emailObject;
+    // this.setState({apiObj: newApiObj});
+    console.log("new api obj");
+    console.log(newApiObj);
+    // this.setState({showLoadingIcon: true});
     $.ajax({
       url: '/build/new',
       method: "POST",
-      data: this.state.apiObj
+      data: newApiObj
     })
     .done(function(returnedJson){
-      console.log(returnedJson);
-      self.setState({codeBuildResponse: returnedJson});
+      console.log(returnedJson.responseText);
+      console.log('done');
+      // self.setState({codeBuildResponse: returnedJson});
     })
     .fail(function(returnedJson) {
       console.log(returnedJson);
-      self.setState({codeBuildResponse: returnedJson.statusText});
+      // self.setState({codeBuildResponse: returnedJson.statusText});
     });
   },
 
@@ -106,9 +110,10 @@ var App = React.createClass({
       return <AppSlice key={key} id={key} altTag={item.altTag} ahref={item.ahref} imageUrl={item.image} updateAhrefState={ahrefState} updateAltTagState={altTagState}/>;
     });
     return (
+
       <div className="slices-container">
         {slicesLoop}
-        <div className="primary-button" onClick={this.codeEmail}>CODE</div>
+        <div className="primary-button" onClick={this.handleCodeBuildRequest}>CODE</div>
       </div>
     );
   },

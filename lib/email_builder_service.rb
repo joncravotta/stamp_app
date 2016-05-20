@@ -1,12 +1,14 @@
 class EmailBuilderService
-  attr_reader :template
+  attr_reader :template, :response
   def initialize(template)
     @template = template
+    @response = ''
     create_email
   end
 
   def create_email
     create = CreateEmail.new(@template)
-    create.email_string
+    @response = create.email
+    puts @response
   end
 end

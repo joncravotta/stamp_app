@@ -26,7 +26,10 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 # React rails gem
 gem 'react-rails', '~> 1.6', '>= 1.6.2'
+#responing to post request
 gem 'responders', '~> 2.2'
+# Getting images size
+gem 'fastimage', '~> 1.8'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

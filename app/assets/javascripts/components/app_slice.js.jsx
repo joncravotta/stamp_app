@@ -28,12 +28,17 @@ var AppSlice = React.createClass({
   renderDisplay: function() {
     if (this.state.hasChanged){
       return (
-        <img onClick={this.activatePopup} key={this.props.key} altTag={this.props.altTag} ahref={this.props.ahref} src={this.props.imageUrl} className="has-changed-border" />
+        <div className="image-slice-container">
+          <img onClick={this.activatePopup} key={this.props.key} altTag={this.props.altTag} ahref={this.props.ahref} src={this.props.imageUrl} className="has-changed-border" />
+           <img className="submitted-icon" src="https://cdn0.iconfinder.com/data/icons/round-ui-icons/128/tick_green.png" />
+        </div>
       );
     }
     else {
       return (
-        <img onClick={this.activatePopup} key={this.props.key} altTag={this.props.altTag} ahref={this.props.ahref} src={this.props.imageUrl} />
+        <div className="image-slice-container">
+          <img onClick={this.activatePopup} key={this.props.key} altTag={this.props.altTag} ahref={this.props.ahref} src={this.props.imageUrl} />
+        </div>
       );
     }
   },

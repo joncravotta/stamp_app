@@ -9,6 +9,5 @@ class EmailBuilderService
   def create_email
     create = CreateEmail.new(@template)
     @response = create.email
-    puts @response
   end
 end

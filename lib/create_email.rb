@@ -24,7 +24,7 @@ class CreateEmail
   def stringify_email(email_arr)
     email_string = ''
     email_arr.each do |td|
-      email_string += td + "\n"
+      email_string += td
     end
     build_email(email_string)
   end

@@ -45,10 +45,9 @@ var App = React.createClass({
   handleCodeBuildRequest: function() {
     var newApiObj = {};
     newApiObj.emailBody = this.state.emailObject;
-    // this.setState({apiObj: newApiObj});
-    console.log("new api obj");
     console.log(newApiObj);
-    // this.setState({showLoadingIcon: true});
+    this.setState({showLoadingIcon: true});
+    var self = this;
     $.ajax({
       url: '/build/new',
       method: "POST",
@@ -57,11 +56,12 @@ var App = React.createClass({
     .done(function(returnedJson){
       console.log(returnedJson.responseText);
       console.log('done');
-      // self.setState({codeBuildResponse: returnedJson});
+      self.setState({codeBuildResponse: returnedJson});
     })
     .fail(function(returnedJson) {
-      console.log(returnedJson);
-      // self.setState({codeBuildResponse: returnedJson.statusText});
+      self.setState({showLoadingIcon: false});
+      self.setState({showCodeBox: true});
+      self.setState({codeBuildResponse: returnedJson.responseText});
     });
   },
 
@@ -100,6 +100,24 @@ var App = React.createClass({
     this.setState({emailWidth: value});
   },
 
+  handleCodeBoxClose: function() {
+    this.setState({showCodeBox: false});
+  },
+
+  renderLoadingIcon: function() {
+    return (
+      <div className="overlay-code-box">Coding your email...</div>
+    );
+  },
+  renderCodeBox: function() {
+    return (
+      <div className="overlay-code-box">
+        <p>{this.state.codeBuildResponse}</p>
+        <div className="primary-button" onClick={this.handleCodeBoxClose}>CLOSE</div>
+      </div>
+    );
+  },
+
   renderSlices: function() {
     var mapObj = this.state.emailObject,
         item,
@@ -131,7 +149,7 @@ var App = React.createClass({
     if (this.state.showLoadingIcon === true){
       loadingIcon = this.renderLoadingIcon();
     }
-    if (this.state.showCodeBoxd === true){
+    if (this.state.showCodeBox === true){
       codeBox = this.renderCodeBox();
     }
 
@@ -156,6 +174,10 @@ var App = React.createClass({
         </div>
         <div className="email-slices" style={rulerStyle}>
           {slices}
+        </div>
+        <div className="overlay-code-box-container">
+          {loadingIcon}
+          {codeBox}
         </div>
     </div>
     );

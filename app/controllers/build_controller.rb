@@ -8,6 +8,10 @@ class BuildController < ApplicationController
     #   format.json { render text: @build.response }
     #   format.text { render text: @build.response }
     # end
-    render json: @build.response
+    if @build
+      render json: @build.response
+    else
+      render json: 'Something went wrong'
+    end
   end
 end

@@ -3,6 +3,7 @@
   @include display(flex);
   @include flex-direction(row);
   @include align-items(center);
+  @include justify-content(space-between);
   width: 100%;
   background: $primary;
   color: $white;
@@ -12,4 +13,14 @@
 .nav-logo {
   padding-left: 25px;
   font-weight: 900;
+}
+
+.auth-group {
+  padding-right: 25px;
+
+  a {
+    text-decoration: none;
+    color: $white;
+    padding-left: 20px;
+  }
 }

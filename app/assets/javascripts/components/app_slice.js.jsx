@@ -41,15 +41,17 @@ var AppSlice = React.createClass({
   render: function() {
     if (this.state.poppedUp) {
       return (
-        <div className="overlay">
-          <div className="left-side-form">
-            <label className="control-label">Link</label>
-            <input type="text" value={this.props.ahref} onChange={this.handleAhrefChange} />
-            <label className="control-label padding-top-20px">Alt</label>
-            <textarea type="text" value={this.props.altTag} key={this.props.key} onChange={this.handleAltTagChange} rows="4" cols="50" />
-            <div className="submit-btn" onClick={this.deactivatePopup}>DONE</div>
+        <div className="overlay-container">
+          <div className="overlay">
+            <div className="left-side-form">
+              <label className="control-label">Link</label>
+              <input type="text" value={this.props.ahref} onChange={this.handleAhrefChange} />
+              <label className="control-label padding-top-20px">Alt</label>
+              <textarea type="text" value={this.props.altTag} key={this.props.key} onChange={this.handleAltTagChange} rows="4" cols="50" />
+              <div className="primary-button" onClick={this.deactivatePopup}>SUBMIT</div>
+            </div>
+            <img src={this.props.imageUrl} />
           </div>
-          <img src={this.props.imageUrl} />
         </div>
       );
     }

@@ -14,6 +14,7 @@ var App = React.createClass({
 
   submitSlices: function() {
     this.setState({showSlices: true});
+    $(".submit-slice-button").hide();
   },
 
   handleSailthruForm: function() {
@@ -106,14 +107,16 @@ var App = React.createClass({
 
   renderLoadingIcon: function() {
     return (
-      <div className="overlay-code-box">Coding your email...</div>
+      <div className="overlay-code-box"><h3>Coding your email...</h3></div>
     );
   },
   renderCodeBox: function() {
     return (
       <div className="overlay-code-box">
-        <p>{this.state.codeBuildResponse}</p>
-        <div className="primary-button" onClick={this.handleCodeBoxClose}>CLOSE</div>
+        <div className="code-box">
+          <p>{this.state.codeBuildResponse}</p>
+        </div>
+        <div className="primary-button submit-slice-button" onClick={this.handleCodeBoxClose}>CLOSE</div>
       </div>
     );
   },

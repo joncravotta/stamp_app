@@ -30,6 +30,8 @@ gem 'react-rails', '~> 1.6', '>= 1.6.2'
 gem 'responders', '~> 2.2'
 # Getting images size
 gem 'fastimage', '~> 1.8'
+# Auth
+gem 'devise', '~> 3.5', '>= 3.5.6'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

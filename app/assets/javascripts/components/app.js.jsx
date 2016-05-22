@@ -4,7 +4,7 @@ var App = React.createClass({
       urlPath: '',
       emailWidth: '600',
       showSlices: false,
-      showLoadingIcon: false,
+      showLoadingIcon: true,
       showCodeBox: false,
       codeBuildResponse: '',
       emailObject: {},
@@ -106,7 +106,13 @@ var App = React.createClass({
 
   renderLoadingIcon: function() {
     return (
-      <div className="overlay-code-box"><h3>Coding your email...</h3></div>
+      <div className="overlay-code-box">
+        <div className="talk-bubble tri-right round btm-left">
+          <div className="talktext">
+            <p>Coding your email now!</p>
+          </div>
+        </div>
+      </div>
     );
   },
   renderCodeBox: function() {

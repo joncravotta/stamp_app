@@ -62,7 +62,7 @@
 
 .email-slices {
   margin: auto;
-  padding-top: 25px;
+  padding: 25px 0;
   z-index: 10;
 
   img {
@@ -127,6 +127,20 @@
       border-color: $dark-gray;
     }
   }
+}
+
+.image-slice-container {
+  float: left;
+  position: relative;
+}
+
+.submitted-icon {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 25px;
+  height: 25px;
+  padding: 10px;
 }
 
 .has-changed-border {

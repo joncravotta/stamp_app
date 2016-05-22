@@ -107,9 +107,12 @@ var App = React.createClass({
   renderLoadingIcon: function() {
     return (
       <div className="overlay-code-box">
-        <div className="talk-bubble tri-right round btm-left">
-          <div className="talktext">
-            <p>Coding your email now!</p>
+        <div class="talking-pigeon">
+          <img className="pigeon-logo-talking" src={this.props.pigeon_src} />
+          <div className="talk-bubble tri-right round btm-left">
+            <div className="talktext">
+              <p>Coding your email now!</p>
+            </div>
           </div>
         </div>
       </div>

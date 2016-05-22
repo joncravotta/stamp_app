@@ -145,7 +145,7 @@
 
 .has-changed-border {
   -webkit-filter: blur(2px) opacity(15%);
-	filter: blur(2px) opacity(15%);
+  filter: blur(2px) opacity(15%);
 }
 
 .overlay-code-box {
@@ -176,4 +176,8 @@
   p {
     font-family: monospace;
   }
+}
+
+.pigeon-logo-talking {
+  width: 125px;
 }

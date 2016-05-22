@@ -180,11 +180,16 @@
 
 .talking-pigeon {
   position: relative;
+  padding-left: 125px;
 }
 
 .pigeon-logo-talking {
   position: absolute;
-  top: 98;
-  left: -150;
+  top: 110px;
+  right: 220px;
   width: 125px;
+}
+
+.loading-icon {
+  height: 30px;
 }

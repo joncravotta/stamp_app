@@ -171,7 +171,10 @@
 
 .code-box {
   background-color: $light-primary;
+  width: 80%;
+  height: 50%;
   padding: 35px;
+  overflow: auto;
 
   p {
     font-family: monospace;

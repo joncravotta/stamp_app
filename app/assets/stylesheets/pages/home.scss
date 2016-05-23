@@ -30,16 +30,17 @@
 }
 
 .play-icon-circle {
+  @include display(flex);
+  @include justify-content(center);
+  @include align-items(center);
   width: 70px;
   height: 70px;
   background-color: $secondary-dark;
   border-radius: 50%;
-  @include display(flex);
-  @include justify-content(center);
-  @include align-items(center);
+  cursor: pointer;
 
   &:hover {
-    background-color: $secondary-light;
+    background-color: lighten($secondary-dark, 3%);
   }
 }
 

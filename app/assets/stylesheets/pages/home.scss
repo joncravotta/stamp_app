@@ -18,7 +18,8 @@
 .hero-video {
   height: 400px;
   width: 60%;
-  background-color: $light-gray;
+  background: image-url('video.jpg');
+  background-size: cover;
   margin: auto;
   position: absolute;
   top: 0; left: 0; bottom: 0; right: 0;
@@ -52,4 +53,23 @@
   border-left: 15px solid $white; /* bottom, add background color here */
   font-size: 0;
   line-height: 0;
+}
+
+
+.main-cta-container {
+  @include display(flex);
+  @include align-items(center);
+  @include flex-direction(column);
+  height: 500px;
+  padding: 25px;
+
+  img {
+    width: 75px;
+    padding: 45px 0;
+  }
+}
+
+.main-cta-body {
+  max-width: 500px;
+  padding-bottom: 20px;
 }

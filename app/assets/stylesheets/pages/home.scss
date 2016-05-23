@@ -1,28 +1,28 @@
 .hero-container {
   width: 100%;
+  height: 600px;
+  position: relative;
 }
 
 .hero-primary {
   width: 100%;
-  height: 400px;
+  height: 50%;
   background-color: $primary;
-  position: relative;
 }
 
 .hero-white {
   @extend .hero-primary;
   background-color: $white;
-  position: relative;
 }
 
 .hero-video {
   height: 400px;
   width: 60%;
   background-color: $light-gray;
+  margin: auto;
   position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
   z-index: 2;
-  top: 41%;
-  left: 20%;
   @include display(flex);
   @include justify-content(center);
   @include align-items(center);

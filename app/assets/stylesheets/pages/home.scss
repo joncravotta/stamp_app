@@ -18,7 +18,7 @@
 .hero-video {
   height: 400px;
   width: 60%;
-  background: image-url('video.jpg');
+  background: linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) ), image-url('video.jpg');
   background-size: cover;
   margin: auto;
   position: absolute;

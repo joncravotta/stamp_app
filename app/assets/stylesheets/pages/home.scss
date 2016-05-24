@@ -85,3 +85,61 @@
   height: 500px;
   margin: auto;
 }
+
+.how-to-card-container {
+  @include display(flex);
+  @include flex-direction(row);
+  @include justify-content(space-around);
+  padding: 25px 0;
+}
+
+.how-to-card {
+  @include display(flex);
+  @include flex-direction(column);
+  height: 500px;
+  width: 18%;
+  background-color: $white;
+  border-radius: 25px;
+  box-shadow: 0px 17px 10px -7px rgba(0,0,0,0.4);
+  transition: all ease-in-out 300ms;
+
+  &:hover {
+    box-shadow: 0px 37px 40px -22px rgba(0,0,0,0.4);
+    transform: translate(0px, -3px) scale(1.01);
+  }
+}
+
+.how-to-card-title {
+  @include primary-font(25px);
+  color: $white;
+  background-color: $primary;
+  width: 100%;
+  border-radius: 25px 25px 0 0;
+  padding: 10px 0 10px 25px;
+  box-sizing: border-box;
+}
+
+.how-to-card-icon {
+  @include display(flex);
+  @include align-items(center);
+  padding: 40px 0;
+  width: 100%;
+  img {
+    width: 40%;
+    margin: auto;
+  }
+}
+
+.how-to-card-type {
+  @include primary-font(16px);
+  font-weight: bolder;
+  color: $secondary-dark;
+  padding-left: 25px;
+}
+
+.how-to-card-body {
+  @include primary-font(16px);
+  color: $dark-gray;
+  padding: 10px 25px;
+
+}

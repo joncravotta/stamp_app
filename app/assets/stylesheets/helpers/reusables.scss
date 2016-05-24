@@ -2,14 +2,37 @@
   margin-top: 25px;
 }
 
+.padding-top-25px {
+  padding-top: 25px;
+}
+
+.padding-bottom-25px {
+  padding-bottom: 25px;
+}
+
 .center {
   text-align: center;
+}
+
+.underline {
+  text-decoration: underline;
 }
 
 .dark-gray-title {
   @include primary-font(35px);
   font-weight: bolder;
   color: $dark-gray;
+}
+
+.white-title {
+  @include primary-font(35px);
+  font-weight: bolder;
+  color: $white;
+}
+
+.white-body {
+  @include primary-font(18px);
+  color: $white;
 }
 
 .dark-gray-body {

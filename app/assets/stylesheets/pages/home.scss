@@ -181,13 +181,19 @@
   font-style: italic;
 }
 
+.review-stars {
+  img{
+    height: 20px;
+  }
+}
+
 .review-bottom {
   padding-top: 50px;
 }
 
 .review-title {
   @include primary-font(22px);
-  color: $dark-gray;
+  color: $light-primary;
   padding-bottom: 10px;
 }
 

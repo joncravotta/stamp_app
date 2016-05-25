@@ -39,9 +39,12 @@
   background-color: $secondary-dark;
   border-radius: 50%;
   cursor: pointer;
+  box-shadow: 0px 9px 10px -5px rgba(0,0,0,0.4);
+  transition: all ease-in-out 300ms;
 
   &:hover {
-    background-color: lighten($secondary-dark, 3%);
+    box-shadow: 0px 37px 40px -22px rgba(0,0,0,0.4);
+    transform: translate(0px, -3px) scale(1.01);
   }
 }
 
@@ -90,7 +93,7 @@
   @include display(flex);
   @include flex-direction(row);
   @include justify-content(space-around);
-  padding: 25px 0;
+  padding: 50px 0;
 }
 
 .how-to-card {
@@ -147,7 +150,7 @@
   @include display(flex);
   @include flex-direction(row);
   @include justify-content(space-around);
-  padding: 125px 0;
+  padding: 150px 0;
 }
 
 .review-card {
@@ -155,6 +158,13 @@
   border-radius: 25px;
   border: 1px solid $light-gray;
   padding: 25px;
+  box-shadow: 0px 17px 10px -7px rgba(0,0,0,0.4);
+  transition: all ease-in-out 300ms;
+
+  &:hover {
+    box-shadow: 0px 37px 40px -22px rgba(0,0,0,0.4);
+    transform: translate(0px, -3px) scale(1.01);
+  }
 }
 
 .review-card-top {
@@ -202,4 +212,84 @@
   color: $dark-gray;
   font-weight: normal;
   font-style: italic;
+}
+
+.cta-container {
+  padding: 150px 0;
+  background-color: $primary;
+  width: 100%;
+  @include display(flex);
+  @include align-items(center);
+  @include justify-content(center);
+}
+
+.cta-card {
+  border-radius: 25px;
+  background-color: $white;
+  @include display(flex);
+  @include align-items(center);
+  @include justify-content(center);
+  @include flex-direction(column);
+  // box-shadow: 0px 17px 10px -7px rgba(0,0,0,0.4);
+  // transition: all ease-in-out 300ms;
+  //
+  // &:hover {
+  //   box-shadow: 0px 47px 47px -32px rgba(0,0,0,0.4);
+  //   transform: translate(0px, -3px) scale(1.01);
+  // }
+}
+
+.cta-top {
+  @include display(flex);
+  @include align-items(center);
+  @include justify-content(center);
+  @include flex-direction(column);
+  background-color: $light-primary;
+  padding: 60px;
+  border-radius: 25px 25px 0 0;
+}
+
+.cta-bottom {
+  @include display(flex);
+  @include align-items(center);
+  @include justify-content(center);
+  @include flex-direction(column);
+  padding: 60px;
+}
+
+.cta-title {
+  @include primary-font(35px);
+  color: $white;
+  text-align: center;
+}
+
+.cta-subtitle {
+  @include primary-font(25px);
+  color: $white;
+  text-align: center;
+}
+
+.cta-subtitle-primary {
+  @extend .cta-subtitle;
+  font-size: 35px;
+  color: $primary;
+}
+
+.cta-icon {
+  img {
+    width: 75px;
+    padding: 20px 0;
+  }
+}
+
+.cta-price {
+  @include primary-font(100px);
+  color: $primary;
+  text-align: center;
+  font-weight: normal;
+}
+
+.cta-month {
+  @include primary-font(16px);
+  color: $secondary-dark;
 }

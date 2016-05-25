@@ -141,5 +141,59 @@
   @include primary-font(16px);
   color: $dark-gray;
   padding: 10px 25px;
+}
 
+.review-container {
+  @include display(flex);
+  @include flex-direction(row);
+  @include justify-content(space-around);
+  padding: 125px 0;
+}
+
+.review-card {
+  width: 25%;
+  border-radius: 25px;
+  border: 1px solid $light-gray;
+  padding: 25px;
+}
+
+.review-card-top {
+  @include display(flex);
+  @include flex-direction(row);
+  @include align-items(center);
+}
+
+.review-image {
+  width: 55px;
+  height: 55px;
+  border: 1px solid $light-gray;
+  border-radius: 50%;
+}
+
+.review-name-group {
+  padding-left: 10px;
+}
+
+.review-name {
+  @include primary-font(25px);
+  font-weight: 600;
+  color: $dark-gray;
+  font-style: italic;
+}
+
+.review-bottom {
+  padding-top: 50px;
+}
+
+.review-title {
+  @include primary-font(22px);
+  color: $dark-gray;
+  padding-bottom: 10px;
+}
+
+.review-body {
+  @include primary-font(16px);
+  color: $dark-gray;
+  font-weight: normal;
+  font-style: italic;
 }

@@ -19,51 +19,57 @@
   }
 }
 
+.buy-button {
+  @include primary-button;
+  padding: 15px;
+  background-color: $accent;
+}
+
  // Chat box
  .talk-bubble {
    display: inline-block;
    position: relative;
- 	width: 200px;
- 	height: auto;
- 	background-color: $white;
+   width: 200px;
+   height: auto;
+   background-color: $white;
  }
 
  .round{
    border-radius: 30px;
- 	-webkit-border-radius: 30px;
- 	-moz-border-radius: 30px;
+   -webkit-border-radius: 30px;
+   -moz-border-radius: 30px;
  }
 
  .tri-right.border.btm-left:before {
- 	content: ' ';
- 	position: absolute;
- 	width: 0;
- 	height: 0;
- 	left: -8px;
+   content: ' ';
+   position: absolute;
+   width: 0;
+   height: 0;
+   left: -8px;
    right: auto;
    top: auto;
- 	bottom: -4px;
- 	border: 32px solid;
- 	border-color: transparent transparent transparent #666;
+   bottom: -4px;
+   border: 32px solid;
+   border-color: transparent transparent transparent #666;
  }
 
  .tri-right.btm-left:after{
- 	content: ' ';
- 	position: absolute;
- 	width: 0;
- 	height: 0;
- 	left: 0px;
+   content: ' ';
+   position: absolute;
+   width: 0;
+   height: 0;
+   left: 0px;
    right: auto;
    top: auto;
- 	bottom: -15px;
- 	border: 22px solid;
- 	border-color: transparent transparent transparent $white;
+   bottom: -15px;
+   border: 22px solid;
+   border-color: transparent transparent transparent $white;
  }
 
  .talktext{
    @include primary-font(18px);
    padding: 1em;
- 	text-align: left;
+   text-align: left;
    line-height: 1.5em;
    color: $primary;
  }

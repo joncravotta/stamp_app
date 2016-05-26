@@ -293,3 +293,17 @@
   @include primary-font(16px);
   color: $secondary-dark;
 }
+
+// Mobile Screens
+@media (max-width: 900px) {
+  .how-to-card-container {
+    @include flex-direction(column);
+    @include justify-content(center);
+    @include align-items(center);
+  }
+
+  .how-to-card {
+    width: 80%;
+    margin: 25px 0;
+  }
+}

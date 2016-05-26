@@ -34,7 +34,7 @@ var App = React.createClass({
     for (var i = 0; i < files.length; i++) {
       key = 'slice'+ i;
       emailObjectInt[key] = {
-        image: url+files[i].name,
+        image: this.state.urlPath+files[i].name,
         ahref: "#",
         altTag: "",
       };

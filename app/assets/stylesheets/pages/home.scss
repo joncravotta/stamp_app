@@ -150,7 +150,7 @@
   @include display(flex);
   @include flex-direction(row);
   @include justify-content(space-around);
-  padding: 150px 0;
+  padding: 200px 0;
 }
 
 .review-card {
@@ -216,7 +216,7 @@
 
 .cta-container {
   padding: 150px 0;
-  background-color: $primary;
+  background-color: $light-primary;
   width: 100%;
   @include display(flex);
   @include align-items(center);
@@ -244,7 +244,7 @@
   @include align-items(center);
   @include justify-content(center);
   @include flex-direction(column);
-  background-color: $light-primary;
+  background-color: $primary;
   padding: 60px;
   border-radius: 25px 25px 0 0;
 }

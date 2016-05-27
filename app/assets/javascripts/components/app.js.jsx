@@ -51,17 +51,22 @@ var App = React.createClass({
     $.ajax({
       url: '/build/new',
       method: "POST",
+      dataType: 'text',
       data: newApiObj
     })
     .done(function(returnedJson){
       console.log(returnedJson.responseText);
-      console.log('done');
+      console.log('SUCCESS');
+      console.log(returnedJson);
+      self.setState({showLoadingIcon: false});
+      self.setState({showCodeBox: true});
       self.setState({codeBuildResponse: returnedJson});
     })
     .fail(function(returnedJson) {
+      console.log('failure');
       self.setState({showLoadingIcon: false});
       self.setState({showCodeBox: true});
-      self.setState({codeBuildResponse: returnedJson.responseText});
+      self.setState({codeBuildResponse: 'Sorry there was a problem proccessing your request.  Pleace contact for help.'});
     });
   },
 

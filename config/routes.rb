@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   root 'home#index'
   get 'app' => 'app#index'
   post '/build/new' => 'build#new'
+  resources :charges
 
 
   # Example of regular route:

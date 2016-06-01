@@ -1,11 +1,21 @@
 class ChargesController < ApplicationController
-
+before_filter :require_user
 def new
 end
 
 def create
   # Amount in cents
   @amount = 500
+  @user = User.find(current_user)
+
+  if @user
+    @user.paid = true
+    @user.save
+  else
+    flash[:error] = "Must be logged in"
+    redirect_to root_path
+  end
+
 
   customer = Stripe::Customer.create(
     :email => params[:stripeEmail],

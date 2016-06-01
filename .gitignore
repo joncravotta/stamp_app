@@ -16,4 +16,4 @@
 !/log/.keep
 /tmp
 # ENVIRONMENT VARS
-.env
+/.env

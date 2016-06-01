@@ -283,7 +283,7 @@
 }
 
 .cta-price {
-  @include primary-font(100px);
+  @include primary-font(80px);
   color: $primary;
   text-align: center;
   font-weight: normal;
@@ -314,6 +314,10 @@
 
 // Mobile Screens
 @media (max-width: 900px) {
+  .hero-video {
+    width: 85%;
+    height: 300px;
+  }
   .how-to-card-container {
     @include flex-direction(column);
     @include justify-content(center);
@@ -321,7 +325,35 @@
   }
 
   .how-to-card {
-    width: 80%;
+    width: 85%;
     margin: 25px 0;
+  }
+
+  .review-container {
+    @include flex-direction(column);
+    @include justify-content(center);
+    @include align-items(center);
+    padding: 100px 0;
+  }
+
+  .review-card {
+    margin: 25px 0;
+    width: 75%;
+  }
+
+  .cta-card {
+    width: 85%;
+  }
+
+  .cta-top {
+    padding: 60px;
+  }
+
+  .cta-bottom {
+    padding: 45px;
+  }
+
+  .cta-price {
+    font-size: 60px;
   }
 }

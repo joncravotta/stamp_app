@@ -25,9 +25,16 @@
   @include primary-font(22px);
   color: $white;
   background-color: $primary;
-  padding: 60px;
+  padding: 80px 60px;
   border-radius: 25px 25px 0 0;
 }
 
 .charge-card-bottom {
+  @include display(flex);
+  @include align-items(center);
+  @include justify-content(center);
+  @include flex-direction(column);
+  @include primary-font(22px);
+  text-align: center;
+  padding: 60px;
 }

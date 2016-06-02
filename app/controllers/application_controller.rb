@@ -14,4 +14,12 @@ class ApplicationController < ActionController::Base
       redirect_to root_path
     end
   end
+
+  def require_paid
+    @user = User.find(current_user)
+    if !@user.paid?
+      flash[:danger] = "You must buy a pass to pigeon post to access"
+      redirect_to root_path
+    end
+  end
 end

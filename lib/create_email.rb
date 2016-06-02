@@ -12,9 +12,11 @@ class CreateEmail
     email_arr = []
     puts 'email body'
     puts (email_body)
+    # error if emailBody is empty
     email_body['emailBody'].each do |_, value|
       puts value
       image_size = FastImage.size(value[:image])
+      # error if cant retrieve image size
       td = %(<a href="#{value[:ahref]}" target="_blank"><img src="#{value[:image]}" alt="#{value[:altTag]}" align="left" width="#{image_size[0]}"height="#{image_size[1]}" style="display: block; float: left; margin: 0; text-align: left; border: 0;"></a>)
       email_arr.push(td)
     end

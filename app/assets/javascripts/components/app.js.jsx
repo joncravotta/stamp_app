@@ -7,6 +7,8 @@ var App = React.createClass({
       showLoadingIcon: false,
       showCodeBox: false,
       codeBuildResponse: '',
+      headerCodeBox: false,
+      footerCodeBox: false,
       emailObject: {},
       apiObj: {}
     };
@@ -109,6 +111,56 @@ var App = React.createClass({
     this.setState({showCodeBox: false});
   },
 
+  handleFooterBoxOpen: function() {
+    this.setState({footerCodeBox: true});
+  },
+
+  handeFooterBoxClose: function() {
+    this.setState({footerCodeBox: false});
+  },
+
+  handleHeaderBoxOpen: function() {
+    this.setState({headerCodeBox: true});
+  },
+
+  handleHeaderBoxClose: function() {
+    this.setState({headerCodeBox: false});
+  },
+
+  renderHeaderCodeBox: function() {
+    return (
+      <div className="overlay-code-box">
+        <div className="talking-pigeon">
+          <img className="pigeon-logo-talking" src={this.props.pigeon_src} />
+          <div className="talk-bubble tri-right round btm-left">
+            <div className="talktext">
+              <p>Our finest piegeons are writing your code</p>
+              <img className="loading-icon" src={this.props.loading_icon} />
+            </div>
+          </div>
+          <div className="primary-button" onClick={this.handleHeaderBoxClose}>CLOSE</div>
+        </div>
+      </div>
+    );
+  },
+
+  renderFooterCodeBox: function() {
+    return (
+      <div className="overlay-code-box">
+        <div className="talking-pigeon">
+          <img className="pigeon-logo-talking" src={this.props.pigeon_src} />
+          <div className="talk-bubble tri-right round btm-left">
+            <div className="talktext">
+              <p>Our finest piegeons are writing your code</p>
+              <img className="loading-icon" src={this.props.loading_icon} />
+            </div>
+          </div>
+          <div className="primary-button" onClick={this.handeFooterBoxClose}>CLOSE</div>
+        </div>
+      </div>
+    );
+  },
+
   renderLoadingIcon: function() {
     return (
       <div className="overlay-code-box">
@@ -157,6 +209,8 @@ var App = React.createClass({
     var slices;
     var codeBox;
     var loadingIcon;
+    var headerBox;
+    var footerBox;
     var rulerStyle = {
       width: (this.state.emailWidth) + 'px'
     };
@@ -170,13 +224,31 @@ var App = React.createClass({
       codeBox = this.renderCodeBox();
     }
 
+    if (this.state.headerCodeBox === true){
+      headerBox = this.renderHeaderCodeBox();
+    }
+
+    if (this.state.footerCodeBox === true){
+      footerBox = this.renderFooterCodeBox();
+    }
+
     return (
       <div className="app-container">
         <div className="input-fields">
           <form className="app-form-main" encType="multipart/form-data">
             <label className="control-label">Path to images</label>
             <input className="input" type="text" placeholder="http://www.yoursite.com/folder/images/" onChange={this.handleUrlPathChange}/>
-            <div className="app-form-main-details">
+            <div className="app-form-main-header">
+              <div className="app-form-checkbox">
+                <label>Header</label>
+                <div className="circle-add-button" onClick={this.handleHeaderBoxOpen}>+</div>
+              </div>
+              <div className="app-form-checkbox">
+                <label>Footer</label>
+                <div className="circle-add-button" onClick={this.handleFooterBoxOpen}>+</div>
+              </div>
+            </div>
+            <div className="app-form-main-details padding-top-25px">
               <div className="app-form-main-details-group">
                 <label className="control-label">Email Width (pixels)</label>
                 <input className="input" type="text" placeholder="600" onChange={this.handleEmailWidthChange}/>
@@ -195,6 +267,8 @@ var App = React.createClass({
         <div className="overlay-code-box-container">
           {loadingIcon}
           {codeBox}
+          {headerBox}
+          {footerBox}
         </div>
     </div>
     );

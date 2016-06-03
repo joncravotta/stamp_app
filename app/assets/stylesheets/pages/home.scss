@@ -128,7 +128,7 @@
   padding: 40px 0;
   width: 100%;
   img {
-    width: 30%;
+    width: 25%;
     margin: auto;
   }
 }
@@ -298,6 +298,10 @@
   width: 100%;
   padding: 50px 0;
   text-align: center;
+
+  img {
+    width: 100px;
+  }
 }
 
 .contact {
@@ -308,7 +312,7 @@
 
 .made-by {
   @include primary-font(20px);
-  padding-top: 25px;
+  padding: 25px 0;
   color: $light-primary;
 }
 

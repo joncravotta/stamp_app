@@ -5,6 +5,28 @@
  }
 
 .primary-button {
-   @include primary-button
-   ;
+   @include primary-button;
+}
+
+.circle-add-button {
+   @include display(flex);
+   @include align-items(center);
+   @include justify-content(center);
+   height: 50px;
+   width: 50px;
+   background-color: $light-primary;
+   border-radius: 50%;
+   color: $white;
+   font-size: 22px;
+   font-weight: bolder;
+   line-height: 0;
+   letter-spacing: 0;
+   cursor: pointer;
+   box-shadow: 0px 9px 10px -5px rgba(0,0,0,0.4);
+   transition: all ease-in-out 300ms;
+
+   &:hover {
+    box-shadow: 0px 37px 40px -22px rgba(0,0,0,0.4);
+    transform: translate(0px, -3px) scale(1.01);
+   }
 }

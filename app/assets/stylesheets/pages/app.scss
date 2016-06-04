@@ -196,3 +196,24 @@
 .loading-icon {
   height: 30px;
 }
+
+.app-form-main-header {
+  @include display(flex);
+  @include align-items(flex-end);
+}
+
+.app-form-checkbox {
+  @include display(flex);
+  @include align-items(center);
+  @include flex-direction(column);
+  margin-right: 50px;
+
+  label{
+    color: $light-gray;
+    font-size: 18px;
+  }
+}
+
+.text-box {
+  width: 600px;
+}

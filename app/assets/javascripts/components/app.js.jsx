@@ -3,6 +3,8 @@ var App = React.createClass({
     return {
       urlPath: '',
       emailWidth: '600',
+      header: '',
+      footer: '',
       showSlices: false,
       showLoadingIcon: false,
       showCodeBox: false,
@@ -102,6 +104,16 @@ var App = React.createClass({
     this.setState({urlPath: value});
   },
 
+  handleHeaderChange: function(event) {
+    var value = event.target.value;
+    this.setState({header: value});
+  },
+
+  handeFooterChange: function(event) {
+    var value = event.target.value;
+    this.setState({footer: value});
+  },
+
   handleEmailWidthChange: function(event) {
     var value = event.target.value;
     this.setState({emailWidth: value});
@@ -130,16 +142,8 @@ var App = React.createClass({
   renderHeaderCodeBox: function() {
     return (
       <div className="overlay-code-box">
-        <div className="talking-pigeon">
-          <img className="pigeon-logo-talking" src={this.props.pigeon_src} />
-          <div className="talk-bubble tri-right round btm-left">
-            <div className="talktext">
-              <p>Our finest piegeons are writing your code</p>
-              <img className="loading-icon" src={this.props.loading_icon} />
-            </div>
-          </div>
+          <textarea className="text-box" rows="20" onChange={this.handleHeaderChange} />
           <div className="primary-button" onClick={this.handleHeaderBoxClose}>CLOSE</div>
-        </div>
       </div>
     );
   },
@@ -147,16 +151,8 @@ var App = React.createClass({
   renderFooterCodeBox: function() {
     return (
       <div className="overlay-code-box">
-        <div className="talking-pigeon">
-          <img className="pigeon-logo-talking" src={this.props.pigeon_src} />
-          <div className="talk-bubble tri-right round btm-left">
-            <div className="talktext">
-              <p>Our finest piegeons are writing your code</p>
-              <img className="loading-icon" src={this.props.loading_icon} />
-            </div>
-          </div>
-          <div className="primary-button" onClick={this.handeFooterBoxClose}>CLOSE</div>
-        </div>
+        <textarea className="text-box" rows="20" onChange={this.handleFooterChange} />
+        <div className="primary-button" onClick={this.handeFooterBoxClose}>CLOSE</div>
       </div>
     );
   },
@@ -247,8 +243,6 @@ var App = React.createClass({
                 <label>Footer</label>
                 <div className="circle-add-button" onClick={this.handleFooterBoxOpen}>+</div>
               </div>
-            </div>
-            <div className="app-form-main-details padding-top-25px">
               <div className="app-form-main-details-group">
                 <label className="control-label">Email Width (pixels)</label>
                 <input className="input" type="text" placeholder="600" onChange={this.handleEmailWidthChange}/>

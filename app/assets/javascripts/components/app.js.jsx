@@ -152,6 +152,10 @@ var App = React.createClass({
     return (
       <div className="overlay-code-box">
         <textarea className="text-box" rows="20" onChange={this.handleFooterChange} />
+        <div className="code-box-checkbox">
+          <label>Active</label>
+          <input type="checkbox"/>
+        </div>
         <div className="primary-button" onClick={this.handeFooterBoxClose}>CLOSE</div>
       </div>
     );
@@ -247,8 +251,8 @@ var App = React.createClass({
                 <label className="control-label">Email Width (pixels)</label>
                 <input className="input" type="text" placeholder="600" onChange={this.handleEmailWidthChange}/>
               </div>
-              <input type="file" onChange={this.handleFile} multiple/>
             </div>
+            <input type="file" className="margin-top-25px" onChange={this.handleFile} multiple/>
           </form>
           <div className="primary-button" onClick={this.submitSlices}>BUILD</div>
         </div>

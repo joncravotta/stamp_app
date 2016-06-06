@@ -4,7 +4,9 @@ var App = React.createClass({
       urlPath: '',
       emailWidth: '600',
       header: '',
+      headerCodeActive: false,
       footer: '',
+      footerCodeActive: false,
       showSlices: false,
       showLoadingIcon: false,
       showCodeBox: false,
@@ -49,6 +51,10 @@ var App = React.createClass({
   handleCodeBuildRequest: function() {
     var newApiObj = {};
     newApiObj.emailBody = this.state.emailObject;
+    newApiObj.headerCodeActive = this.state.headerCodeActive;
+    newApiObj.header = this.state.header;
+    newApiObj.footerCodeActive = this.state.footerCodeActive;
+    newApiObj.footer = this.state.footer;
     console.log(newApiObj);
     this.setState({showLoadingIcon: true});
     var self = this;
@@ -109,9 +115,19 @@ var App = React.createClass({
     this.setState({header: value});
   },
 
-  handeFooterChange: function(event) {
+  handleHeaderCodeActive: function(event) {
+    var value = event.target.checked;
+    this.setState({headerCodeActive: value});
+  },
+
+  handleFooterChange: function(event) {
     var value = event.target.value;
     this.setState({footer: value});
+  },
+
+  handleFooterCodeActive: function() {
+    var value = event.target.checked;
+    this.setState({footerCodeActive: value});
   },
 
   handleEmailWidthChange: function(event) {
@@ -142,7 +158,11 @@ var App = React.createClass({
   renderHeaderCodeBox: function() {
     return (
       <div className="overlay-code-box">
-          <textarea className="text-box" rows="20" onChange={this.handleHeaderChange} />
+          <textarea className="text-box" rows="20" onChange={this.handleHeaderChange} value={this.state.header} />
+          <div className="code-box-checkbox">
+            <label>Active</label>
+            <input type="checkbox" onChange={this.handleHeaderCodeActive} checked={this.state.headerCodeActive}/>
+          </div>
           <div className="primary-button" onClick={this.handleHeaderBoxClose}>CLOSE</div>
       </div>
     );
@@ -151,10 +171,10 @@ var App = React.createClass({
   renderFooterCodeBox: function() {
     return (
       <div className="overlay-code-box">
-        <textarea className="text-box" rows="20" onChange={this.handleFooterChange} />
+        <textarea className="text-box" rows="20" onChange={this.handleFooterChange} value={this.state.footer} />
         <div className="code-box-checkbox">
           <label>Active</label>
-          <input type="checkbox"/>
+          <input type="checkbox" onChange={this.handleFooterCodeActive} checked={this.state.footerCodeActive}/>
         </div>
         <div className="primary-button" onClick={this.handeFooterBoxClose}>CLOSE</div>
       </div>

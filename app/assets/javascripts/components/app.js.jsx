@@ -125,7 +125,7 @@ var App = React.createClass({
     this.setState({footer: value});
   },
 
-  handleFooterCodeActive: function() {
+  handleFooterCodeActive: function(event) {
     var value = event.target.checked;
     this.setState({footerCodeActive: value});
   },

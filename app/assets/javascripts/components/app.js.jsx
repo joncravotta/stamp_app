@@ -231,6 +231,8 @@ var App = React.createClass({
     var loadingIcon;
     var headerBox;
     var footerBox;
+    var footerStatus;
+    var headerStatus;
     var rulerStyle = {
       width: (this.state.emailWidth) + 'px'
     };
@@ -252,6 +254,18 @@ var App = React.createClass({
       footerBox = this.renderFooterCodeBox();
     }
 
+    if (this.state.headerCodeActive === true){
+      headerStatus = <div className="circle-add-button-active" onClick={this.handleHeaderBoxOpen}>✓</div>;
+    } else {
+    headerStatus = <div className="circle-add-button" onClick={this.handleHeaderBoxOpen}>+</div>;
+    }
+
+    if (this.state.footerCodeActive === true){
+      footerStatus = <div className="circle-add-button-active" onClick={this.handleFooterBoxOpen}>✓</div>;
+    } else {
+    footerStatus = <div className="circle-add-button" onClick={this.handleFooterBoxOpen}>+</div>;
+    }
+
     return (
       <div className="app-container">
         <div className="input-fields">
@@ -261,11 +275,11 @@ var App = React.createClass({
             <div className="app-form-main-header">
               <div className="app-form-checkbox">
                 <label>Header</label>
-                <div className="circle-add-button" onClick={this.handleHeaderBoxOpen}>+</div>
+                {headerStatus}
               </div>
               <div className="app-form-checkbox">
                 <label>Footer</label>
-                <div className="circle-add-button" onClick={this.handleFooterBoxOpen}>+</div>
+                {footerStatus}
               </div>
               <div className="app-form-main-details-group">
                 <label className="control-label">Email Width (pixels)</label>

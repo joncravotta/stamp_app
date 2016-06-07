@@ -30,3 +30,9 @@
     transform: translate(0px, -3px) scale(1.01);
    }
 }
+
+.circle-add-button-active {
+  @extend .circle-add-button;
+  font-size: 16px;
+  background-color: $accent;
+}

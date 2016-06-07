@@ -158,6 +158,7 @@ var App = React.createClass({
   renderHeaderCodeBox: function() {
     return (
       <div className="overlay-code-box">
+          <h1 className="white-title">Header</h1>
           <textarea className="text-box" rows="20" onChange={this.handleHeaderChange} value={this.state.header} />
           <div className="code-box-checkbox">
             <label>Active</label>
@@ -171,6 +172,7 @@ var App = React.createClass({
   renderFooterCodeBox: function() {
     return (
       <div className="overlay-code-box">
+        <h1 className="white-title">Footer</h1>
         <textarea className="text-box" rows="20" onChange={this.handleFooterChange} value={this.state.footer} />
         <div className="code-box-checkbox">
           <label>Active</label>

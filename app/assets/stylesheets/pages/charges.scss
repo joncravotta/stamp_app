@@ -11,6 +11,7 @@
   max-width: 80%;
   border-radius: 25px;
   background: $white;
+  background: linear-gradient( rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6) ), image-url('geometry2.png') repeat;
   @include display(flex);
   @include align-items(center);
   @include justify-content(center);
@@ -35,6 +36,7 @@
   @include justify-content(center);
   @include flex-direction(column);
   @include primary-font(22px);
+  background: linear-gradient( rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6) ), image-url('geometry2.png') repeat;
   text-align: center;
   padding: 60px;
 }

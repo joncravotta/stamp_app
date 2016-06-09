@@ -1,7 +1,7 @@
 var App = React.createClass({
   getInitialState: function() {
     return {
-      urlPath: '',
+      urlPath: "1",
       emailWidth: '600',
       header: '',
       headerCodeActive: false,
@@ -19,7 +19,11 @@ var App = React.createClass({
   },
 
   submitSlices: function() {
-    this.setState({showSlices: true});
+    if(Object.keys(this.state.emailObject).length === 0) {
+      alert("Please upload images first");
+    } else {
+      this.setState({showSlices: true});
+    }
   },
 
   handleSailthruForm: function() {
@@ -31,21 +35,25 @@ var App = React.createClass({
   },
 
   handleFile: function (e) {
-    var files = e.target.files,
-        url = this.state.urlPath,
-        emailObjectInt = {},
-        //creating email body object
-        //each slice gets an obj
-        key;
-    for (var i = 0; i < files.length; i++) {
-      key = 'slice'+ i;
-      emailObjectInt[key] = {
-        image: this.state.urlPath+files[i].name,
-        ahref: "#",
-        altTag: "",
-      };
+    if (this.state.urlPath === "1" ) {
+      alert("Please ad a url path first.");
+    } else {
+      var files = e.target.files,
+          url = this.state.urlPath,
+          emailObjectInt = {},
+          //creating email body object
+          //each slice gets an obj
+          key;
+      for (var i = 0; i < files.length; i++) {
+        key = 'slice'+ i;
+        emailObjectInt[key] = {
+          image: this.state.urlPath+files[i].name,
+          ahref: "#",
+          altTag: "",
+        };
+      }
+      this.setState({emailObject: emailObjectInt});
     }
-    this.setState({emailObject: emailObjectInt});
   },
 
   handleCodeBuildRequest: function() {
@@ -66,17 +74,15 @@ var App = React.createClass({
     })
     .done(function(returnedJson){
       console.log(returnedJson.responseText);
-      console.log('SUCCESS');
       console.log(returnedJson);
       self.setState({showLoadingIcon: false});
       self.setState({showCodeBox: true});
       self.setState({codeBuildResponse: returnedJson});
     })
     .fail(function(returnedJson) {
-      console.log('failure');
       self.setState({showLoadingIcon: false});
       self.setState({showCodeBox: true});
-      self.setState({codeBuildResponse: 'Sorry there was a problem proccessing your request.  Pleace contact for help.'});
+      self.setState({codeBuildResponse: 'Sorry there was a problem proccessing your request. ERROR: ' + returnedJson.statusText});
     });
   },
 

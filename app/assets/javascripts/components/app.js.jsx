@@ -1,12 +1,13 @@
 var App = React.createClass({
   getInitialState: function() {
+    console.log(this.props.user);
     return {
-      urlPath: "1",
-      emailWidth: '600',
-      header: '',
-      headerCodeActive: false,
-      footer: '',
-      footerCodeActive: false,
+      urlPath: this.props.user.url_path,
+      emailWidth: this.props.user.email_width,
+      header: this.props.user.header,
+      headerCodeActive: this.props.user.header_active,
+      footer: this.props.user.footer,
+      footerCodeActive: this.props.user.footer_active,
       showSlices: false,
       showLoadingIcon: false,
       showCodeBox: false,
@@ -36,7 +37,7 @@ var App = React.createClass({
 
   handleFile: function (e) {
     if (this.state.urlPath === "1" ) {
-      alert("Please ad a url path first.");
+      alert("Please add a url path first.");
     } else {
       var files = e.target.files,
           url = this.state.urlPath,
@@ -63,6 +64,8 @@ var App = React.createClass({
     newApiObj.header = this.state.header;
     newApiObj.footerCodeActive = this.state.footerCodeActive;
     newApiObj.footer = this.state.footer;
+    newApiObj.emailWidth = this.state.emailWidth;
+    newApiObj.urlPath = this.state.urlPath;
     console.log(newApiObj);
     this.setState({showLoadingIcon: true});
     var self = this;
@@ -279,7 +282,7 @@ var App = React.createClass({
         <div className="input-fields">
           <form className="app-form-main" encType="multipart/form-data">
             <label className="control-label">Path to images</label>
-            <input className="input" type="text" placeholder="http://www.yoursite.com/folder/images/" onChange={this.handleUrlPathChange}/>
+            <input className="input" type="text" value={this.state.urlPath} onChange={this.handleUrlPathChange}/>
             <div className="app-form-main-header">
               <div className="app-form-checkbox">
                 <label>Header</label>
@@ -291,7 +294,7 @@ var App = React.createClass({
               </div>
               <div className="app-form-main-details-group">
                 <label className="control-label">Email Width (pixels)</label>
-                <input className="input" type="text" placeholder="600" onChange={this.handleEmailWidthChange}/>
+                <input className="input" type="text" value={this.state.emailWidth} onChange={this.handleEmailWidthChange}/>
               </div>
             </div>
             <input type="file" className="margin-top-25px" onChange={this.handleFile} multiple/>

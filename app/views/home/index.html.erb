@@ -20,7 +20,9 @@
   <div class="dark-gray-body main-cta-body center">
     Lorem ipsum dolor sit amet, vis ne error assentior, ei graeco rationibus persequeris nec, pro tollit maluisset ne. Brute ceteros eleifend sit ex. An tollit regione vocibus duo.ertinacia ea
   </div>
-  <div class="primary-button">SIGN UP</div>
+  <%= link_to new_user_registration_path do %>
+    <div class="primary-button">SIGN UP</div>
+  <% end %>
 </div>
 
 <div class="how-to-container">
@@ -142,7 +144,7 @@
     <div class="cta-bottom">
       <div class="cta-subtitle-primary">Only:</div>
       <div class="cta-price">$299<span class="cta-month">/Forever</span></div>
-      <%= link_to new_user_session_path do %>
+      <%= link_to new_user_registration_path do %>
         <div class="buy-button">SIGN UP</div>
       <% end %>
     </div>
@@ -151,6 +153,6 @@
 <div class="footer">
   <div class="contact">Questions?</div>
   <div class="primary-button">CONTACT</div>
-  <div class="made-by">Made in NYC by CleverBureau</div>
+  <div class="made-by">Made in NYC by CleverBureau <br />Support local small businesses</div>
   <%= image_tag('subway.png') %>
 </div>

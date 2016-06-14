@@ -22,7 +22,6 @@
 
 .buy-button {
   @include primary-button;
-  padding: 15px;
   background-color: $accent;
 }
 

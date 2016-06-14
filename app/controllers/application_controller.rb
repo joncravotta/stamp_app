@@ -19,7 +19,15 @@ class ApplicationController < ActionController::Base
     @user = User.find(current_user)
     if !@user.paid?
       flash[:danger] = "You must buy a pass to pigeon post to access"
-      redirect_to root_path
+      redirect_to new_charge_path
+    end
+  end
+
+  def after_sign_in_path_for(resource)
+    if resource.sign_in_count == 1
+      new_charge_path
+    else
+      root_path
     end
   end
 end

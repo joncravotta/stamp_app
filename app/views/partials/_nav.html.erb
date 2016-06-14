@@ -2,6 +2,7 @@
   <span class="nav-logo">PIGEON POST</span>
   <div class="auth-group">
     <% if user_signed_in? %>
+      <%= link_to "Code", app_path  %>
       <%= link_to "Profile" %>
       <%= link_to "Log out", destroy_user_session_path, :method => :delete %>
     <% else %>

@@ -142,7 +142,9 @@
     <div class="cta-bottom">
       <div class="cta-subtitle-primary">Only:</div>
       <div class="cta-price">$299<span class="cta-month">/Forever</span></div>
-      <div class="buy-button">SIGN UP</div>
+      <%= link_to new_user_session_path do %>
+        <div class="buy-button">SIGN UP</div>
+      <% end %>
     </div>
   </div>
 </div>

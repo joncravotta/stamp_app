@@ -1,0 +1,25 @@
+.devise-container {
+  @include primary-font(22px);
+  width: 60%;
+  margin: auto;
+
+  h2 {
+    color: $primary;
+  }
+}
+
+
+.field {
+    input {
+      border-color: $dark-gray;
+      width: 100%;
+      margin-bottom: 20px;
+      height: 20px;
+      font-size: 18px;
+    }
+
+    label, em {
+      color: $primary;
+    }
+
+}

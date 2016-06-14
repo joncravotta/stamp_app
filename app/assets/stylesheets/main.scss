@@ -1,7 +1,10 @@
-@import "helpers/color.scss", 'helpers/fonts.scss', "helpers/components.scss", "helpers/reusables.scss", "partials/nav.scss", "pages/home.scss", "pages/app.scss", "pages/charges.scss";
+@import "helpers/color.scss", 'helpers/fonts.scss', "helpers/components.scss", "helpers/reusables.scss", "partials/nav.scss", "pages/home.scss", "pages/app.scss", "pages/charges.scss", "pages/devise.scss";
  body {
    margin: 0;
    width: 100%;
+ }
+ a {
+   text-decoration: none;
  }
 
 .primary-button {

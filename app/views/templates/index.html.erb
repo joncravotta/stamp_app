@@ -1,0 +1,5 @@
+<h1>Profile</h1>
+<% @templates.each do |template| %>
+  <%= template.created_at.strftime("%m/%d/%Y") %>
+  <%= link_to 'View', template_path(template) %>
+<% end %>

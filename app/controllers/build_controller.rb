@@ -10,6 +10,12 @@ class BuildController < ApplicationController
     # end
     @user = User.find(current_user)
     @user.update(header: template["header"], footer: template["footer"], url_path: template["urlPath"], email_width: template["emailWidth"], header_active: template["headerCodeActive"], footer_active: template["footerCodeActive"])
+    @template = Template.new(user_id: current_user.id, html: @build.response)
+    if @template.save
+      puts "LOG: Email saved"
+    else
+      puts "LOG: Email could not be saved"
+    end
     if @build
       render json: @build.response
     else

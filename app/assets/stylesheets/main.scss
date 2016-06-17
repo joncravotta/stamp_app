@@ -5,6 +5,7 @@
  }
  a {
    text-decoration: none;
+   color: $secondary-dark;
  }
 
 .primary-button {
@@ -38,4 +39,19 @@
   @extend .circle-add-button;
   font-size: 16px;
   background-color: $accent;
+}
+
+.notifications {
+  text-align: center;
+  @include primary-font(20px);
+
+  .notice {
+    color: $primary;
+    padding-top: 20px;
+  }
+
+  .alert {
+    color: $secondary-dark;
+    padding-top: 20px;
+  }
 }

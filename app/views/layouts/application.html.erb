@@ -8,8 +8,11 @@
 </head>
 <body>
 <%= render :partial => "partials/nav" %>
-<!-- <p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>   -->
+<div class="notifications">
+  <span class="notice"><%= notice %></span>
+  <span class="alert"><%= alert %></span>  
+</div>
+
 <%= yield %>
 
 </body>

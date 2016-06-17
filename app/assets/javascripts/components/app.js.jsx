@@ -296,8 +296,8 @@ var App = React.createClass({
                 <label className="control-label">Email Width (pixels)</label>
                 <input className="input" type="text" value={this.state.emailWidth} onChange={this.handleEmailWidthChange}/>
               </div>
+              <input type="file" className="margin-top-25px" onChange={this.handleFile} multiple/>
             </div>
-            <input type="file" className="margin-top-25px" onChange={this.handleFile} multiple/>
           </form>
           <div className="primary-button" onClick={this.submitSlices}>BUILD</div>
         </div>

@@ -1,0 +1,44 @@
+.profile-container {
+  width: 100%;
+  min-height: 100vh;
+  height: 100%;
+  margin: auto;
+  @include primary-font(20px);
+  color: $white;
+  background-color: $light-primary;
+  //background: linear-gradient( rgba(159, 173, 228,0.6), rgba(159, 173, 228,0.6) ), image-url('geometry2.png') repeat;
+
+  a {
+  text-decoration: underline;
+  color: $primary;
+  }
+}
+
+.profile-title {
+  font-size: 35px;
+}
+
+.profile-code-box {
+  width: 80%;
+  height: 600px;
+  overflow-y: auto;
+  background-color: $light-gray;
+  padding: 25px;
+  font-family: monospace;
+  color: $black;
+  font-size: 14px;
+  margin: 25px 0;
+}
+
+.profile-pigeon-container {
+  width: auto;
+  height: 200px;
+  padding: 50px;
+}
+
+.profile-pigeon {
+  position: absolute;
+  top: 57px;
+  left: -15px;
+  width: 125px;
+}

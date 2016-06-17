@@ -1,2 +1,9 @@
-<%= @template.html %>
-<%= @template.html.html_safe %>
+<div class="profile-container">
+  <div class="profile-title">
+    Created: <%= @template.created_at.strftime("%m/%d/%Y") %>
+  </div>
+  <div class="profile-code-box">
+    <%= @template.html %>
+  </div>
+  <%= @template.html.html_safe %>
+</div>

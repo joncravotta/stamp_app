@@ -1,6 +1,14 @@
 <div class="profile-container">
   <div class="profile-sidebar">
-
+    <div class="profile-sidebar-item">
+      Templates
+    </div>
+    <div class="profile-sidebar-item">
+      Profile
+    </div>
+    <div class="profile-sidebar-item">
+      Account
+    </div>
   </div>
   <div class="profile-content">
     <span class="profile-title">Templates</span>
@@ -8,8 +16,8 @@
     <div class="profile-pigeon-container">
       <div class="talking-pigeon">
         <%= image_tag('primary-pigeon.png',:class => "profile-pigeon") %>
-        <div class="talk-bubble tri-right round btm-left">
-          <div class="talktext">
+        <div class="talk-bubble-primary tri-right-primary round btm-left-primary">
+          <div class="talktext-primary">
             <p>Our pigeons coded <%= @templates.count %> emails for you so far!</p>
           </div>
         </div>

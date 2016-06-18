@@ -17,12 +17,33 @@
   }
 }
 
+.profile-container-show {
+  @extend .profile-container;
+  @include flex-direction(column);
+  @include align-items(center);
+}
+
 .profile-sidebar{
   width: 25%;
   background-color: $primary;
   height: 100%;
   min-height: 100vh;
 }
+
+.profile-sidebar-item {
+  width: 100%;
+  background-color: $light-primary;
+  color: $white;
+  padding: 10px 0;
+  text-align: center;
+  cursor: pointer;
+  border-bottom: $primary 3px solid;
+
+  &:hover {
+    background: darken($light-primary, 3%)
+  }
+}
+
 .profile-content {
   width: 75%;
   @include display(flex);
@@ -31,7 +52,7 @@
 }
 
 .profile-title {
-  font-size: 35px;
+  font-size: 30px;
   padding-top: 25px;
 }
 

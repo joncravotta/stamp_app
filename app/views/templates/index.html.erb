@@ -1,20 +1,22 @@
 <div class="profile-container">
-  <span class="profile-title">Templates</span>
-  <br />
-  <div class="profile-pigeon-container">
-    <div class="talking-pigeon">
-      <%= image_tag('white-pigeon.png',:class => "profile-pigeon") %>
-      <div class="talk-bubble tri-right round btm-left">
-        <div class="talktext">
-          <p>Our pigeons coded <%= @templates.count %> emails so far!</p>
+  <div class="profile-sidebar">
+
+  </div>
+  <div class="profile-content">
+    <span class="profile-title">Templates</span>
+    <br />
+    <div class="profile-pigeon-container">
+      <div class="talking-pigeon">
+        <%= image_tag('primary-pigeon.png',:class => "profile-pigeon") %>
+        <div class="talk-bubble tri-right round btm-left">
+          <div class="talktext">
+            <p>Our pigeons coded <%= @templates.count %> emails for you so far!</p>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <ul>
     <% @templates.each do |template| %>
       <li><%= template.created_at.strftime("%m/%d/%Y") %> <%= link_to 'View', template_path(template) %></li>
     <% end %>
-  </ul>
-
+  </div>
 </div>

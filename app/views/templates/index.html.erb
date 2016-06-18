@@ -1,18 +1,18 @@
 <div class="profile-container">
   <div class="profile-sidebar">
     <div class="profile-sidebar-item">
-      Templates
+      <a>Templates</a>
     </div>
     <div class="profile-sidebar-item">
-      Profile
+      <a>Profile</a>
     </div>
     <div class="profile-sidebar-item">
-      Account
+      <a>Account</a>
     </div>
   </div>
   <div class="profile-content">
-    <span class="profile-title">Templates</span>
-    <br />
+    <!-- <span class="profile-title">Templates</span>
+    <br /> -->
     <div class="profile-pigeon-container">
       <div class="talking-pigeon">
         <%= image_tag('primary-pigeon.png',:class => "profile-pigeon") %>
@@ -23,8 +23,17 @@
         </div>
       </div>
     </div>
-    <% @templates.each do |template| %>
-      <li><%= template.created_at.strftime("%m/%d/%Y") %> <%= link_to 'View', template_path(template) %></li>
-    <% end %>
+    <div class="templates-table">
+      <% @templates.each do |template| %>
+        <div class="templates-row">
+          <div class="templates-date">
+            <%= template.created_at.strftime("%m/%d/%Y") %>
+          </div>
+          <div class="templates-view">
+            <%= link_to 'View', template_path(template) %>
+          </div>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>

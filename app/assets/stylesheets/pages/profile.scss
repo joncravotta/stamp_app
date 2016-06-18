@@ -11,10 +11,6 @@
   text-decoration: underline;
   color: $primary;
   }
-
-  li {
-    list-style: none;
-  }
 }
 
 .profile-container-show {
@@ -35,12 +31,18 @@
   background-color: $light-primary;
   color: $white;
   padding: 10px 0;
-  text-align: center;
+  text-align: left;
   cursor: pointer;
   border-bottom: $primary 3px solid;
 
   &:hover {
     background: darken($light-primary, 3%)
+  }
+
+  a {
+    padding-left: 25px;
+    color: $white;
+    text-decoration: none;
   }
 }
 
@@ -70,8 +72,8 @@
 
 .profile-pigeon-container {
   width: auto;
-  height: 200px;
-  padding: 50px;
+  height: 150px;
+  padding: 50px 0;
 }
 
 .profile-pigeon {
@@ -79,4 +81,26 @@
   top: 57px;
   left: -15px;
   width: 125px;
+}
+
+.templates-table {
+  width: 80%;
+  height: auto;
+}
+
+.templates-row {
+  border-bottom: 1px solid $black;
+  width: 100%;
+  padding-top: 10px;
+}
+
+.templates-date {
+  //float: left;
+  display: inline;
+}
+
+.templates-view {
+  //float: right;
+  display: inline;
+  float: right;
 }

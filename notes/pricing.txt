@@ -1,0 +1,29 @@
+Pricing plan:
+Tier pricing
+
+Annual subscription
+Tier 1: Lowest plan
+$199: 50 coded emails
+
+Tier 2: Medium Grade
+$299: 125 coded emails
+
+Tier 3: Unlimited
+$399 unlimited coded emails
+
+
+Tech implementations
+
+- Needs to charge card on a annual basis
+- Email code count is in user profile, starts and decrements
+- Email code count does not rollover, get reset on purchase
+- Upgrading requires full payment for extra seats
+- Upgrading seats needs to change the previous  annual bill date
+- Trigger an email notifying payment is occuring soon
+- User ID need to be the same in profile and stripe
+- Need to access membership_end date
+- Need to access membership_status
+- Ability to cancel membership 
+
+Upgrading
+

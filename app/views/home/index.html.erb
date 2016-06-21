@@ -133,21 +133,36 @@
     </div>
   </div>
 </div>
-<div class="cta-container">
-  <div class="cta-card">
-    <div class="cta-top">
-      <div class="cta-title">Code Emails Faster</div>
-      <div class="cta-subtitle">Spend time doing other things like...</div>
-      <div class="cta-icon"><%= image_tag('white-pigeon.png') %></div>
-      <div class="cta-subtitle">feeding the pigeons.</div>
-    </div>
-    <div class="cta-bottom">
-      <div class="cta-subtitle-primary">Only:</div>
-      <div class="cta-price">$299<span class="cta-month">/Forever</span></div>
-      <%= link_to new_user_registration_path do %>
-        <div class="buy-button">SIGN UP</div>
-      <% end %>
-    </div>
+<div class="pricing-container">
+  <div class="pricing-card">
+    <div class="pricing-name">Birdy Plan</div>
+    <div class="pricing-price">$229<span class="price-detail">/yr</span></div>
+    <div class="pricing-details">50 emails</div>
+    <%= link_to new_user_registration_path do %>
+      <div class="pricing-button">
+        <span>Buy Now</span>
+      </div>
+    <% end %>
+  </div>
+  <div class="pricing-card">
+    <div class="pricing-name">Nest Plan</div>
+    <div class="pricing-price">$329<span class="price-detail">/yr</span></div>
+    <div class="pricing-details">125 emails</div>
+    <%= link_to new_user_registration_path do %>
+      <div class="pricing-button">
+        <span>Buy Now</span>
+      </div>
+    <% end %>
+  </div>
+  <div class="pricing-card">
+    <div class="pricing-name">Flock Plan</div>
+    <div class="pricing-price">$429<span class="price-detail">/yr</span></div>
+    <div class="pricing-details-gold">Unlimited emails</div>
+    <%= link_to new_user_registration_path do %>
+      <div class="pricing-button">
+        <span>Buy Now</span>
+      </div>
+    <% end %>
   </div>
 </div>
 <div class="footer">

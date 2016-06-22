@@ -134,36 +134,36 @@
   </div>
 </div>
 <div class="pricing-container">
-  <div class="pricing-card">
-    <div class="pricing-name">Birdy Plan</div>
-    <div class="pricing-price">$229<span class="price-detail">/yr</span></div>
-    <div class="pricing-details">50 emails</div>
-    <%= link_to new_user_registration_path do %>
+  <div class="white-title center">Pick a Plan</div>
+  <div class="pricing-card-container">
+    <div class="pricing-card">
+      <div class="pricing-name">Birdy Plan</div>
+      <div class="pricing-price">$229<span class="price-detail">/yr</span></div>
+      <div class="pricing-details">50 emails</div>
       <div class="pricing-button">
-        <span>Buy Now</span>
+        <span>Small Business</span>
       </div>
-    <% end %>
-  </div>
-  <div class="pricing-card">
-    <div class="pricing-name">Nest Plan</div>
-    <div class="pricing-price">$329<span class="price-detail">/yr</span></div>
-    <div class="pricing-details">125 emails</div>
-    <%= link_to new_user_registration_path do %>
+    </div>
+    <div class="pricing-card">
+      <div class="pricing-name">Nest Plan</div>
+      <div class="pricing-price">$329<span class="price-detail">/yr</span></div>
+      <div class="pricing-details">125 emails</div>
       <div class="pricing-button">
-        <span>Buy Now</span>
+        <span>Growing</span>
       </div>
-    <% end %>
-  </div>
-  <div class="pricing-card">
-    <div class="pricing-name">Flock Plan</div>
-    <div class="pricing-price">$429<span class="price-detail">/yr</span></div>
-    <div class="pricing-details-gold">Unlimited emails</div>
-    <%= link_to new_user_registration_path do %>
+    </div>
+    <div class="pricing-card">
+      <div class="pricing-name">Flock Plan</div>
+      <div class="pricing-price">$429<span class="price-detail">/yr</span></div>
+      <div class="pricing-details-gold">Unlimited emails</div>
       <div class="pricing-button">
-        <span>Buy Now</span>
+        <span>Best Plan</span>
       </div>
-    <% end %>
+    </div>
   </div>
+  <%= link_to new_user_registration_path do %>
+    <div class="buy-button">SIGN UP</div>
+  <% end %>
 </div>
 <div class="footer">
   <div class="contact">Questions?</div>

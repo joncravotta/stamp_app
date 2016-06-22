@@ -1,17 +1,30 @@
 .charge-form-container {
   @include display(flex);
-  @include justify-content(center);
   @include align-items(center);
-  height: 100vh;
+  @include flex-direction(column);
   width: 100%;
-  background: $light-primary;
+  background-color: $white;
+  padding: 100px 0;
+}
+
+.charge-form-title {
+  @include primary-font(45px);
+  color: $primary;
+}
+
+.charge-card-container {
+  @include display(flex);
+  @include align-items(center);
+  @include justify-content(space-around);
+  padding: 50px 0;
+  width: 100%;
 }
 
 .charge-card {
-  max-width: 80%;
+  width: 30%;
   border-radius: 25px;
   background: $white;
-  background: linear-gradient( rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6) ), image-url('geometry2.png') repeat;
+  background-color: $light-primary;
   @include display(flex);
   @include align-items(center);
   @include justify-content(center);

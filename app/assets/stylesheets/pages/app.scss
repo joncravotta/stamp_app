@@ -1,6 +1,6 @@
 .input-fields {
   padding-top: 45px;
-  width: 60%;
+  width: 70%;
   @include display(flex);
   @include flex-direction(column);
   @include justify-content(center);
@@ -236,4 +236,50 @@
     @include primary-font(22px);
     color: $white;
   }
+}
+
+.form-box-group {
+  @include display(flex);
+  @include flex-direction(row);
+}
+.form-box {
+  @include display(flex);
+  @include align-items(center);
+  @include justify-content(center);
+  padding: 20px;
+  background-color: $light-gray;
+  margin: 10px 0;
+
+  input {
+    width: 90%;
+    height: 35px;
+    border: none;
+    font-size: 18px;
+    padding-left: 5px;
+  }
+}
+
+.form-box-60 {
+  @extend .form-box;
+  width: 60%;
+}
+
+.form-box-40 {
+  @extend .form-box-60;
+  width: 40%;
+  margin: 10px 20px 10px 0;
+}
+
+.form-box-number {
+  @include display(flex);
+  @include align-items(center);
+  @include justify-content(center);
+  @include primary-font(24px);
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  border: 1px solid $dark-gray;
+  margin-right: 20px;
+  font-weight: 500;
+  color: $white;
 }

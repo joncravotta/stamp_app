@@ -1,6 +1,6 @@
 .input-fields {
   padding-top: 45px;
-  width: 60%;
+  width: 70%;
   @include display(flex);
   @include flex-direction(column);
   @include justify-content(center);
@@ -209,12 +209,20 @@
 .app-form-checkbox {
   @include display(flex);
   @include align-items(center);
-  @include flex-direction(column);
-  margin-right: 50px;
+  @include flex-direction(row);
+  // @include justify-content(center);
+  @include primary-font(14px);
+  margin-right: 40px;
 
-  label{
-    color: $dark-gray;
+  label {
+    @include display(flex);
+    @include align-items(center);
+    @include justify-content(center);
+    color: $white;
     font-size: 18px;
+    background-color: $dark-gray;
+    height: 40px;
+    width: 100px;
   }
 }
 
@@ -236,4 +244,66 @@
     @include primary-font(22px);
     color: $white;
   }
+}
+
+.form-box-group {
+  @include display(flex);
+  @include flex-direction(row);
+}
+.form-box {
+  @include display(flex);
+  @include align-items(center);
+  @include justify-content(space-between);
+  padding: 20px;
+  background-color: $light-gray;
+  margin: 10px 0;
+
+  input {
+    width: 90%;
+    height: 35px;
+    border: none;
+    font-size: 18px;
+    padding-left: 5px;
+  }
+}
+
+.form-box-60 {
+  @extend .form-box;
+  width: 60%;
+}
+
+.form-box-40 {
+  @extend .form-box-60;
+  width: 40%;
+  margin: 10px 20px 10px 0;
+}
+
+.form-box-40-right {
+  @extend .form-box-60;
+  width: 40%;
+  margin: 10px 0px 10px 20px;
+}
+
+.form-box-50 {
+  @extend .form-box;
+  width: 50%;
+}
+
+.form-box-50-margin {
+  @extend .form-box-50;
+  margin-right: 20px;
+}
+
+.form-box-number {
+  @include display(flex);
+  @include align-items(center);
+  @include justify-content(center);
+  @include primary-font(22px);
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  border: 1px solid $dark-gray;
+  margin-right: 20px;
+  font-weight: 500;
+  color: $white;
 }

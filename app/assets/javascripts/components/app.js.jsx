@@ -280,10 +280,17 @@ var App = React.createClass({
     return (
       <div className="app-container">
         <div className="input-fields">
-          <form className="app-form-main" encType="multipart/form-data">
-            <label className="control-label">Path to images</label>
+          <div className="form-box">
+            <div className="form-box-number">1</div>
             <input className="input" type="text" value={this.state.urlPath} onChange={this.handleUrlPathChange}/>
-            <div className="app-form-main-header">
+          </div>
+          <div className="form-box-group">
+            <div className="form-box-40">
+              <div className="form-box-number">2</div>
+              <input className="input" type="text" value={this.state.emailWidth} onChange={this.handleEmailWidthChange}/>
+            </div>
+            <div className="form-box-60">
+              <div className="form-box-number">3</div>
               <div className="app-form-checkbox">
                 <label>Header</label>
                 {headerStatus}
@@ -292,14 +299,18 @@ var App = React.createClass({
                 <label>Footer</label>
                 {footerStatus}
               </div>
-              <div className="app-form-main-details-group">
-                <label className="control-label">Email Width (pixels)</label>
-                <input className="input" type="text" value={this.state.emailWidth} onChange={this.handleEmailWidthChange}/>
-              </div>
-              <input type="file" className="margin-top-25px" onChange={this.handleFile} multiple/>
             </div>
-          </form>
-          <div className="primary-button" onClick={this.submitSlices}>BUILD</div>
+          </div>
+            <div className="form-box-group">
+              <div className="form-box-60">
+                <div className="form-box-number">4</div>
+                <input type="file" onChange={this.handleFile} multiple/>
+              </div>
+              <div className="form-box-40-right">
+                <div className="form-box-number">5</div>
+                <div className="primary-button" onClick={this.submitSlices}>BUILD</div>
+              </div>
+            </div>
         </div>
         <div className="width-ruler" style={rulerStyle}>
         {this.state.emailWidth} px

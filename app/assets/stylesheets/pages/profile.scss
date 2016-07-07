@@ -24,24 +24,31 @@
   background-color: $primary;
   height: 100%;
   min-height: 100vh;
+  border-right: $primary 3px solid;
 }
 
 .profile-sidebar-item {
   width: 100%;
-  background-color: $light-primary;
-  color: $white;
+  background-color: $white;
+  color: $primary;
   padding: 10px 0;
   text-align: left;
   cursor: pointer;
   border-bottom: $primary 3px solid;
 
+
   &:hover {
-    background: darken($light-primary, 3%)
+    background: $primary;
+    color: $white;
+
+    a {
+      color: $white;
+    }
   }
 
   a {
     padding-left: 25px;
-    color: $white;
+    color: $primary;
     text-decoration: none;
   }
 }

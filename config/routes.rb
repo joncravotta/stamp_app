@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   post '/build/new' => 'build#new'
   resources :templates
   resources :charges
+  get 'profile' => 'profile#index'
 
 
   # Example of regular route:

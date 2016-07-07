@@ -301,10 +301,16 @@ var App = React.createClass({
               </div>
             </div>
           </div>
-            <div className="app-form-main-header">
-              <input type="file" className="margin-top-25px" onChange={this.handleFile} multiple/>
+            <div className="form-box-group">
+              <div className="form-box-60">
+                <div className="form-box-number">4</div>
+                <input type="file" onChange={this.handleFile} multiple/>
+              </div>
+              <div className="form-box-40-right">
+                <div className="form-box-number">5</div>
+                <div className="primary-button" onClick={this.submitSlices}>BUILD</div>
+              </div>
             </div>
-          <div className="primary-button" onClick={this.submitSlices}>BUILD</div>
         </div>
         <div className="width-ruler" style={rulerStyle}>
         {this.state.emailWidth} px

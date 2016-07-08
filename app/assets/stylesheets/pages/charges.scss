@@ -60,6 +60,8 @@
 }
 
 .stripe-button {
+  @include display(flex);
+  @include justify-content(center);
   padding-top: 25px;
 }
 

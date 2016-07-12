@@ -9,7 +9,7 @@
   color: $black;
   a {
   text-decoration: underline;
-  color: $primary;
+  color: $white;
   }
 }
 
@@ -19,26 +19,26 @@
   @include align-items(center);
 }
 
-.profile-sidebar{
-  width: 25%;
-  background-color: $primary;
+.profile-sidebar {
+  width: 20%;
+  background-color: $darkest-gray;
   height: 100%;
   min-height: 100vh;
-  border-right: $primary 3px solid;
+  padding-top: 25px;
+//  border-right: $primary 3px solid;
 }
 
 .profile-sidebar-item {
   width: 100%;
-  background-color: $white;
-  color: $primary;
+  color: $white;
   padding: 10px 0;
   text-align: left;
   cursor: pointer;
-  border-bottom: $primary 3px solid;
-
+  font-size: 17px;
+  border-left: 3px solid $darkest-gray;
 
   &:hover {
-    background: $primary;
+    border-left: 3px solid $accent;
     color: $white;
 
     a {
@@ -48,21 +48,23 @@
 
   a {
     padding-left: 25px;
-    color: $primary;
     text-decoration: none;
   }
 }
 
 .profile-content {
-  width: 75%;
+  width: 80%;
   @include display(flex);
-  @include align-items(center);
+  //@include align-items(center);
   @include flex-direction(column);
+  background-color: $lightest-gray;
 }
 
 .profile-title {
-  font-size: 30px;
+  font-size: 27px;
   padding-top: 25px;
+  padding-left: 45px;
+  font-weight: lighter;
 }
 
 .profile-code-box {
@@ -75,6 +77,41 @@
   color: $black;
   font-size: 14px;
   margin: 25px 0;
+}
+
+.profile-top-dashboard-container {
+  @include display(flex);
+  @include flex-direction(row);
+  width: 100%;
+  background-color: $white;
+  height: 200px;
+  margin-top: 25px;
+}
+
+.profile-top-dashboard-item {
+  font-size: 15px;
+  width: 25%;
+  height: 100%;
+  border-right: 2px solid $lightest-gray;
+
+  i {
+    font-size: 14px;
+  }
+}
+
+.profile-top-dashboard-item-group {
+  padding: 35px;
+}
+
+.profile-dashboard-item-title {
+  // /color: $;
+}
+
+.profile-dashboard-item-count {
+  display: block;
+  font-size: 30px;
+  padding-top: 10px;
+  font-weight: lighter;
 }
 
 .profile-pigeon-container {

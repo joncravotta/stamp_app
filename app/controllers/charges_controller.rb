@@ -40,7 +40,7 @@ end
     when 'SUB_299'
       125
     when 'SUB_399'
-      100000000
+      -399
     end
   end
 end

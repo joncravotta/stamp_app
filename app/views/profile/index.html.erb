@@ -11,8 +11,25 @@
     </div>
   </div>
   <div class="profile-content">
-    <!-- <span class="profile-title">Templates</span>
-    <br /> -->
+  <span class="profile-title">Profile</span>
+  <div class="profile-top-dashboard-container">
+    <div class="profile-top-dashboard-item">
+      <div class="profile-top-dashboard-item-group">
+          <i class="fa fa-file-text-o  fa-lg" aria-hidden="true"></i>
+          <span class="profile-dashboard-item-title">Emails left</span>
+          <% if @profile.email_code_count == -399 %>
+            <span class="profile-dashboard-item-count">Unlimited</span>
+          <% else %>
+            <%= @profile.email_code_count %>
+          <% end %>
+        </div>
+      </div>
+    <div class="profile-top-dashboard-item">
 
+    </div>
+    <div class="profile-top-dashboard-item">
+
+    </div>
+  </div>
   </div>
 </div>

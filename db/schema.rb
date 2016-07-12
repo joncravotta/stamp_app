@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160621184146) do
+ActiveRecord::Schema.define(version: 20160621181832) do
 
   create_table "templates", force: :cascade do |t|
     t.string   "html"
@@ -40,11 +40,11 @@ ActiveRecord::Schema.define(version: 20160621184146) do
     t.string   "email_width",                 default: "600"
     t.boolean  "header_active",               default: false
     t.boolean  "footer_active",               default: false
-    t.string   "stripe_customer_id"
-    t.integer  "stripe_current_period_start"
-    t.integer  "stripe_current_period_end"
-    t.string   "stripe_plan_id"
-    t.integer  "stripe_canceled_at"
+    t.integer  "stripe_customer_id"
+    t.datetime "stripe_current_period_start"
+    t.datetime "stripe_current_period_end"
+    t.integer  "stripe_plan_id"
+    t.datetime "stripe_canceled_at"
     t.integer  "email_code_count"
     t.string   "subscription_type"
   end

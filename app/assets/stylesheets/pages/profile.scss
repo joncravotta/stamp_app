@@ -104,7 +104,7 @@
 }
 
 .profile-dashboard-item-title {
-  // /color: $;
+  margin-top: 50px;
 }
 
 .profile-dashboard-item-count {
@@ -112,6 +112,28 @@
   font-size: 30px;
   padding-top: 10px;
   font-weight: lighter;
+}
+
+.profile-dashboard-card {
+  width: 70%;
+  height: 150px;
+  background-color: $white;
+  margin: 25px auto 0 auto;
+  padding: 75px 25px;
+  text-align: center;
+}
+
+.profile-dashboard-card-title {
+  font-size: 27px;
+  font-weight: lighter;
+}
+
+.profile-dashboard-card-desc {
+  display: block;
+  font-size: 14px;
+  font-weight: lighter;
+  color: $light-gray;
+  padding-top: 10px;
 }
 
 .profile-pigeon-container {

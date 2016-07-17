@@ -10,9 +10,10 @@ def create
     :plan => params[:plan_type]
   )
 
-  @user = User.find(current_user)
+  @user = User.find(current_user.id)
 
   if @user
+    puts customer
     @user.stripe_customer_id = customer.id
     @user.stripe_current_period_start = customer.subscriptions.data[0].current_period_start
     @user.stripe_current_period_end = customer.subscriptions.data[0].current_period_end

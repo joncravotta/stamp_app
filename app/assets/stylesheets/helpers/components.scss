@@ -29,6 +29,16 @@
   background-color: $secondary-dark;
 }
 
+.alert-button {
+  @include primary-button;
+  background-color: #fa4141;
+}
+
+.accent-button {
+  @include primary-button;
+  background-color: $accent;
+}
+
  // Chat box
  .talk-bubble {
    display: inline-block;

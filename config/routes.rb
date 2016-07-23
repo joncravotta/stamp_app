@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :templates
   resources :charges
   get 'profile' => 'profile#index'
+  get 'slice' => 'slice_tool#index'
 
 
   # Example of regular route:

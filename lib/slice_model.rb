@@ -30,12 +30,11 @@ class SliceModel
   end
 
   def create_crops
-    #horizontals are sorted here
+    #Last horizontal line x,y is stored here
     last_horizontal = {"startX" => 0, "startY" => 0}
     @horizontal.each do |key, value|
-      puts "horizontal loop #{key} #{value}"
+      puts "in side horizontal loop #{key} #{value}"
       context_verticals = []
-      puts key["startY"]
       @vertical.each do |k, v|
         puts k
         if key["startY"] == k["endY"]

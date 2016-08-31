@@ -34,7 +34,7 @@ gem 'devise', '~> 3.5', '>= 3.5.6'
 gem 'stripe'
 # Carrier wave
 gem 'carrierwave', '~> 0.11.2'
-gem 'rmagick', '~> 2.15', '>= 2.15.4'
+gem 'rmagick', '2.14.0'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

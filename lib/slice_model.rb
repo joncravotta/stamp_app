@@ -9,6 +9,7 @@ class SliceModel
     parse_slice_data
   end
 
+  # Pushing horizontal and vertical data
   def parse_slice_data
     @data.each do |key, value|
       puts value[:clickType]
@@ -21,10 +22,11 @@ class SliceModel
     sort_horizontal
   end
 
+  #sorting horizontal data
   def sort_horizontal
-    puts @horizontal
+
     @horizontal.sort_by { |key, value| key[:startY] }
-    puts @horizontal
+    puts "sort_horz #{@horizontal}"
     puts @vertical
     create_crops
   end
@@ -32,21 +34,25 @@ class SliceModel
   def create_crops
     #Last horizontal line x,y is stored here
     last_horizontal = {"startX" => 0, "startY" => 0}
+
     @horizontal.each do |key, value|
+      #getting all verticals that match up with current horizontal
       puts "in side horizontal loop #{key} #{value}"
       context_verticals = []
+      # looking for matching verticals
       @vertical.each do |k, v|
-        puts k
         if key["startY"] == k["endY"]
-          puts "found match #{key}"
-
+          puts "found match horz vert match. vert = #{k}"
           context_verticals.push(k)
         end
       end
+
+      #printing all found verts
       puts "context vert #{context_verticals}"
       sorted_verts = context_verticals.sort_by { |k, _v| k[:startX] }
       puts "context vert sorted #{sorted_verts}"
 
+      #if context count is 0 then then it is the first vertical and has to get the edges
       context_count = 0
       context_length = context_verticals.length - 1
       previous_vertical = {}
@@ -64,11 +70,11 @@ class SliceModel
           @formatted_data.push(hash)
         # this is how we know its the last vertical for this horizontals
         elsif context_count == context_length
-          puts "second block, context_count: #{context_count}, previous vertical: #{previous_vertical}}"
+          puts "last block, context_count: #{context_count}, previous vertical: #{previous_vertical}"
           hash = {}
           hash[:x] = previous_vertical["x"].to_i
           hash[:y] = previous_vertical["y"].to_i
-          hash[:width] = k["startX"].to_i - previous_vertical["x"].to_i
+          hash[:width] = k[:startX].to_i - previous_vertical[:x].to_i
           hash[:height] = k["endY"].to_i - previous_vertical["y"].to_i
           @formatted_data.push(hash)
           last_hash = {}
@@ -79,15 +85,18 @@ class SliceModel
           @formatted_data.push(hash)
         # this is a vertical in between other verticals
         else
-          puts "third block, context_count: #{context_count}, previous vertical: #{previous_vertical}}"
+          puts "middle block, context_count: #{context_count}, previous vertical: #{previous_vertical}"
           hash = {}
-          hash[:x] = previous_vertical["x"].to_i
-          hash[:y] = previous_vertical["y"].to_i
-          hash[:width] = k["startX"].to_i - previous_vertical["x"].to_i
-          hash[:height] = k["endY"].to_i - previous_vertical["y"].to_i
+          hash[:x] = previous_vertical[:x].to_i
+          hash[:y] = previous_vertical[:y].to_i
+          hash[:width] = k[:startX].to_i - previous_vertical[:x].to_i
+          hash[:height] = k[:endY].to_i - previous_vertical[:y].to_i
+          puts "middle block created this hahs #{hash}"
+          puts "width calculation is #{k[:startX]} - #{previous_vertical[:x]}"
+          puts "which should be equal to #{hash[:width]}"
+          @formatted_data.push(hash)
           previous_vertical[:x] = k["startX"]
           previous_vertical[:y] = k["startY"]
-          @formatted_data.push(hash)
         end
         context_count  = context_count + 1
         puts @formatted_data

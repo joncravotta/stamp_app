@@ -68,8 +68,8 @@ class SliceModel
           previous_vertical[:x] = k["startX"]
           previous_vertical[:y] = k["startY"]
           @formatted_data.push(hash)
-        # this is how we know its the last vertical for this horizontals
         elsif context_count == context_length
+          # this is how we know its the last vertical for this horizontals
           puts "last block, context_count: #{context_count}, previous vertical: #{previous_vertical}"
           hash = {}
           hash[:x] = previous_vertical["x"].to_i
@@ -83,8 +83,8 @@ class SliceModel
           hash[:width] = @image_width - k["startX"].to_i
           hash[:height] = k["endY"].to_i - last_horizontal["y"].to_i
           @formatted_data.push(hash)
-        # this is a vertical in between other verticals
         else
+          # this is a vertical in between other verticals
           puts "middle block, context_count: #{context_count}, previous vertical: #{previous_vertical}"
           hash = {}
           hash[:x] = previous_vertical[:x].to_i

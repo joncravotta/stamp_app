@@ -1,5 +1,5 @@
-require_relative "slice.rb"
-require_relative "slice_model.rb"
+require_relative "slice/slice.rb"
+require_relative "slice/slice_model.rb"
 
 class SliceService
   def initialize(data)

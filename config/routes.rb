@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :charges
   get 'profile' => 'profile#index'
   get 'slice' => 'slice_tool#index'
+  post 'slice/new' => 'slice_tool#new'
 
 
   # Example of regular route:

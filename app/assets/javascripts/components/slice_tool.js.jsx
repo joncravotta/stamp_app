@@ -28,6 +28,7 @@ var SliceTool = React.createClass({
 
 
     reader.readAsDataURL(file);
+
     console.log(this.state.image);
   },
 
@@ -51,6 +52,27 @@ var SliceTool = React.createClass({
     } else {
       this.setState({clickType: "horizontal"});
     }
+  },
+
+  handleSlicePost: function() {
+    var self = this;
+    var dataObj = {};
+    dataObj.slice_data = this.state.data;
+    dataObj.imageWidth = this.state.imageWidth;
+    dataObj.imageHeight = this.state.imageHeight;
+    $.ajax({
+      url: '/slice/new',
+      method: "POST",
+      dataType: 'text',
+      data: dataObj
+    })
+    .done(function(returnedJson){
+      console.log(returnedJson.responseText);
+      console.log(returnedJson);
+    })
+    .fail(function(returnedJson) {
+      console.log("failed");
+    });
   },
 
   handleReset: function() {
@@ -169,6 +191,7 @@ var SliceTool = React.createClass({
           <button className="button" id="vertical" onClick={this.handleClickType}>Vertical</button>
           <button className="reset" onClick={this.handleReset}>Reset</button>
           <button className="undo" onClick={this.handleUndo}>Undo</button>
+          <button className="submit" onClick={this.handleSlicePost}>Submit to server</button>
         </div>
       );
     }

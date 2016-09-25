@@ -1,5 +1,5 @@
-require_relative "slice/slice.rb"
-require_relative "slice/slice_model.rb"
+require_relative "./slice.rb"
+require_relative "./slice_model.rb"
 
 class SliceService
   def initialize(data)
@@ -10,7 +10,9 @@ class SliceService
 
   def format_data
     formatted = SliceModel.new(@slice_data)
-    #slice(formatted)
+    puts "from service: #{formatted.get_formatted_data}"
+
+    slice(formatted.get_formatted_data)
   end
 
   def slice(formatted_data)

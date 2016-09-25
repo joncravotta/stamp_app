@@ -1,3 +1,4 @@
+require_relative "../../lib/slice_model.rb"
 class SliceToolController < ApplicationController
   respond_to :json
   def index

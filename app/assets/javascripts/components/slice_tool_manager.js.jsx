@@ -8,7 +8,7 @@ var SliceToolManager = React.createClass({
       return (
         <div class="slice-manager-
           container">
-          <SliceToolTracker/>
+          <SliceToolProgressBar/>
         </div>
       );
     }

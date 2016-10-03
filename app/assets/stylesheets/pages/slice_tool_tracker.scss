@@ -1,0 +1,47 @@
+.slice-tracker-container {
+  @include display(flex);
+  @include flex-direction(row);
+  @include justify-content(center);
+  @include align-items(center);
+  width: 100%;
+  padding: 25px 0;
+  //background-color: $lightest-gray;
+}
+
+.status-bar-circle-completed {
+  width: 20px;
+  height: 20px;
+  background-color: $accent;
+  border-radius: 10px;
+}
+
+.status-bar-circle-incomplete {
+  width: 19px;
+  height: 19px;
+  border: 1px solid $accent;
+  border-radius: 10px;
+}
+
+.status-bar-line-completed {
+  width: 75px;
+  height: 2px;
+  background-color: $accent;
+}
+
+.status-bar-circle-active-outside {
+  @include display(flex);
+  @include flex-direction(row);
+  @include justify-content(center);
+  @include align-items(center);
+  width: 22px;
+  height: 22px;
+  border: 1px solid $accent;
+  border-radius: 11px;
+}
+
+.status-bar-circle-active-inside {
+  width: 12px;
+  height: 12px;
+  background-color: $accent;
+  border-radius: 6px;
+}

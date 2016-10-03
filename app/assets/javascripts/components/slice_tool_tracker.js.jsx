@@ -1,4 +1,4 @@
-var SliceToolTracker = React.createClass({
+var SliceToolProgressBar = React.createClass({
   getInitialState: function() {
     return {
       trackerState: 0
@@ -6,7 +6,17 @@ var SliceToolTracker = React.createClass({
   },
   render: function() {
       return (
-        <h1>Tracker</h1>
+        <div className="slice-tracker-container">
+          <div className="status-bar-circle-completed"></div>
+          <div className="status-bar-line-completed"></div>
+          <div className="status-bar-circle-completed"></div>
+          <div className="status-bar-line-completed"></div>
+          <div className="status-bar-circle-active-outside"><div className="status-bar-circle-active-inside"></div></div>
+          <div className="status-bar-line-completed"></div>
+          <div className="status-bar-circle-incomplete"></div>
+          <div className="status-bar-line-completed"></div>
+          <div className="status-bar-circle-incomplete"></div>
+        </div>
       );
     }
 });

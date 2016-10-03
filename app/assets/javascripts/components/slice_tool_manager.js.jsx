@@ -8,6 +8,7 @@ var SliceToolManager = React.createClass({
       return (
         <div class="slice-manager-
           container">
+          <SliceToolUploader/>
           <SliceToolProgressBar/>
         </div>
       );

@@ -8,6 +8,12 @@ var SliceToolManager = React.createClass({
       emailWidth:0
     };
   },
+
+  updateManagerState: function() {
+    var newState = this.state.managerState + 1;
+    this.setState({managerState: newState});
+  },
+
   propUpdateUpload: function(file, image, width, height) {
     this.setState({
       emailImageFile: file,
@@ -19,15 +25,17 @@ var SliceToolManager = React.createClass({
   handleOrderState: function() {
     switch (this.state.managerState) {
       case 0:
-        return (<SliceToolUploader updateUpload={this.propUpdateUpload}/>);
+        return (<SliceToolUploader updateUpload={this.propUpdateUpload} updateState={this.updateManagerState}/>);
+      case 1:
+          return (<SliceTool file={this.state.emailImageFile} image={this.state.emailImage} imageWidth={this.state.emailWidth} imageHeight={this.state.emailHeight}/>);
       default:
         break;
     }
   },
   render: function() {
+    console.log(this.state.emailWidth);
       return (
-        <div class="slice-manager-
-          container">
+        <div className="slice-manager-container">
           <SliceToolProgressBar/>
           {this.handleOrderState()}
         </div>

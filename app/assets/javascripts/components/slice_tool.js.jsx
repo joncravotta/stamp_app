@@ -3,34 +3,34 @@ var SliceTool = React.createClass({
     return {
       clickType: "horizontal",
       data: [],
-      file: '',
-      image: '',
-      imageWidth:0,
-      imageHeight:0
+      file: this.props.file,
+      image: this.props.image,
+      imageWidth: this.props.imageWidth,
+      imageHeight: this.props.imageHeight
     };
   },
 
-  handleFile: function (event) {
-    event.preventDefault();
-    var reader = new FileReader();
-    var file = event.target.files[0];
-    var self = this;
-
-    reader.onload = function(){
-      var img = new Image();
-      img.onload = function() {
-        self.setState({imageWidth: img.width});
-        self.setState({imageHeight: img.height});
-    };
-    img.src = reader.result;
-      self.setState({file: file, image: reader.result});
-    };
-
-
-    reader.readAsDataURL(file);
-
-    console.log(this.state.image);
-  },
+  // handleFile: function (event) {
+  //   event.preventDefault();
+  //   var reader = new FileReader();
+  //   var file = event.target.files[0];
+  //   var self = this;
+  //
+  //   reader.onload = function(){
+  //     var img = new Image();
+  //     img.onload = function() {
+  //       self.setState({imageWidth: img.width});
+  //       self.setState({imageHeight: img.height});
+  //   };
+  //   img.src = reader.result;
+  //     self.setState({file: file, image: reader.result});
+  //   };
+  //
+  //
+  //   reader.readAsDataURL(file);
+  //
+  //   console.log(this.state.image);
+  // },
 
   handleCanvasClick: function(ev) {
     var canvas = document.getElementById("canvas");
@@ -183,7 +183,6 @@ var SliceTool = React.createClass({
     console.log(this.state.data);
       return (
         <div className="slice-tool-container">
-          <input type="file" onChange={this.handleFile} />
           <canvas id="canvas" height={this.state.imageHeight} width={this.state.imageWidth} onClick={this.handleCanvasClick} style={canvasStyle}></canvas>
           <span className='coords'></span>
           <span className='clickType'>{this.state.clickType}</span>

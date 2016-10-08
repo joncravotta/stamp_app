@@ -16,7 +16,7 @@
 .hero-white {
   @extend .hero-primary;
   background-color: $white;
-  background: linear-gradient( rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6) ), image-url('geometry2.png') repeat;
+  background: linear-gradient( rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6) ), image-url('topo_bg.png') repeat;
 }
 
 .hero-video {
@@ -69,7 +69,7 @@
   @include flex-direction(column);
   height: 500px;
   padding: 25px;
-  background: linear-gradient( rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6) ), image-url('geometry2.png') repeat;
+  background: linear-gradient( rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6) ), image-url('topo_bg.png') repeat;
 
   img {
     width: 75px;
@@ -157,7 +157,7 @@
   @include flex-direction(row);
   @include justify-content(center);
   padding: 200px 0;
-  background: linear-gradient( rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6) ), image-url('geometry2.png') repeat;
+  background: linear-gradient( rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6) ), image-url('topo_bg.png') repeat;
 }
 
 .review-card {
@@ -239,7 +239,7 @@
   @include align-items(center);
   @include justify-content(center);
   @include flex-direction(column);
-  background: linear-gradient( rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6) ), image-url('geometry2.png') repeat;
+  background: linear-gradient( rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6) ), image-url('topo_bg.png') repeat;
   // box-shadow: 0px 17px 10px -7px rgba(0,0,0,0.4);
   // transition: all ease-in-out 300ms;
   //
@@ -308,7 +308,7 @@
   width: 100%;
   padding: 50px 0;
   text-align: center;
-  background: linear-gradient( rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6) ), image-url('geometry2.png') repeat;
+  background: linear-gradient( rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6) ), image-url('topo_bg.png') repeat;
 
   img {
     width: 100px;
@@ -399,7 +399,7 @@
   border-radius: 25px;
   box-shadow: 0px 17px 10px -7px rgba(0,0,0,0.4);
   transition: all ease-in-out 300ms;
-  background: linear-gradient( rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6) ), image-url('geometry2.png') repeat;
+  //background: linear-gradient( rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6) ), image-url('topo_bg.png') repeat;
 
   &:hover {
     box-shadow: 0px 37px 40px -22px rgba(0,0,0,0.4);

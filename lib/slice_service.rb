@@ -4,7 +4,6 @@ require "byebug"
 
 class SliceService
   def initialize(data)
-    byebug
     @image = data["image"]
     @slice_data = data
     format_data

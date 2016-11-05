@@ -1,0 +1,46 @@
+.new_home-container {
+  width: 100%;
+}
+.new_landing-container {
+  width: 100%;
+  height: 100vh;
+  background: image-url('bg_image_new.jpg');
+  background-size: cover;
+  @include display(flex);
+  @include justify-content(flex-end);
+  @include align-items(center);
+}
+
+.new_landing-body-container {
+  @include display(flex);
+  @include flex-direction(column);
+  width: 40%;
+  color: white;
+  padding-right: 50px;
+}
+
+.new_landing-body-title {
+  @include primary-font(80px);
+  font-weight: lighter;
+  color: white;
+}
+
+.new_landing-body-sub-title {
+  @include primary-font(34px);
+  color: white;
+  padding-top: 50px;
+  font-weight: lighter;
+}
+
+.new_landing-body-icon {
+  padding-top: 50px;
+  img {
+    width: 50px;
+  }
+}
+
+.new_landing-accent-block {
+  width: 100%;
+  height: 5px;
+  background-color: $accent;
+}

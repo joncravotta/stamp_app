@@ -1,11 +1,13 @@
 <div class="nav">
-  <span class="nav-logo">PIGEON POST</span>
+  <span class="nav-logo"><%= image_tag('pigeon_icon_modern.png') %></span>
   <div class="auth-group">
     <% if user_signed_in? %>
       <%= link_to "Code", app_path  %>
-      <%= link_to "Templates", templates_path %>
+      <%= link_to "Profile", templates_path %>
       <%= link_to "Log out", destroy_user_session_path, :method => :delete %>
     <% else %>
+      <%= link_to "Learn More", new_user_registration_path %>
+      <%= link_to "Pricing", new_user_registration_path %>
       <%= link_to "Login", new_user_session_path %>
       <%= link_to "Sign up", new_user_registration_path %>
     <% end %>

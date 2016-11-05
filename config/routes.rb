@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get 'profile' => 'profile#index'
   get 'slice' => 'slice_tool#index'
   post 'slice/new' => 'slice_tool#new'
+  get 'new_home' => 'home#new_home'
 
 
   # Example of regular route:

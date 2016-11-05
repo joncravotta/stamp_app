@@ -5,9 +5,10 @@
   @include align-items(center);
   @include justify-content(space-between);
   width: 100%;
-  background: $primary;
+  position: absolute;
+  //background: ;
   color: $white;
-  height: 65px;
+  height: 100px;
 }
 
 .nav-logo {
@@ -16,13 +17,13 @@
 }
 
 .auth-group {
-  padding-right: 25px;
+  padding-right: 70px;
 
   a {
     font-weight: lighter;
     font-size: 18px;
     text-decoration: none;
     color: $white;
-    padding-left: 15px;
+    padding-left: 30px;
   }
 }

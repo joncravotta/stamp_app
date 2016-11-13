@@ -44,3 +44,128 @@
   height: 5px;
   background-color: $accent;
 }
+
+// Second section
+.new_landing-first-section-container {
+  @include display(flex);
+  @include flex-direction(row);
+  width: 100%;
+  padding: 125px 0;
+  background-color: white;
+}
+
+.new_landing-first-section-cta{
+  @include display(flex);
+  @include flex-direction(column);
+  @include justify-content(center);
+  width: 50%;
+  padding: 0 70px;
+}
+
+.new_landing-first-section-cta-title {
+  @include primary-font(24px);
+  font-weight: lighter;
+}
+
+.new_landing-first-section-cta-body {
+  @include primary-font(18px);
+  font-weight: lighter;
+  padding: 20px 0;
+}
+
+.new_landing-first-section-icon-container {
+  @include display(flex);
+  @include justify-content(center);
+  @include align-items(center);
+  width: 40%;
+}
+
+// Third section
+.new_landing-second-section-container {
+  @include display(flex);
+  @include flex-direction(row);
+  width: 100%;
+  padding: 125px 0;
+  background-color: $primary;
+}
+
+//Review section
+.new_landing-review-section-container {
+  @include display(flex);
+  @include justify-content(space-around);
+  @include flex-direction(row);
+  padding: 125px 0;
+  width: 100%;
+}
+
+.new-landing-review-card {
+  @include display(flex);
+  @include justify-content(center);
+  @include flex-direction(column);
+  border-radius: 10px;
+  width: 27%;
+  border: solid 1px $dark-gray;
+  position: relative;
+}
+
+.new-landing-review-card-circle {
+  @include display(flex);
+  @include align-items(center);
+  @include justify-content(center);
+  height: 40px;
+  width: 40px;
+  border-radius: 20px;
+  background-color: #fff353;
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  bottom: 0;
+  right: 0;
+  z-index: 2;
+
+  img {
+    width: 20px;
+  }
+}
+
+.new-landing-review-card-image {
+  background: image-url('video.jpg');
+  border-radius: 10px 10px 0 0;
+  background-size: cover;
+  height: 200px;
+  width: 100%;
+}
+
+.new-landing-review-card-bottom {
+  @include display(flex);
+  @include align-items(center);
+  @include flex-direction(column);
+  padding: 25px 0;
+  width: 100%;
+}
+
+.new-landing-review-card-bottom-title {
+  @include primary-font(18px);
+  color: $darkest-gray;
+  padding-bottom: 10px;
+}
+
+.new-landing-review-card-bottom-line {
+  height: 1px;
+  width: 50%;
+  background-color: $light-gray;
+}
+
+.new-landing-review-card-bottom-body {
+  @include primary-font(18px);
+  font-weight: lighter;
+  padding: 20px;
+}
+//General
+.new_landing-link {
+  @include primary-font(18px);
+  font-weight: 400;
+  text-decoration: none;
+  color: $primary;
+  cursor: pointer;
+}

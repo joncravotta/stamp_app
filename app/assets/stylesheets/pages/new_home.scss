@@ -85,8 +85,15 @@
   @include display(flex);
   @include flex-direction(row);
   width: 100%;
-  padding: 125px 0;
+  //padding: 125px 0;
   background-color: $primary;
+}
+
+.new_landing-second-section-image {
+  width: 50%;
+  background: image-url('knapsack-bg.jpg');
+  background-size: cover;
+  height: 450px;
 }
 
 //Review section
@@ -228,7 +235,7 @@
   border-radius: 5px;
   color: $darkest-gray;
   background: #ffffff;
-  padding: 10px 40px 10px 40px;
+  padding: 10px 70px 10px 70px;
   border: solid #fff 1px;
   text-decoration: none;
   cursor: pointer;
@@ -244,15 +251,15 @@
   margin-top: 30px;
   padding: 10px;
   border: none;
-  border-bottom: solid 2px #c9c9c9;
+  border-bottom: solid 2px $light-gray;
   transition: border 0.3s;
-  width: 60%;
+  width: 50%;
 }
 #mc_embed_signup_scroll input[type="email"]:focus,
 #mc_embed_signup_scroll input[type="email"].focus {
   border: none;
   outline: none;
-  border-bottom: solid 2px #969696;
+  border-bottom: solid 2px $dark-gray;
 
 }
 

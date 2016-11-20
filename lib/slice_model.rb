@@ -10,7 +10,7 @@ class SliceModel
     parse_slice_data
   end
 
-  # Pushing horizontal and vertical data
+  # 1. PARSING DATA
   def parse_slice_data
     if @data.nil?
       @formatted_data.push({ :x => 0, :y => 0, :width => @image_width, :height => @image_height })
@@ -26,19 +26,16 @@ class SliceModel
     end
   end
 
-  #sorting horizontal data
+  #SORTING HORIZONTALS
   def sort_horizontal
     @horizontal = @horizontal.sort_by { |key, value| key[:startY] }
-
-    # Inserting the top of the image as a horizontal
-    #@horizontal.insert(0, {"clickType"=>"horizontal", "startX"=>"0", "startY"=>"0", "endX"=>@image_width, "endY"=>"0"})
-
+    # INSERTING LAST LINE AS HORIZONTAL
     @horizontal.push({"clickType"=>"horizontal", "startX"=>"0", "startY"=> @image_height, "endX"=>@image_width, "endY"=>@image_height})
     create_crops
   end
 
   def create_crops
-    #Last horizontal line x,y is stored here
+    #PERVIOUS horizontal line x,y is stored here
     prev_horizontal_y = 0
 
     #looping through each sorted horizontal line
@@ -76,7 +73,7 @@ class SliceModel
         hash[:y] = previous_vertical_y
         hash[:width] = k['startX'].to_i - previous_vertical_x
         hash[:height] = k['endY'].to_i - previous_vertical_y
-        puts "middle block created this hahs #{hash} \n"
+        puts "middle block created this hash #{hash} \n"
         puts "width calculation is #{k[:startX]} - #{previous_vertical_x} \n"
         puts "which should be equal to #{hash[:width]} \n"
         previous_vertical_x = k["startX"].to_i

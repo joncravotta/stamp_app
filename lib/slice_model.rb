@@ -55,7 +55,6 @@ class SliceModel
       puts "context vert sorted #{sorted_verts} \n"
 
       # inserting left edge of verticals
-      # sorted_verts.insert(0, {"clickType" => "vertical", "startX" => "0", "startY" => prev_horizontal["startY"], "endX" => "0", "endY" => key["startY"]})
       # appending right edge of verticals
       sorted_verts.push({"clickType" => "vertical", "startX" => @image_width, "startY" => prev_horizontal_y, "endX" => @image_width, "endY" => key["startY"]})
       puts "sorted after adding: #{sorted_verts}"
@@ -72,7 +71,7 @@ class SliceModel
         hash[:x] = previous_vertical_x
         hash[:y] = previous_vertical_y
         hash[:width] = k['startX'].to_i - previous_vertical_x
-        hash[:height] = k['endY'].to_i - previous_vertical_y
+        hash[:height] = (k['endY'].to_i - previous_vertical_y).abs #needs to be positive
         puts "middle block created this hash #{hash} \n"
         puts "width calculation is #{k[:startX]} - #{previous_vertical_x} \n"
         puts "which should be equal to #{hash[:width]} \n"

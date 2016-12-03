@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160621181832) do
+ActiveRecord::Schema.define(version: 20161009021025) do
+
+# Could not dump table "slices" because of following NoMethodError
+#   undefined method `[]' for nil:NilClass
 
   create_table "templates", force: :cascade do |t|
     t.string   "html"

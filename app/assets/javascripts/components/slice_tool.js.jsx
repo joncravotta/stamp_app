@@ -60,6 +60,7 @@ var SliceTool = React.createClass({
     dataObj.slice_data = this.state.data;
     dataObj.imageWidth = this.state.imageWidth;
     dataObj.imageHeight = this.state.imageHeight;
+    dataObj.image = this.state.image;
     $.ajax({
       url: '/slice/new',
       method: "POST",

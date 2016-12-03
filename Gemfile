@@ -33,8 +33,9 @@ gem 'devise', '~> 3.5', '>= 3.5.6'
 # Payments
 gem 'stripe'
 # Carrier wave
-gem 'carrierwave', '~> 0.11.2'
-gem 'rmagick', '2.14.0'
+gem 'carrierwave', github:'carrierwaveuploader/carrierwave'
+gem 'mini_magick'
+gem 'fog', '~> 1.38'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

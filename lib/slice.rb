@@ -8,6 +8,7 @@ class Slice
   end
 
   def slice
+    puts "The slice struct #{@slice_data}"
     @slice_data.each_with_index do |slice, i|
       puts slice
       Crop.new(@image, slice[:x], slice[:y], slice[:width], slice[:height], i)

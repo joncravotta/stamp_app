@@ -1,9 +1,10 @@
 require 'mini_magick'
-
+require 'byebug'
 class Slice
   def initialize(image, slice_data)
     @image = image
     @slice_data = slice_data
+    @cropped_urls = []
     slice
   end
 
@@ -11,8 +12,13 @@ class Slice
     puts "The slice struct #{@slice_data}"
     @slice_data.each_with_index do |slice, i|
       puts slice
-      Crop.new(@image, slice[:x], slice[:y], slice[:width], slice[:height], i)
+      crop = Crop.new(@image, slice[:x], slice[:y], slice[:width], slice[:height], i)
+      @cropped_urls.push(crop.upload_url)
     end
+  end
+
+  def cropped_urls
+    @cropped_urls
   end
 end
 
@@ -27,11 +33,17 @@ class Crop
     @width = width
     @height = height
     @index = index
-    crop
+    @upload_url = ''
+    crop_upload
   end
 
-  def crop
+  def crop_upload
     @image.crop("#{@width}x#{@height}+#{@x}+#{@y}")
-    @image.write("test_cropped#{@index}.jpg")
+    upload = CloudinaryClient.new.upload_image(@image.path)
+    @upload_url = upload['secure_url']
+  end
+
+  def upload_url
+    @upload_url
   end
 end

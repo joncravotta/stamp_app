@@ -7,7 +7,7 @@ class SliceToolController < ApplicationController
   def new
     puts params
     slices = SliceService.new(params)
-    render json: "it's lit over here"
+    render json: slices.url_hash
   end
 
   def create

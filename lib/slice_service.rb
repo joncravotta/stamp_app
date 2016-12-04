@@ -1,11 +1,13 @@
 require_relative "./slice.rb"
 require_relative "./slice_model.rb"
+require_relative "./cloudinary_client.rb"
 require "byebug"
 
 class SliceService
   def initialize(data)
     @image = data["image"]
     @slice_data = data
+    @hash = {}
     format_data
   end
 
@@ -15,6 +17,15 @@ class SliceService
   end
 
   def slice(formatted_data)
-    Slice.new(@image, formatted_data)
+    slices = Slice.new(@image, formatted_data)
+    response_json(slices.cropped_urls)
+  end
+
+  def response_json(images)
+    @hash[:urls] = images
+  end
+
+  def url_hash
+    @hash
   end
 end

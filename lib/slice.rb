@@ -34,10 +34,10 @@ class Crop
     @height = height
     @index = index
     @upload_url = ''
-    crop
+    crop_upload
   end
 
-  def crop
+  def crop_upload
     @image.crop("#{@width}x#{@height}+#{@x}+#{@y}")
     upload = CloudinaryClient.new.upload_image(@image.path)
     @upload_url = upload['secure_url']

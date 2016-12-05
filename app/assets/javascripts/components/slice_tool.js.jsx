@@ -6,31 +6,10 @@ var SliceTool = React.createClass({
       file: this.props.file,
       image: this.props.image,
       imageWidth: this.props.imageWidth,
-      imageHeight: this.props.imageHeight
+      imageHeight: this.props.imageHeight,
+      returnedUrls: []
     };
   },
-
-  // handleFile: function (event) {
-  //   event.preventDefault();
-  //   var reader = new FileReader();
-  //   var file = event.target.files[0];
-  //   var self = this;
-  //
-  //   reader.onload = function(){
-  //     var img = new Image();
-  //     img.onload = function() {
-  //       self.setState({imageWidth: img.width});
-  //       self.setState({imageHeight: img.height});
-  //   };
-  //   img.src = reader.result;
-  //     self.setState({file: file, image: reader.result});
-  //   };
-  //
-  //
-  //   reader.readAsDataURL(file);
-  //
-  //   console.log(this.state.image);
-  // },
 
   handleCanvasClick: function(ev) {
     var canvas = document.getElementById("canvas");
@@ -64,12 +43,17 @@ var SliceTool = React.createClass({
     $.ajax({
       url: '/slice/new',
       method: "POST",
-      dataType: 'text',
+      dataType: 'json',
       data: dataObj
     })
     .done(function(returnedJson){
-      console.log(returnedJson.responseText);
-      console.log(returnedJson);
+      if (returnedJson.urls.length > 0) {
+        //self.setState({returnedUrls: returnedJson.urls});
+        self.props.updateState(returnedJson.urls);
+      } else {
+        // load error screen
+        console.log("there was a problem");
+      }
     })
     .fail(function(returnedJson) {
       console.log("failed");

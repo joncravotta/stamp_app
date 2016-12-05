@@ -1,4 +1,4 @@
-var AppSlice = React.createClass({
+var CodeToolSlice = React.createClass({
   getInitialState: function() {
     return {
       poppedUp: false,

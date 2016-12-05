@@ -1,14 +1,13 @@
-var App = React.createClass({
+var CodeTool = React.createClass({
   getInitialState: function() {
     console.log(this.props.user);
     return {
-      urlPath: this.props.user.url_path,
-      emailWidth: this.props.user.email_width,
+      emailWidth: this.props.emailWidth,
       header: this.props.user.header,
       headerCodeActive: this.props.user.header_active,
       footer: this.props.user.footer,
       footerCodeActive: this.props.user.footer_active,
-      showSlices: false,
+      urls: this.props.urls,
       showLoadingIcon: false,
       showCodeBox: false,
       codeBuildResponse: '',
@@ -19,42 +18,22 @@ var App = React.createClass({
     };
   },
 
-  submitSlices: function() {
-    if(Object.keys(this.state.emailObject).length === 0) {
-      alert("Please upload images first");
-    } else {
-      this.setState({showSlices: true});
+  componentDidMount: function() {
+    this.handleUrls();
+  },
+  // TODO Should change to handle urls, no need to access file
+  handleUrls: function() {
+    console.log('setting up urls')
+    var  emailObjectInt = {};
+    for (var i = 0; i < this.state.urls.length; i++) {
+      var key = 'slice'+ i;
+      emailObjectInt[key] = {
+        image: this.state.urls[i],
+        ahref: "#",
+        altTag: "",
+      };
     }
-  },
-
-  handleSailthruForm: function() {
-    this.setState({submitted: 2});
-  },
-
-  handleSubmit: function(e) {
-    e.prevenDefault();
-  },
-
-  handleFile: function (e) {
-    if (this.state.urlPath === "1" ) {
-      alert("Please add a url path first.");
-    } else {
-      var files = e.target.files,
-          url = this.state.urlPath,
-          emailObjectInt = {},
-          //creating email body object
-          //each slice gets an obj
-          key;
-      for (var i = 0; i < files.length; i++) {
-        key = 'slice'+ i;
-        emailObjectInt[key] = {
-          image: this.state.urlPath+files[i].name,
-          ahref: "#",
-          altTag: "",
-        };
-      }
-      this.setState({emailObject: emailObjectInt});
-    }
+    this.setState({emailObject: emailObjectInt});
   },
 
   handleCodeBuildRequest: function() {
@@ -114,11 +93,6 @@ var App = React.createClass({
     this.setState({emailObject: emailObjectNew});
   },
 
-  handleUrlPathChange: function(event) {
-    var value = event.target.value;
-    this.setState({urlPath: value});
-  },
-
   handleHeaderChange: function(event) {
     var value = event.target.value;
     this.setState({header: value});
@@ -137,11 +111,6 @@ var App = React.createClass({
   handleFooterCodeActive: function(event) {
     var value = event.target.checked;
     this.setState({footerCodeActive: value});
-  },
-
-  handleEmailWidthChange: function(event) {
-    var value = event.target.value;
-    this.setState({emailWidth: value});
   },
 
   handleCodeBoxClose: function() {
@@ -196,17 +165,16 @@ var App = React.createClass({
     return (
       <div className="overlay-code-box">
         <div className="talking-pigeon">
-          <img className="pigeon-logo-talking" src={this.props.pigeon_src} />
           <div className="talk-bubble tri-right round btm-left">
             <div className="talktext">
               <p>Our finest piegeons are writing your code</p>
-              <img className="loading-icon" src={this.props.loading_icon} />
             </div>
           </div>
         </div>
       </div>
     );
   },
+
   renderCodeBox: function() {
     return (
       <div className="overlay-code-box">
@@ -225,7 +193,7 @@ var App = React.createClass({
         altTagState = this.handleSliceAltTagUpdate;
     var slicesLoop = Object.keys(mapObj).map(function (key) {
       item = mapObj[key];
-      return <AppSlice key={key} id={key} altTag={item.altTag} ahref={item.ahref} imageUrl={item.image} updateAhrefState={ahrefState} updateAltTagState={altTagState}/>;
+      return <CodeToolSlice key={key} id={key} altTag={item.altTag} ahref={item.ahref} imageUrl={item.image} updateAhrefState={ahrefState} updateAltTagState={altTagState}/>;
     });
     return (
 
@@ -237,7 +205,7 @@ var App = React.createClass({
   },
           // TODO needs to be named rebuild after the enail has been built
   render: function() {
-    var slices;
+    var slices = this.renderSlices();
     var codeBox;
     var loadingIcon;
     var headerBox;
@@ -247,9 +215,7 @@ var App = React.createClass({
     var rulerStyle = {
       width: (this.state.emailWidth) + 'px'
     };
-    if (this.state.showSlices === true){
-      slices = this.renderSlices();
-    }
+
     if (this.state.showLoadingIcon === true){
       loadingIcon = this.renderLoadingIcon();
     }
@@ -281,39 +247,16 @@ var App = React.createClass({
       <div className="app-container">
         <div className="input-fields">
           <div className="form-box">
-            <div className="form-box-number">1</div>
-            <input className="input" type="text" value={this.state.urlPath} onChange={this.handleUrlPathChange}/>
-          </div>
-          <div className="form-box-group">
-            <div className="form-box-40">
-              <div className="form-box-number">2</div>
-              <input className="input" type="text" value={this.state.emailWidth} onChange={this.handleEmailWidthChange}/>
+            <div className="form-box-number">3</div>
+            <div className="app-form-checkbox">
+              <label>Header</label>
+              {headerStatus}
             </div>
-            <div className="form-box-60">
-              <div className="form-box-number">3</div>
-              <div className="app-form-checkbox">
-                <label>Header</label>
-                {headerStatus}
-              </div>
-              <div className="app-form-checkbox">
-                <label>Footer</label>
-                {footerStatus}
-              </div>
+            <div className="app-form-checkbox">
+              <label>Footer</label>
+              {footerStatus}
             </div>
           </div>
-            <div className="form-box-group">
-              <div className="form-box-60">
-                <div className="form-box-number">4</div>
-                <input type="file" onChange={this.handleFile} multiple/>
-              </div>
-              <div className="form-box-40-right">
-                <div className="form-box-number">5</div>
-                <div className="primary-button" onClick={this.submitSlices}>BUILD</div>
-              </div>
-            </div>
-        </div>
-        <div className="width-ruler" style={rulerStyle}>
-        {this.state.emailWidth} px
         </div>
         <div className="email-slices" style={rulerStyle}>
           {slices}

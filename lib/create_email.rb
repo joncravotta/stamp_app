@@ -32,8 +32,6 @@ class CreateEmail
     top = %(<table cellpadding="0" cellspacing="0" border="0" align="center" width="600"><tr><td style="min-width: 600px">)
     bottom = %(</td></tr></table>)
     body = top + email_string + bottom
-    puts email_body['headerCodeActive']
-    puts email_body['footerCodeActive']
 
     if email_body['headerCodeActive'] == "true" && email_body['footerCodeActive'] == "true"
       email = email_body['header'] + body + email_body['footer']

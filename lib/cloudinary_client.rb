@@ -17,9 +17,6 @@ class CloudinaryClient
   end
 
   def upload_images(images)
-    #byebug
-    puts images.last.crop
-    #images.first.crop.tempfile.open.read
     images.each do |image|
       #accessed_image = image.crop.path
       #upload_image(image.crop.path)
@@ -28,7 +25,6 @@ class CloudinaryClient
 
   def upload_image(image)
     upload = Cloudinary::Uploader.upload(image, auth)
-    puts upload
     upload
   end
 end

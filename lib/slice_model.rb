@@ -88,7 +88,6 @@ class SliceModel
       current_vertical_end_y = k['endY']
 
       if horizontal_y == current_vertical_end_y
-        puts "found match horz vert match. vert = #{k}"
         context_verticals.push(k)
       end
     end

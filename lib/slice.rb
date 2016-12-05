@@ -2,16 +2,18 @@ require 'mini_magick'
 require 'byebug'
 class Slice
   def initialize(image, slice_data)
-    @image = image
+    # removing the datauri and letting image magick figure it out
+    # could prob use some nicer regex here
+    base64_string = image.gsub!(/.*?(?=,)/im, "")
+    base64_string[0] = ''
+    @image = base64_string
     @slice_data = slice_data
     @cropped_urls = []
     slice
   end
 
   def slice
-    puts "The slice struct #{@slice_data}"
     @slice_data.each_with_index do |slice, i|
-      puts slice
       crop = Crop.new(@image, slice[:x], slice[:y], slice[:width], slice[:height], i)
       @cropped_urls.push(crop.upload_url)
     end
@@ -24,9 +26,7 @@ end
 
 class Crop
   def initialize(image, x, y, width, height, index)
-    metadata = "data:image/jpeg;base64,"
-    base64_string = image[metadata.size..-1]
-    blob = Base64.decode64(base64_string)
+    blob = Base64.decode64(image)
     @image = MiniMagick::Image.read(blob)
     @x = x
     @y = y

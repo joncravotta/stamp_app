@@ -29,7 +29,9 @@ class CreateEmail
   end
 
   def build_email(email_string)
-    top = %(<table cellpadding="0" cellspacing="0" border="0" align="center" width="600"><tr><td style="min-width: 600px">)
+    email_width = email_body['emailWidth']
+    email_width_int = email_width.to_s
+    top = %(<table cellpadding="0" cellspacing="0" border="0" align="center" width="#{email_width}"><tr><td style="min-width: #{email_width_int}px">)
     bottom = %(</td></tr></table>)
     body = top + email_string + bottom
 

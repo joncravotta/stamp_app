@@ -3,6 +3,7 @@ var SliceToolUploader = React.createClass({
     return {
       file: '',
       image: '',
+      emailName: '',
       imageWidth:0,
       imageHeight:0
     };
@@ -13,6 +14,9 @@ var SliceToolUploader = React.createClass({
     this.props.updateState();
   },
 
+  handleEmailNameChange: function(event) {
+    this.setState({emailName: event});
+  },
 
    handleFile: function (event) {
     event.preventDefault();
@@ -35,8 +39,17 @@ var SliceToolUploader = React.createClass({
   render: function() {
     return(
       <div className="slice-tool-container">
-        <input type="file" onChange={this.handleFile} />
-        <div className="primary-button" onClick={this.updateUpload}>SLICE</div>
+        <div className="slice-component-container">
+          <input className="input-lg" placeholder="Email Name" type="text" onChange={this.handleEmailNameChange} />
+        </div>
+        <div className="slice-component-container">
+          <span className="subtitle">Upload your email design</span>
+          <span className="subtitle">and lets get slicin'</span>
+          <label className="fileContainer">
+            Upload
+            <input type="file" onChange={this.handleFile}/>
+          </label>
+        </div>
       </div>
     );
   }

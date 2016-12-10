@@ -10,3 +10,8 @@
   font-size: $size;
   color: $black;
 }
+
+.subtitle {
+  @include primary-font(22px);
+  color: $darkest-gray;
+}

@@ -7,6 +7,7 @@ var SliceToolManager = React.createClass({
       emailImage:"",
       emailHeight:0,
       emailWidth:0,
+      emailName: '',
       returnedUrls: []
     };
   },
@@ -22,12 +23,13 @@ var SliceToolManager = React.createClass({
     this.setState({managerState: newState});
   },
 
-  propUpdateUpload: function(file, image, width, height) {
+  propUpdateUpload: function(file, image, width, height, emailName) {
     this.setState({
       emailImageFile: file,
       emailImage: image,
       emailWidth: width,
-      emailHeight: height
+      emailHeight: height,
+      emailName: emailName
     })
   },
 

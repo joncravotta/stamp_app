@@ -9,22 +9,22 @@
 }
 
 .status-bar-circle-completed {
-  width: 20px;
-  height: 20px;
+  width: 25px;
+  height: 25px;
   background-color: $accent;
-  border-radius: 10px;
+  //border-radius: 10px;
 }
 
 .status-bar-circle-incomplete {
-  width: 19px;
-  height: 19px;
-  border: 1px solid $accent;
-  border-radius: 10px;
+  width: 21px;
+  height: 21px;
+  border: 3px solid $accent;
+  //border-radius: 10px;
 }
 
 .status-bar-line-completed {
   width: 100px;
-  height: 2px;
+  height: 4px;
   background-color: $accent;
 }
 
@@ -33,15 +33,15 @@
   @include flex-direction(row);
   @include justify-content(center);
   @include align-items(center);
-  width: 22px;
-  height: 22px;
-  border: 1px solid $accent;
-  border-radius: 11px;
+  width: 24px;
+  height: 24px;
+  border: 3px solid $accent;
+  //border-radius: 11px;
 }
 
 .status-bar-circle-active-inside {
-  width: 12px;
-  height: 12px;
+  width: 14px;
+  height: 14px;
   background-color: $accent;
-  border-radius: 6px;
+  //border-radius: 6px;
 }

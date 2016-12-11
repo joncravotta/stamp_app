@@ -19,9 +19,6 @@ var SliceTool = React.createClass({
     var offset = div.offset();
     var x = ev.clientX - rect.left;
     var y = ev.clientY - rect.top;
-
-
-    $('.coords').text('x: ' + x + ', y: ' + y);
     this.addData(x, y);
   },
 
@@ -165,17 +162,37 @@ var SliceTool = React.createClass({
     canvasStyle = {
       backgroundImage: 'url(' + this.state.image + ')'
     };
+    var horizontal_class;
+    var vertical_class;
+
+    if (this.state.clickType == "horizontal") {
+      horizontal_class = "dark-button slice-tool-button";
+      vertical_class = "white-button slice-tool-button";
+    } else {
+      horizontal_class = "white-button slice-tool-button";
+      vertical_class = "dark-button slice-tool-button";
+    }
+
     console.log(this.state.data);
       return (
         <div className="slice-tool-container">
-          <canvas id="canvas" height={this.state.imageHeight} width={this.state.imageWidth} onClick={this.handleCanvasClick} style={canvasStyle}></canvas>
-          <span className='coords'></span>
-          <span className='clickType'>{this.state.clickType}</span>
-          <button className="button" id="horizontal" onClick={this.handleClickType}>Horizontal</button>
-          <button className="button" id="vertical" onClick={this.handleClickType}>Vertical</button>
-          <button className="reset" onClick={this.handleReset}>Reset</button>
-          <button className="undo" onClick={this.handleUndo}>Undo</button>
-          <button className="submit" onClick={this.handleSlicePost}>Submit to server</button>
+
+          <div className="slice-tool-left-rail">
+            <div className="slice-tool-left-rail-button-container">
+              <div className={horizontal_class} id="horizontal" onClick={this.handleClickType}>Horizontal</div>
+              <div className={vertical_class} id="vertical" onClick={this.handleClickType}>Vertical</div>
+              <div className="slice-tool-small-button-container">
+                <div className="slice-tool-small-button" onClick={this.handleReset}>Reset</div>
+                <div className="slice-tool-small-button" onClick={this.handleUndo}>Undo</div>
+              </div>
+              <div className="white-dark-border-button slice-tool-button" onClick={this.handleSlicePost}>Submit to server</div>
+            </div>
+          </div>
+
+          <div className="slice-tool-right-email-container">
+            <canvas id="canvas" height={this.state.imageHeight} width={this.state.imageWidth} onClick={this.handleCanvasClick} style={canvasStyle}></canvas>
+          </div>
+
         </div>
       );
     }

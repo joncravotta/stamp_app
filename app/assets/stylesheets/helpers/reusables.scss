@@ -49,12 +49,28 @@
 }
 
 //buttons
-.dark-button {
-  background-color: $darkest-gray;
-  color: white;
+.button {
   font-family: 'Helvetica Neue';
   font-weight: bold;
   padding: 14px 95px;
   font-size: 18px;
   cursor: pointer;
+}
+.dark-button {
+  @extend .button;
+  background-color: $darkest-gray;
+  color: white;
+}
+
+.white-button {
+  @extend .button;
+  background-color: white;
+  color: $darkest-gray;
+}
+
+.white-dark-border-button {
+  @extend .button;
+  background-color: white;
+  color: $darkest-gray;
+  border: 3px solid $darkest-gray;
 }

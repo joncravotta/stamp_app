@@ -48,7 +48,7 @@ var SliceToolManager = React.createClass({
   render: function() {
       return (
         <div className="slice-manager-container">
-          <SliceToolProgressBar/>
+          <SliceToolProgressBar trackerState={this.state.managerState}/>
           {this.handleOrderState()}
         </div>
       );

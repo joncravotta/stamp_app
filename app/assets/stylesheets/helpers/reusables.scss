@@ -38,6 +38,12 @@
   color: $white;
 }
 
+.dark-title {
+  @include primary-font(35px);
+  font-weight: bolder;
+  color: $darkest-gray;
+}
+
 .white-body {
   @include primary-font(18px);
   color: $white;

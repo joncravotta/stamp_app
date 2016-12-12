@@ -7,7 +7,8 @@ var SliceTool = React.createClass({
       image: this.props.image,
       imageWidth: this.props.imageWidth,
       imageHeight: this.props.imageHeight,
-      returnedUrls: []
+      returnedUrls: [],
+      makingRequest: false
     };
   },
 
@@ -37,6 +38,7 @@ var SliceTool = React.createClass({
     dataObj.imageWidth = this.state.imageWidth;
     dataObj.imageHeight = this.state.imageHeight;
     dataObj.image = this.state.image;
+    this.setState({makingRequest: true});
     $.ajax({
       url: '/slice/new',
       method: "POST",
@@ -164,6 +166,7 @@ var SliceTool = React.createClass({
     };
     var horizontal_class;
     var vertical_class;
+    var showLoadingOverlay;
 
     if (this.state.clickType == "horizontal") {
       horizontal_class = "dark-button slice-tool-button";
@@ -173,9 +176,16 @@ var SliceTool = React.createClass({
       vertical_class = "dark-button slice-tool-button";
     }
 
+    if (this.state.makingRequest == true) {
+      showLoadingOverlay = <LoadingScreenOverlay/>;
+    } else {
+      showLoadingOverlay = '';
+    }
+
     console.log(this.state.data);
       return (
         <div className="slice-tool-container">
+          {showLoadingOverlay}
 
           <div className="slice-tool-left-rail">
             <div className="slice-tool-left-rail-button-container">

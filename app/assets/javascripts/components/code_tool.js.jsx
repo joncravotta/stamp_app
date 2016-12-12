@@ -1,6 +1,5 @@
 var CodeTool = React.createClass({
   getInitialState: function() {
-    console.log(this.props.user);
     return {
       emailWidth: this.props.emailWidth,
       header: this.props.user.header,
@@ -69,7 +68,6 @@ var CodeTool = React.createClass({
   },
 
   setObject: function() {
-    console.log(this.state.emailObject);
     this.setState({sent: 1});
     var newApiObj = {};
     newApiObj.emailBody = this.state.emailObject;
@@ -136,13 +134,13 @@ var CodeTool = React.createClass({
   renderHeaderCodeBox: function() {
     return (
       <div className="overlay-code-box">
-          <h1 className="white-title">Header</h1>
+          <h1 className="dark-title margin-top-25px">Header</h1>
           <textarea className="text-box" rows="20" onChange={this.handleHeaderChange} value={this.state.header} />
           <div className="code-box-checkbox">
             <label>Active</label>
             <input type="checkbox" onChange={this.handleHeaderCodeActive} checked={this.state.headerCodeActive}/>
           </div>
-          <div className="primary-button" onClick={this.handleHeaderBoxClose}>CLOSE</div>
+          <div className="dark-button margin-top-25px" onClick={this.handleHeaderBoxClose}>CLOSE</div>
       </div>
     );
   },
@@ -150,28 +148,20 @@ var CodeTool = React.createClass({
   renderFooterCodeBox: function() {
     return (
       <div className="overlay-code-box">
-        <h1 className="white-title">Footer</h1>
+        <h1 className="dark-title">Footer</h1>
         <textarea className="text-box" rows="20" onChange={this.handleFooterChange} value={this.state.footer} />
         <div className="code-box-checkbox">
           <label>Active</label>
           <input type="checkbox" onChange={this.handleFooterCodeActive} checked={this.state.footerCodeActive}/>
         </div>
-        <div className="primary-button" onClick={this.handeFooterBoxClose}>CLOSE</div>
+        <div className="dark-button margin-top-25px" onClick={this.handeFooterBoxClose}>CLOSE</div>
       </div>
     );
   },
 
   renderLoadingIcon: function() {
     return (
-      <div className="overlay-code-box">
-        <div className="talking-pigeon">
-          <div className="talk-bubble tri-right round btm-left">
-            <div className="talktext">
-              <p>Our finest piegeons are writing your code</p>
-            </div>
-          </div>
-        </div>
-      </div>
+      <LoadingScreenOverlay/>
     );
   },
 
@@ -179,9 +169,9 @@ var CodeTool = React.createClass({
     return (
       <div className="overlay-code-box">
         <div className="code-box">
-          <p>{this.state.codeBuildResponse}</p>
+          <pre className="prettyprint"><code className="language-html">{this.state.codeBuildResponse}</code></pre>
         </div>
-        <div className="primary-button" onClick={this.handleCodeBoxClose}>CLOSE</div>
+        <div className="dark-button margin-top-25px" onClick={this.handleCodeBoxClose}>CLOSE</div>
       </div>
     );
   },
@@ -199,7 +189,6 @@ var CodeTool = React.createClass({
 
       <div className="slices-container">
         {slicesLoop}
-        <div className="primary-button margin-top-25px" onClick={this.handleCodeBuildRequest}>CODE</div>
       </div>
     );
   },
@@ -244,10 +233,9 @@ var CodeTool = React.createClass({
     }
 
     return (
-      <div className="app-container">
-        <div className="input-fields">
-          <div className="form-box">
-            <div className="form-box-number">3</div>
+      <div className="slice-tool-container">
+        <div className="slice-tool-left-rail">
+          <div className="slice-tool-left-rail-button-container">
             <div className="app-form-checkbox">
               <label>Header</label>
               {headerStatus}
@@ -256,10 +244,13 @@ var CodeTool = React.createClass({
               <label>Footer</label>
               {footerStatus}
             </div>
+            <div className="white-dark-border-button slice-tool-button" onClick={this.handleCodeBuildRequest}>Code</div>
           </div>
         </div>
-        <div className="email-slices" style={rulerStyle}>
-          {slices}
+        <div className="slice-tool-right-email-container">
+          <div className="email-slices" style={rulerStyle}>
+            {slices}
+          </div>
         </div>
         <div className="overlay-code-box-container">
           {loadingIcon}
@@ -267,7 +258,7 @@ var CodeTool = React.createClass({
           {headerBox}
           {footerBox}
         </div>
-    </div>
+      </div>
     );
   }
 });

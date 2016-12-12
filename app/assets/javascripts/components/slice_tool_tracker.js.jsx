@@ -1,15 +1,19 @@
 var SliceToolProgressBar = React.createClass({
   getInitialState: function() {
     return {
-      statusState: 2
+      statusState: 0
     };
+  },
+
+  componentWillReceiveProps: function() {
+    this.setState({statusState: this.props.trackerState + 1});
   },
 
   showStatus: function() {
     var statusItems = [];
-    var statusMaxCount = 5;
+    var statusMaxCount = 3;
     var x = 0;
-    for (var i = 1; i <= statusMaxCount; i++) {
+    for (var i = 0; i <= statusMaxCount; i++) {
       if (i < this.state.statusState){
         statusItems.push(<div key={i} className="status-bar-circle-completed"></div>);
       } else if (i == this.state.statusState) {

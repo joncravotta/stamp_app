@@ -53,7 +53,7 @@ var CodeToolSlice = React.createClass({
               <input type="text" value={this.props.ahref} onChange={this.handleAhrefChange} />
               <label className="control-label padding-top-20px">Alt</label>
               <textarea type="text" value={this.props.altTag} key={this.props.key} onChange={this.handleAltTagChange} rows="4" cols="50" />
-              <div className="dark-button margin-top-25px" onClick={this.deactivatePopup}>SUBMIT</div>
+              <div className="dark-button slice-tool-button margin-top-25px" onClick={this.deactivatePopup}>Submit</div>
             </div>
             <img src={this.props.imageUrl} />
           </div>

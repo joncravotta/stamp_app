@@ -1,1 +1,20 @@
-<%= react_component('SliceToolManager', user: current_user) %>
+<div class="profile-container">
+  <div class="profile-sidebar">
+    <div class="profile-sidebar-item-active">
+      <%= image_tag('profile-code.png') %>
+    </div>
+    <div class="profile-sidebar-item">
+      <%= image_tag('profile-list.png') %>
+    </div>
+    <div class="profile-sidebar-item">
+      <%= image_tag('profile-user.png') %>
+    </div>
+    <div class="profile-sidebar-item">
+      <%= image_tag('profile-gear.png') %>
+    </div>
+  </div>
+
+  <div class="width-100">
+    <%= react_component('SliceToolManager', user: current_user) %>
+  </div>
+</div>

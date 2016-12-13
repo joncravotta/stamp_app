@@ -39,6 +39,9 @@ gem 'fog', '~> 1.38'
 # cdn for images
 gem 'cloudinary', '~> 1.2', '>= 1.2.2'
 
+gem 'rails_real_favicon'
+
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

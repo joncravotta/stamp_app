@@ -108,7 +108,7 @@
 .profile-top-dashboard-container {
   @include display(flex);
   @include flex-direction(row);
-  width: 100%;
+  width: 90%;
   background-color: $white;
   height: 200px;
   margin-top: 25px;

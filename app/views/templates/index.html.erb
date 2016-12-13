@@ -1,37 +1,44 @@
 <div class="profile-container">
   <div class="profile-sidebar">
     <div class="profile-sidebar-item">
-      <a>Templates</a>
+      <%= image_tag('profile-code.png') %>
+    </div>
+    <div class="profile-sidebar-item-active">
+      <%= image_tag('profile-list.png') %>
     </div>
     <div class="profile-sidebar-item">
-      <a>Profile</a>
+      <%= image_tag('profile-user.png') %>
     </div>
     <div class="profile-sidebar-item">
-      <a>Account</a>
+      <%= image_tag('profile-gear.png') %>
     </div>
   </div>
   <div class="profile-content">
-    <!-- <span class="profile-title">Templates</span>
-    <br /> -->
-    <!-- <div class="profile-pigeon-container">
-      <div class="talking-pigeon">
-        <%= image_tag('primary-pigeon.png',:class => "profile-pigeon") %>
-        <div class="talk-bubble-primary tri-right-primary round btm-left-primary">
-          <div class="talktext-primary">
-            <p>Our pigeons coded <%= @templates.count %> emails for you so far!</p>
-          </div>
-        </div>
+    <div class="profile-content-header">
+      <div class="profile-content-header-title">Emails</div>
+      <div class="profile-content-header-underline"></div>
+    </div>
+
+    <div class="profile-content-button-row">
+      <div class="rounded-primary-button">
+        New Email
       </div>
-    </div> -->
-    <div class="templates-table">
+    </div>
+    <div class="profile-table">
+      <div class="profile-table-header">
+        <span>Name</span>
+        <span>Label</span>
+        <span>Status</span>
+        <span>Created</span>
+        <span>Delete</span>
+      </div>
       <% @templates.each do |template| %>
-        <div class="templates-row">
-          <div class="templates-date">
-            <%= template.created_at.strftime("%m/%d/%Y") %>
-          </div>
-          <div class="templates-view">
-            <%= link_to 'View', template_path(template) %>
-          </div>
+        <div class="profile-table-row">
+          <span class="profile-table-cell">name</span>
+          <span class="profile-table-cell">name</span>
+          <span class="profile-table-cell"><span class="status-cell"><div class="status-cell-circle"></div>completed</span></span>
+          <span class="profile-table-cell"><%= template.created_at.strftime("%m/%d/%Y") %></span>
+          <span class="profile-table-cell"><%= link_to 'View', template_path(template) %></span>
         </div>
       <% end %>
     </div>

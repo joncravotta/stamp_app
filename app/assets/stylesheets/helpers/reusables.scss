@@ -80,3 +80,14 @@
   color: $darkest-gray;
   border: 3px solid $darkest-gray;
 }
+
+.rounded-primary-button {
+  @include primary-font(12px);
+  margin: 5px 0;
+  padding: 8px 40px;
+  border-radius: 20px;
+  background-color: $primary;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}

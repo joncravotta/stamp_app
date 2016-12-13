@@ -7,10 +7,6 @@
   @include flex-direction(row);
 
   color: $black;
-  a {
-  text-decoration: underline;
-  color: $white;
-  }
 }
 
 .profile-container-show {
@@ -20,25 +16,25 @@
 }
 
 .profile-sidebar {
-  width: 20%;
-  background-color: $darkest-gray;
+  width: 90px;
+  background-color: white;
   height: 100%;
   min-height: 100vh;
-  padding-top: 25px;
-//  border-right: $primary 3px solid;
+  padding-top: 60px;
 }
 
 .profile-sidebar-item {
+  @include display(flex);
+  @include justify-content(center);
   width: 100%;
   color: $white;
-  padding: 10px 0;
-  text-align: left;
+  padding: 15px 0;
   cursor: pointer;
   font-size: 17px;
-  border-left: 3px solid $darkest-gray;
-
+  border-left: 3px solid white;
+  padding-right: 3px;
   &:hover {
-    border-left: 3px solid $accent;
+    border-left: 3px solid $primary;
     color: $white;
 
     a {
@@ -52,12 +48,42 @@
   }
 }
 
+.profile-sidebar-item-active {
+  @extend .profile-sidebar-item;
+  border-left: 3px solid $primary;
+}
+
 .profile-content {
-  width: 80%;
+  width: 100%;
   @include display(flex);
-  //@include align-items(center);
+  @include align-items(center);
   @include flex-direction(column);
   background-color: $lightest-gray;
+}
+
+.profile-content-header {
+  margin-top: 60px;
+  width: 80%;
+}
+
+.profile-content-header-title {
+  @include primary-font(30px);
+  font-weight: bold;
+  color: $darkest-gray;
+}
+
+.profile-content-header-underline {
+  margin-top: 14px;
+  width: 100%;
+  height: 6px;
+  background-color: $light-gray;
+}
+
+.profile-content-button-row {
+  @include display(flex);
+  @include justify-content(flex-end);
+  width: 80%;
+  padding: 10px 0;
 }
 
 .profile-title {
@@ -82,7 +108,7 @@
 .profile-top-dashboard-container {
   @include display(flex);
   @include flex-direction(row);
-  width: 100%;
+  width: 90%;
   background-color: $white;
   height: 200px;
   margin-top: 25px;
@@ -169,4 +195,62 @@
   //float: right;
   display: inline;
   float: right;
+}
+
+.profile-table {
+  @include primary-font(20px);
+  width: 80%;
+}
+
+.profile-table-header {
+  @include primary-font(20px);
+  @include display(flex);
+  @include flex-direction(row);
+  @include justify-content(space-around);
+  span {
+    font-weight: bold;
+    font-size: 12px;
+    color: $dark-gray;
+    width: 20%;
+    text-align: center;
+  }
+}
+.profile-table-row {
+  @include display(flex);
+  @include flex-direction(row);
+  @include justify-content(space-around);
+  background-color: white;
+  margin: 12px 0;
+  padding: 15px 0;
+  width: 100%;
+}
+
+.profile-table-cell {
+  width: 20%;
+
+  font-weight: bold;
+  font-size: 12px;
+  color: $darkest-gray;
+  text-align: center;
+
+  a {
+    color: $darkest-gray;
+    text-decoration: none;
+  }
+}
+
+.status-cell {
+  @include display(flex);
+  @include flex-direction(row);
+  @include align-items(center);
+  @include justify-content(center);
+  color: $accent;
+}
+
+.status-cell-circle {
+  width: 12px;
+  height: 12px;
+  margin-right: 4px;
+  background-color: $accent;
+  border-radius: 6px;
 }

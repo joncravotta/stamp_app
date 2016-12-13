@@ -3,10 +3,6 @@
    margin: 0;
    width: 100%;
  }
- a {
-   text-decoration: none;
-   color: $secondary-dark;
- }
 
 .primary-button {
    @include primary-button;

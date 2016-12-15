@@ -83,10 +83,10 @@
 // Third section
 .new_landing-second-section-container {
   @include display(flex);
-  @include flex-direction(coulumn);
+  @include flex-direction(column);
   width: 100%;
   padding: 125px 0 0 0;
-  background-color: $primary;
+  background: linear-gradient(145deg,  $primary 0%, lighten($primary, 30%) 100%);
 }
 
 .new_landing-second-section-image {
@@ -100,7 +100,7 @@
 width: 100%;
 @include display(flex);
 @include justify-content(center);
-padding: 0;
+margin-bottom: 100px;
 }
 
 //Review section

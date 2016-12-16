@@ -1,13 +1,19 @@
 <div class="profile-container">
   <div class="profile-sidebar">
     <div class="profile-sidebar-item">
-      <%= image_tag('profile-code.png') %>
+      <%= link_to 'slice' do %>
+        <%= image_tag('profile-code.png') %>
+      <% end %>
     </div>
     <div class="profile-sidebar-item-active">
-      <%= image_tag('profile-list.png') %>
+      <%= link_to 'templates' do %>
+        <%= image_tag('profile-list.png') %>
+      <% end %>
     </div>
     <div class="profile-sidebar-item">
-      <%= image_tag('profile-user.png') %>
+      <%= link_to 'profile' do %>
+        <%= image_tag('profile-user.png') %>
+      <% end %>
     </div>
     <div class="profile-sidebar-item">
       <%= image_tag('profile-gear.png') %>
@@ -36,7 +42,7 @@
         <div class="profile-table-row">
           <span class="profile-table-cell">name</span>
           <span class="profile-table-cell">name</span>
-          <span class="profile-table-cell"><span class="status-cell"><div class="status-cell-circle"></div>completed</span></span>
+          <span class="profile-table-cell"><span class="status-cell"><div class="status-cell-circle"></div>Completed</span></span>
           <span class="profile-table-cell"><%= template.created_at.strftime("%m/%d/%Y") %></span>
           <span class="profile-table-cell"><%= link_to 'View', template_path(template) %></span>
         </div>

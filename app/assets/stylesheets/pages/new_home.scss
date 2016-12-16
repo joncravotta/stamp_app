@@ -86,7 +86,7 @@
   @include flex-direction(column);
   width: 100%;
   padding: 125px 0 0 0;
-  background: linear-gradient(145deg,  $primary 0%, lighten($primary, 30%) 100%);
+  background: linear-gradient(145deg,  $primary 0%, #C96DD8 100%);
 }
 
 .new_landing-second-section-image {
@@ -97,10 +97,28 @@
 }
 
 .new_landing-second-section-bottom-container {
-width: 100%;
-@include display(flex);
-@include justify-content(center);
-margin-bottom: 100px;
+  width: 100%;
+  @include display(flex);
+  //@include justify-content(center);
+  @include align-items(center);
+  @include flex-direction(column);
+  margin-bottom: 100px;
+}
+
+.new_landing-second-section-title {
+  @include primary-font(30px);
+  color: white;
+  font-weight: bold;
+  margin-bottom: 25px;
+}
+
+.new_landing-second-section-body {
+  @include primary-font(18px);
+  color: white;
+  font-weight:lighter;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 45px;
 }
 
 //Review section

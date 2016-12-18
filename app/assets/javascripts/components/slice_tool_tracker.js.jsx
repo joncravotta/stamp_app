@@ -16,13 +16,20 @@ var SliceToolProgressBar = React.createClass({
     for (var i = 0; i <= statusMaxCount; i++) {
       if (i < this.state.statusState){
         statusItems.push(<div key={i} className="status-bar-circle-completed"></div>);
+      } else if (this.state.statusState == statusMaxCount) {
+        statusItems.push(<div key={i} className="status-bar-circle-completed"></div>);
       } else if (i == this.state.statusState) {
-        statusItems.push(<div key={i} className="status-bar-circle-active-outside"><div className="status-bar-circle-active-inside"></div></div>);
-      } else {
+        statusItems.push(<div key={i} className="status-bar-circle-active-outside"></div>);
+      }  else {
         statusItems.push(<div key={i} className="status-bar-circle-incomplete"></div>);
       }
       if (i != statusMaxCount){
-        statusItems.push(<div className="status-bar-line-completed"></div>)
+        if (i < this.state.statusState) {
+          statusItems.push(<div className="status-bar-line-completed"></div>);
+        } else {
+          statusItems.push(<div className="status-bar-line-incomplete"></div>);
+        }
+
       }
     }
     return(<div className="slice-tracker-container">{statusItems}</div>);

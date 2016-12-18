@@ -56,6 +56,7 @@ var CodeTool = React.createClass({
     .done(function(returnedJson){
       console.log(returnedJson.responseText);
       console.log(returnedJson);
+      self.props.updateState();
       self.setState({showLoadingIcon: false});
       self.setState({showCodeBox: true});
       self.setState({codeBuildResponse: returnedJson});

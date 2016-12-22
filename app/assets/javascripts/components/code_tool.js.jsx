@@ -170,7 +170,7 @@ var CodeTool = React.createClass({
     return (
       <div className="overlay-code-box">
         <div className="code-box">
-          <pre className="prettyprint"><code className="language-html">{this.state.codeBuildResponse}</code></pre>
+          {this.state.codeBuildResponse}
         </div>
         <div className="dark-button margin-top-25px" onClick={this.handleCodeBoxClose}>CLOSE</div>
       </div>

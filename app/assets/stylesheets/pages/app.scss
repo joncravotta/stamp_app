@@ -104,6 +104,9 @@
     height: 20px;
     margin-bottom: 20px;
     border: 1px solid $dark-gray;
+    font-size: 14px;
+    font-family: monospace;
+    font-weight: normal;
 
     &:focus {
       box-shadow: $dark-gray;
@@ -115,6 +118,8 @@
   textarea {
     width: 300px;
     border: 1px solid $dark-gray;
+    font-size: 14px;
+    font-family: monospace;
 
     &:focus {
       box-shadow: $dark-gray;
@@ -170,10 +175,9 @@
   height: 50%;
   padding: 35px;
   overflow: auto;
-
-  p {
-    font-family: monospace;
-  }
+  font-family: monospace;
+  font-size: 14px;
+  font-weight: normal;
 }
 
 .talking-pigeon {

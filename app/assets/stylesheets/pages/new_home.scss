@@ -14,7 +14,7 @@
 .new_landing-body-container {
   @include display(flex);
   @include flex-direction(column);
-  width: 40%;
+  width: 50%;
   color: white;
   padding-right: 50px;
 }

@@ -31,17 +31,5 @@ rescue Stripe::CardError => e
   flash[:error] = e.message
   redirect_to new_charge_path
 end
-
-  private
-
-  def email_count(plan_type)
-    case plan_type
-    when 'SUB_199'
-      50
-    when 'SUB_299'
-      125
-    when 'SUB_399'
-      -399
-    end
-  end
+  
 end

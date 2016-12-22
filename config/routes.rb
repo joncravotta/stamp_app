@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   get 'slice' => 'slice_tool#index'
   post 'slice/new' => 'slice_tool#new'
   get 'new_home' => 'home#new_home'
+  post 'webhook/stripe' => 'webhook#stripe'
+  get 'webhook/test' => 'webhook#test_stripe_event'
 
 
   # Example of regular route:

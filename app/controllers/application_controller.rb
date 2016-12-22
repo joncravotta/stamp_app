@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
   def require_paid
     @user = User.find(current_user)
     if !@user.paid?
-      flash[:danger] = "You must buy a pass to pigeon post to access"
+      flash[:danger] = "Your payment has failed, please update your card on file."
       redirect_to new_charge_path
     end
   end
@@ -28,6 +28,17 @@ class ApplicationController < ActionController::Base
       new_charge_path
     else
       root_path
+    end
+  end
+
+  def email_count(plan_type)
+    case plan_type
+    when 'SUB_199'
+      100
+    when 'SUB_299'
+      225
+    when 'SUB_399'
+      400
     end
   end
 end

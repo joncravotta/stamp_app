@@ -7,6 +7,7 @@ var CodeTool = React.createClass({
       footer: this.props.user.footer,
       footerCodeActive: this.props.user.footer_active,
       urls: this.props.urls,
+      name: this.props.name,
       showLoadingIcon: false,
       showCodeBox: false,
       codeBuildResponse: '',
@@ -44,6 +45,7 @@ var CodeTool = React.createClass({
     newApiObj.footer = this.state.footer;
     newApiObj.emailWidth = this.state.emailWidth;
     newApiObj.urlPath = this.state.urlPath;
+    newApiObj.name = this.state.name;
     console.log(newApiObj);
     this.setState({showLoadingIcon: true});
     var self = this;

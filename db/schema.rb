@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161009021025) do
+ActiveRecord::Schema.define(version: 20161224153723) do
 
 # Could not dump table "slices" because of following NoMethodError
 #   undefined method `[]' for nil:NilClass
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20161009021025) do
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "name"
   end
 
   create_table "users", force: :cascade do |t|

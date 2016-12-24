@@ -48,7 +48,7 @@ var SliceToolManager = React.createClass({
       case 1:
         return (<SliceTool updateState={this.updateManagerStateWithUrls} file={this.state.emailImageFile} image={this.state.emailImage} imageWidth={this.state.emailWidth} imageHeight={this.state.emailHeight}/>);
       case 2:
-        return (<CodeTool urls={this.state.urls} user={this.state.user} urls={this.state.returnedUrls} emailWidth={this.state.emailWidth} updateState={this.updateTrackerState}/>);
+        return (<CodeTool urls={this.state.urls} user={this.state.user} urls={this.state.returnedUrls} emailWidth={this.state.emailWidth} updateState={this.updateTrackerState} name={this.state.emailName} />);
       default:
         break;
     }

@@ -3,7 +3,7 @@
     <div class="profile-account-user">
       Jon
     </div>
-  <% end %>  
+  <% end %>
   <div class="profile-sidebar">
     <div class="profile-sidebar-item">
       <%= link_to 'slice' do %>
@@ -45,7 +45,7 @@
       </div>
       <% @templates.each do |template| %>
         <div class="profile-table-row">
-          <span class="profile-table-cell">name</span>
+          <span class="profile-table-cell"><%= template.name %></span>
           <span class="profile-table-cell">name</span>
           <span class="profile-table-cell"><span class="status-cell"><div class="status-cell-circle"></div>Completed</span></span>
           <span class="profile-table-cell"><%= template.created_at.strftime("%m/%d/%Y") %></span>

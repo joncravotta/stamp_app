@@ -1,4 +1,9 @@
 <div class="profile-container">
+  <%= link_to destroy_user_session_path, :method => :delete do %>
+    <div class="profile-account-user">
+      Jon
+    </div>
+  <% end %>  
   <div class="profile-sidebar">
     <div class="profile-sidebar-item">
       <%= link_to 'slice' do %>

@@ -9,6 +9,21 @@
   color: $black;
 }
 
+.profile-account-user {
+  @include primary-font(12px);
+  margin: 20px;
+  padding: 5px 50px;
+  border-radius: 25px;
+  border: 1px solid $darkest-gray;
+  //background-color: $primary;
+  color: $darkest-gray;
+  font-weight: bold;
+  cursor: pointer;
+  position: absolute;
+  top:0;
+  right:0;
+}
+
 .profile-container-show {
   @extend .profile-container;
   @include flex-direction(column);

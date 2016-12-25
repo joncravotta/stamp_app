@@ -94,7 +94,7 @@ var SliceToolUploader = React.createClass({
         <div className="slice-component-container">
           {showUploadErrorIcon}
           <span className="subtitle">Upload your email design</span>
-          <span className="subtitle">and lets get slicin'</span>
+          <span className="subtitle">(JPG, JPEG, PNG)</span>
           <label className="fileContainer">
             Upload
             <input type="file" onChange={this.handleFile}/>

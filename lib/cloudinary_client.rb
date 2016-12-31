@@ -1,5 +1,4 @@
 require 'cloudinary'
-require 'byebug'
 
 class CloudinaryClient
   def initialize

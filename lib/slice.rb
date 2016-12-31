@@ -1,5 +1,4 @@
 require 'mini_magick'
-require 'byebug'
 class Slice
   def initialize(image, slice_data)
     # removing the datauri and letting image magick figure it out

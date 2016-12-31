@@ -1,7 +1,6 @@
 require_relative "./slice.rb"
 require_relative "./slice_model.rb"
 require_relative "./cloudinary_client.rb"
-require "byebug"
 
 class SliceService
   def initialize(data)

@@ -1,5 +1,4 @@
 require 'json'
-require 'byebug'
 require 'stripe'
 
 class WebhookController < ApplicationController
@@ -13,7 +12,6 @@ class WebhookController < ApplicationController
 
   def test_stripe_event
     event = Stripe::Event.retrieve('evt_19SFdNAbdjxMHYRyVF0MBvWD')
-    byebug
   end
 
   def cancel_subscription

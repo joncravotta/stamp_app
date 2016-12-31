@@ -1,4 +1,3 @@
-require "byebug"
 class SliceModel
 
   CropHash = Struct.new(:x, :y, :width, :height)

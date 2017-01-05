@@ -4,6 +4,6 @@ class TestMail < ApplicationMailer
 
   def test_email
     @url  = 'http://example.com/login'
-    mail(to: 'joncravotta32@gmail.com', subject: 'Hello this is a test')
+    mail(to: 'test@gmail.com', subject: 'Hello this is a test')
   end
 end

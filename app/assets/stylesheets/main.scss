@@ -35,12 +35,14 @@
   @include primary-font(20px);
 
   .notice {
-    color: $primary;
+    color: $darkest-gray;
+    font-weight: lighter;
     padding-top: 20px;
   }
 
   .alert {
-    color: $secondary-dark;
+    color: $error;
+    font-weight: lighter;
     padding-top: 20px;
   }
 }

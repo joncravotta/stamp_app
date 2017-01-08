@@ -3,7 +3,7 @@
     Pick your plan
   </div>
   <div class="charge-card-container">
-    <div class="charge-card">
+    <div class="charge-card" id="birdyButton" data-sub-type="birdy">
       <%= form_tag charges_path do %>
         <input name="plan_type" type="hidden" value="SUB_199" />
           <% if flash[:error].present? %>
@@ -11,51 +11,13 @@
           <% end %>
           <div class="charge-card-title">Birdy Plan</div>
           <div class="charge-card-desc">For small businesses that need a little help</div>
-          <div class="stripe-button">
-            <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                    data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-                    data-name="Pigeon Post"
-                    data-description="50 Email Subscription"
-                    data-image="<%= asset_path 'primary-pigeon.png' %>"
-                    data-amount="19900"
-                    data-label="Pay With card"
-                    data-zip-code=true
-                    data-billing-address=true
-                    data-email="<%= current_user.email %>"
-                    data-locale="auto">
-            </script>
-          </div>
+
           <div class="charge-button">$199/yr</div>
       <% end %>
     </div>
 
-    <div class="charge-card">
-      <%= form_tag charges_path do %>
-        <input name="plan_type" type="hidden" value="SUB_299" />
-          <% if flash[:error].present? %>
-            <%= flash[:error] %></p>
-          <% end %>
-          <div class="charge-card-title">Nest Plan</div>
-          <div class="charge-card-desc">Growing business looking to save a lot of time.</div>
-          <div class="stripe-button">
-            <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                    data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-                    data-name="Pigeon Post"
-                    data-description="125 Email Subscription"
-                    data-image="<%= asset_path 'primary-pigeon.png' %>"
-                    data-amount="29900"
-                    data-label="Pay With card"
-                    data-zip-code=true
-                    data-billing-address=true
-                    data-email="<%= current_user.email %>"
-                    data-locale="auto">
-            </script>
-          </div>
-          <div class="charge-button">$299/yr</div>
-      <% end %>
-    </div>
-
-    <div class="charge-card">
+    <div class="charge-card" id="flockButton" data-sub-type="flock">
+      <div class="charge-card-circle"></div>
       <%= form_tag charges_path do %>
         <input name="plan_type" type="hidden" value="SUB_399" />
           <% if flash[:error].present? %>
@@ -63,22 +25,134 @@
           <% end %>
           <div class="charge-card-title">Flock Plan</div>
           <div class="charge-card-desc">For small businesses that need a little help</div>
-          <div class="stripe-button">
-            <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                    data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-                    data-name="Pigeon Post"
-                    data-description="Unlimited Email Subscription"
-                    data-image="<%= asset_path 'primary-pigeon.png' %>"
-                    data-amount="42900"
-                    data-label="Pay With card"
-                    data-zip-code=true
-                    data-billing-address=true
-                    data-email="<%= current_user.email %>"
-                    data-locale="auto">
-            </script>
-          </div>
+
           <div class="charge-button-accent">$399/yr</div>
       <% end %>
     </div>
+
+    <div class="charge-card" id="nestButton" data-sub-type="nest">
+      <%= form_tag charges_path do %>
+        <input name="plan_type" type="hidden" value="SUB_299" />
+          <% if flash[:error].present? %>
+            <%= flash[:error] %></p>
+          <% end %>
+          <div class="charge-card-title">Nest Plan</div>
+          <div class="charge-card-desc">Growing business looking to save a lot of time.</div>
+
+          <div class="charge-button">$299/yr</div>
+      <% end %>
     </div>
+  </div>
 </div>
+<script src="https://checkout.stripe.com/checkout.js"></script>
+
+<script>
+var handler = StripeCheckout.configure({
+  key: "<%= Rails.configuration.stripe[:publishable_key] %>",
+  image: "<%= asset_path 'primary-pigeon.png' %>",
+  name:"Pigeon Post",
+  description:"50 Email Subscription",
+  image:"<%= asset_path 'logo.png' %>",
+  zipCode:true,
+  billingAddress:true,
+  email:"<%= current_user.email %>",
+  locale: 'auto',
+  token: function(token) {
+    // You can access the token ID with `token.id`.
+    // Get the token ID to your server-side code for use.
+  }
+});
+document.getElementById('birdyButton').addEventListener('click', function(e) {
+  var birdyPlan = {
+    desc:"215 Email",
+    amount:19900,
+    planName:"Birdy Plan"
+  };
+
+  openStripeModal(birdyPlan);
+  e.preventDefault();
+});
+
+document.getElementById('flockButton').addEventListener('click', function(e) {
+  var flockPlan = {
+    desc:"365 Emails",
+    amount:29900,
+    planName:"Flock Plan"
+  }
+  openStripeModal(flockPlan);
+  e.preventDefault();
+});
+
+document.getElementById('nestButton').addEventListener('click', function(e) {
+  console.log('clicked');
+
+  var nestPlan = {
+    desc:"500 Emails",
+    amount:39900,
+    planName:"Nest Plan"
+  }
+
+  openStripeModal(nestPlan);
+  e.preventDefault();
+});
+
+// Close Checkout on page navigation:
+window.addEventListener('popstate', function() {
+  handler.close();
+});
+
+
+
+function openStripeModal(planType) {
+  // Open Checkout with further options:
+  handler.open({
+    name: planType.planName,
+    description: planType.desc,
+    amount: planType.amount
+  });
+}
+</script>
+<!-- <div class="stripe-button">
+  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+          data-name="Pigeon Post"
+          data-description="50 Email Subscription"
+          data-image="<%= asset_path 'primary-pigeon.png' %>"
+          data-amount="19900"
+          data-label="Pay With card"
+          data-zip-code=true
+          data-billing-address=true
+          data-email="<%= current_user.email %>"
+          data-locale="auto">
+  </script>
+</div> -->
+
+<!-- <div class="stripe-button">
+  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+          data-name="Pigeon Post"
+          data-description="125 Email Subscription"
+          data-image="<%= asset_path 'primary-pigeon.png' %>"
+          data-amount="29900"
+          data-label="Pay With card"
+          data-zip-code=true
+          data-billing-address=true
+          data-email="<%= current_user.email %>"
+          data-locale="auto">
+  </script>
+</div> -->
+
+<!-- <div class="stripe-button">
+  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+          data-name="Pigeon Post"
+          data-description="Unlimited Email Subscription"
+          data-image="<%= asset_path 'primary-pigeon.png' %>"
+          data-amount="42900"
+          data-label="Pay With card"
+          data-zip-code=true
+          data-billing-address=true
+          data-email="<%= current_user.email %>"
+          data-locale="auto">
+  </script>
+</div> -->

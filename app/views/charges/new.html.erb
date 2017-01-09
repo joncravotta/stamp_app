@@ -39,10 +39,19 @@
           <div class="charge-card-title">Nest Plan</div>
           <div class="charge-card-desc">Growing business looking to save a lot of time.</div>
 
-          <div class="charge-button">$299/yr</div>
+          <div class="charge-button">$299/year</div>
       <% end %>
     </div>
   </div>
+  <%= form_tag charges_path, id: 'chargeForm' do %>
+    <% if flash[:error].present? %>
+      <%= flash[:error] %></p>
+    <% end %>
+    <%= hidden_field_tag 'stripeToken' %>
+    <%= hidden_field_tag 'stripeEmail' %>
+    <%= hidden_field_tag 'stripePlanType' %>
+  <% end %>
+
 </div>
 <script src="https://checkout.stripe.com/checkout.js"></script>
 
@@ -50,23 +59,24 @@
 var handler = StripeCheckout.configure({
   key: "<%= Rails.configuration.stripe[:publishable_key] %>",
   image: "<%= asset_path 'primary-pigeon.png' %>",
-  name:"Pigeon Post",
-  description:"50 Email Subscription",
   image:"<%= asset_path 'logo.png' %>",
   zipCode:true,
   billingAddress:true,
   email:"<%= current_user.email %>",
   locale: 'auto',
   token: function(token) {
-    // You can access the token ID with `token.id`.
-    // Get the token ID to your server-side code for use.
+    console.log(token);
+    document.getElementById("stripeToken").value = token.id;
+    document.getElementById("stripeEmail").value = token.email;
+    document.getElementById("chargeForm").submit();
   }
 });
 document.getElementById('birdyButton').addEventListener('click', function(e) {
   var birdyPlan = {
     desc:"215 Email",
     amount:19900,
-    planName:"Birdy Plan"
+    planName:"Birdy Plan",
+    id:'SUB_199'
   };
 
   openStripeModal(birdyPlan);
@@ -77,7 +87,8 @@ document.getElementById('flockButton').addEventListener('click', function(e) {
   var flockPlan = {
     desc:"365 Emails",
     amount:29900,
-    planName:"Flock Plan"
+    planName:"Flock Plan",
+    id: 'SUB_299'
   }
   openStripeModal(flockPlan);
   e.preventDefault();
@@ -89,7 +100,8 @@ document.getElementById('nestButton').addEventListener('click', function(e) {
   var nestPlan = {
     desc:"500 Emails",
     amount:39900,
-    planName:"Nest Plan"
+    planName:"Nest Plan",
+    id: 'SUB_399'
   }
 
   openStripeModal(nestPlan);
@@ -105,6 +117,7 @@ window.addEventListener('popstate', function() {
 
 function openStripeModal(planType) {
   // Open Checkout with further options:
+  document.getElementById("stripePlanType").value = planType.id;
   handler.open({
     name: planType.planName,
     description: planType.desc,

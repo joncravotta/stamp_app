@@ -31,6 +31,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def after_sign_in_path_for(resource_or_scope)
+    templates_path
+  end
+
   def email_count(plan_type)
     case plan_type
     when 'SUB_199'

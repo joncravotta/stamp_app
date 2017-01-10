@@ -1,18 +1,42 @@
 .devise-container {
   @include primary-font(22px);
+  @include display(flex);
+  @include justify-content(center);
+  @include align-items(center);
   width: 60%;
   margin: auto;
+  font-weight: lighter;
+  width: 100%;
+  height: 100vh;
+  background: image-url('signup_bg.jpg');
+  background-size: cover;
+  color: white;
 
-  h2 {
-    color: $primary;
+  a {
+    color: white;
   }
 }
 
+.devise-heading {
+  font-size: 40px;
+}
+
+.devise-container-content {
+  width: 50%;
+}
+
+.devise-opacity-overlay {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: $dark-gray;
+  opacity: 0.5;
+}
 
 .field {
 
   input {
-    border-color: $dark-gray;
+    border-color: white;
     width: 100%;
     margin-bottom: 20px;
     height: 20px;
@@ -28,11 +52,12 @@
     border-radius: none;
     border: none;
     -webkit-appearance: none;
-    border-bottom: solid 1px $dark-gray;
+    border-bottom: solid 1px white;
 
     &:focus{
         outline: none;
-        border-bottom: solid 1px $primary;
+        border-bottom: solid 1px white;
+        color: white;
     }
   }
 
@@ -42,12 +67,15 @@
   }
 
     label, em {
-      color: $primary;
+      color: white;
     }
+}
 
-  .actions input[type="submit"] {
-    background-color: $primary;
-    padding: 20px 75px;
-  }
-
+.actions input {
+  @include primary-font(20px);
+  color: white;
+  background-color: Transparent;
+  border: 1px solid white;
+  padding: 7px 40px;
+  margin-bottom: 15px
 }

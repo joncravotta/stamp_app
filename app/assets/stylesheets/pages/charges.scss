@@ -3,14 +3,14 @@
   @include align-items(center);
   @include flex-direction(column);
   width: 100%;
-  background-color: $light-primary;
+  background-color: white;
   padding: 100px 0;
   height: 100vh;
 }
 
 .charge-form-title {
   @include primary-font(45px);
-  color: $white;
+  color: $darkest-gray;
 }
 
 .charge-card-container {
@@ -22,23 +22,27 @@
 }
 
 .charge-card {
-  width: 25%;
-  border-radius: 25px;
-  background: linear-gradient( rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6) ), image-url('geometry2.png') repeat;
+  width: 22%;
   @include display(flex);
-  @include align-items(center);
-  @include justify-content(center);
   @include flex-direction(column);
-  margin: 0 20px;
+  margin: 0 25px;
   padding: 25px 0;
   position: relative;
-  height: 300px;
+  height: 500px;
+  box-shadow: 0px 17px 22px -5px rgba(177,177,177,0.5);
+  cursor: pointer;
+  transition: all .2s ease-in-out;
+  &:hover {
+    box-shadow: 0px 30px 45px -12px rgba(177,177,177,0.8);
+    transform: translate(0px, -5px) scale(1.01);
+  }
 }
 
 .charge-card-title {
   @include primary-font(24px);
-  color: $primary;
+  color: $darkest-gray;
   text-align: center;
+  padding-top: 50px;
 }
 
 .charge-card-desc {
@@ -48,21 +52,31 @@
   padding: 20px;
 }
 
-.charge-card-bottom {
-  @include display(flex);
-  @include align-items(center);
-  @include justify-content(center);
-  @include flex-direction(column);
-  @include primary-font(22px);
-  background: linear-gradient( rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6) ), image-url('geometry2.png') repeat;
-  text-align: center;
-  padding: 60px;
-}
 
 .stripe-button {
   @include display(flex);
   @include justify-content(center);
   padding-top: 25px;
+}
+
+.charge-card-circle {
+  @include display(flex);
+  @include align-items(center);
+  @include justify-content(center);
+  height: 60px;
+  width: 60px;
+  border-radius: 30px;
+  background-color: $gold;
+  position: absolute;
+  top: -20px;
+  left: -30px;
+  bottom: 0;
+  right: 0;
+  z-index: 2;
+
+  img {
+    width: 20px;
+  }
 }
 
 .charge-button {
@@ -72,14 +86,13 @@
   bottom: 0;
   background-color: $primary;
   width: 100%;
-  border-radius: 0 0 25px 25px;
   text-align: center;
   padding: 20px 0;
 }
 
 .charge-button-accent {
   @extend .charge-button;
-  background-color: $accent;
+  background-color: $primary;
 }
 
 .payment-completed-container {

@@ -22,8 +22,6 @@ def create
   @user = User.find(current_user.id)
 
   if @user
-    puts customer
-    puts charge
     @user.stripe_customer_id = customer.id
     @user.stripe_current_period_start = charge.current_period_start
     @user.stripe_current_period_end = charge.current_period_end

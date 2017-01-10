@@ -4,43 +4,22 @@
   </div>
   <div class="charge-card-container">
     <div class="charge-card" id="birdyButton" data-sub-type="birdy">
-      <%= form_tag charges_path do %>
-        <input name="plan_type" type="hidden" value="SUB_199" />
-          <% if flash[:error].present? %>
-            <%= flash[:error] %></p>
-          <% end %>
-          <div class="charge-card-title">Birdy Plan</div>
-          <div class="charge-card-desc">For small businesses that need a little help</div>
-
-          <div class="charge-button">$199/yr</div>
-      <% end %>
+      <div class="charge-card-title">Birdy Plan</div>
+      <div class="charge-card-desc">For small businesses that need a little help</div>
+      <div class="charge-button">$199/yr</div>
     </div>
 
     <div class="charge-card" id="flockButton" data-sub-type="flock">
       <div class="charge-card-circle"></div>
-      <%= form_tag charges_path do %>
-        <input name="plan_type" type="hidden" value="SUB_399" />
-          <% if flash[:error].present? %>
-            <%= flash[:error] %></p>
-          <% end %>
-          <div class="charge-card-title">Flock Plan</div>
-          <div class="charge-card-desc">For small businesses that need a little help</div>
-
-          <div class="charge-button-accent">$399/yr</div>
-      <% end %>
+        <div class="charge-card-title">Flock Plan</div>
+        <div class="charge-card-desc">For small businesses that need a little help</div>
+        <div class="charge-button-accent">$399/yr</div>
     </div>
 
     <div class="charge-card" id="nestButton" data-sub-type="nest">
-      <%= form_tag charges_path do %>
-        <input name="plan_type" type="hidden" value="SUB_299" />
-          <% if flash[:error].present? %>
-            <%= flash[:error] %></p>
-          <% end %>
-          <div class="charge-card-title">Nest Plan</div>
-          <div class="charge-card-desc">Growing business looking to save a lot of time.</div>
-
-          <div class="charge-button">$299/year</div>
-      <% end %>
+      <div class="charge-card-title">Nest Plan</div>
+      <div class="charge-card-desc">Growing business looking to save a lot of time.</div>
+      <div class="charge-button">$299/year</div>
     </div>
   </div>
   <%= form_tag charges_path, id: 'chargeForm' do %>
@@ -53,6 +32,7 @@
   <% end %>
 
 </div>
+
 <script src="https://checkout.stripe.com/checkout.js"></script>
 
 <script>
@@ -125,47 +105,3 @@ function openStripeModal(planType) {
   });
 }
 </script>
-<!-- <div class="stripe-button">
-  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-          data-name="Pigeon Post"
-          data-description="50 Email Subscription"
-          data-image="<%= asset_path 'primary-pigeon.png' %>"
-          data-amount="19900"
-          data-label="Pay With card"
-          data-zip-code=true
-          data-billing-address=true
-          data-email="<%= current_user.email %>"
-          data-locale="auto">
-  </script>
-</div> -->
-
-<!-- <div class="stripe-button">
-  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-          data-name="Pigeon Post"
-          data-description="125 Email Subscription"
-          data-image="<%= asset_path 'primary-pigeon.png' %>"
-          data-amount="29900"
-          data-label="Pay With card"
-          data-zip-code=true
-          data-billing-address=true
-          data-email="<%= current_user.email %>"
-          data-locale="auto">
-  </script>
-</div> -->
-
-<!-- <div class="stripe-button">
-  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-          data-name="Pigeon Post"
-          data-description="Unlimited Email Subscription"
-          data-image="<%= asset_path 'primary-pigeon.png' %>"
-          data-amount="42900"
-          data-label="Pay With card"
-          data-zip-code=true
-          data-billing-address=true
-          data-email="<%= current_user.email %>"
-          data-locale="auto">
-  </script>
-</div> -->

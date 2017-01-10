@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'home#index'
+  root 'home#new_home'
   get 'app' => 'app#index'
   post '/build/new' => 'build#new'
   resources :templates
@@ -12,7 +12,6 @@ Rails.application.routes.draw do
   get 'profile' => 'profile#index'
   get 'slice' => 'slice_tool#index'
   post 'slice/new' => 'slice_tool#new'
-  get 'new_home' => 'home#new_home'
   post 'webhook/stripe' => 'webhook#stripe'
   get 'webhook/test' => 'webhook#test_stripe_event'
 

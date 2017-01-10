@@ -10,10 +10,12 @@
 </head>
 <body>
 <!-- <%= render :partial => "partials/nav" %> -->
-<div class="notifications">
-  <span class="notice"><%= notice %></span>
-  <span class="alert"><%= alert %></span>
-</div>
+<% if notice || alert %>
+  <div class="notifications">
+      <span class="notice"><%= notice %></span>
+      <span class="alert"><%= alert %></span>
+  </div>
+<% end %>
 
 <%= yield %>
 </body>

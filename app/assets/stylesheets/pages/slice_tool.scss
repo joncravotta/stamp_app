@@ -59,6 +59,12 @@
   }
 }
 
+.slice-tool-container-inputs-success {
+  @extend .slice-tool-container-inputs-error;
+  background-color: $accent;
+}
+
+
 // slice tool
 .slice-tool-container {
   @include display(flex);

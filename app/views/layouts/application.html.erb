@@ -12,11 +12,17 @@
 <!-- <%= render :partial => "partials/nav" %> -->
 <% if notice || alert %>
   <div class="notifications">
-      <span class="notice"><%= notice %></span>
-      <span class="alert"><%= alert %></span>
+    <span class="close-notification-button">✕</span>
+    <span class="notice"><%= notice %></span>
+    <span class="alert"><%= alert %></span>
   </div>
 <% end %>
 
 <%= yield %>
 </body>
+<script>
+  $(".close-notification-button").click(function() {
+    $(".notifications").hide();
+  });
+</script>
 </html>

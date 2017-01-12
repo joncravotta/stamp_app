@@ -69,6 +69,10 @@ var SliceToolUploader = React.createClass({
     return (<div className="slice-tool-container-inputs-error">✕</div>);
   },
 
+  renderSuccessIcon : function() {
+    return (<div className="slice-tool-container-inputs-success">✓</div>);
+  },
+
   render: function() {
     var showEmailErrorIcon;
     var showUploadErrorIcon;
@@ -81,6 +85,8 @@ var SliceToolUploader = React.createClass({
 
     if (this.state.showUploadError == true) {
       showUploadErrorIcon = this.renderErrorIcon();
+    } else if (this.state.uploadValid == true) {
+      showUploadErrorIcon = this.renderSuccessIcon();
     } else {
       showEmailErrorIcon = <span></span>;
     }

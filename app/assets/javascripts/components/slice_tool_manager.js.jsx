@@ -46,7 +46,7 @@ var SliceToolManager = React.createClass({
       case 0:
         return (<SliceToolUploader updateUpload={this.propUpdateUpload} updateState={this.updateManagerState}/>);
       case 1:
-        return (<SliceTool updateState={this.updateManagerStateWithUrls} file={this.state.emailImageFile} image={this.state.emailImage} imageWidth={this.state.emailWidth} imageHeight={this.state.emailHeight}/>);
+        return (<SliceTool updateState={this.updateManagerStateWithUrls} file={this.state.emailImageFile} image={this.state.emailImage} imageWidth={this.state.emailWidth} imageHeight={this.state.emailHeight} emailName={this.state.emailName}/>);
       case 2:
         return (<CodeTool urls={this.state.urls} user={this.state.user} urls={this.state.returnedUrls} emailWidth={this.state.emailWidth} updateState={this.updateTrackerState} name={this.state.emailName} />);
       default:

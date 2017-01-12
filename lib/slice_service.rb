@@ -5,6 +5,8 @@ require_relative "./cloudinary_client.rb"
 class SliceService
   def initialize(data)
     @image = data["image"]
+    @email_width = data["imageWidth"]
+    @email_name = data["emailName"]
     @slice_data = data
     @hash = {}
     format_data
@@ -20,8 +22,14 @@ class SliceService
     response_json(slices.cropped_urls)
   end
 
-  def response_json(images)
+  def create_template_in_db(images)
+    template = Template.new(user_id: current_user.id, name: @email_name, images: images, completed: false, email_width: @email_width)
+    response_json(images, template.id)
+  end
+
+  def response_json(images, template_id)
     @hash[:urls] = images
+    @hash[:template_id] = template_id
   end
 
   def url_hash

@@ -46,7 +46,7 @@ var CodeTool = React.createClass({
     newApiObj.emailWidth = this.state.emailWidth;
     newApiObj.urlPath = this.state.urlPath;
     newApiObj.name = this.state.name;
-    console.log(newApiObj);
+
     this.setState({showLoadingIcon: true});
     var self = this;
     $.ajax({

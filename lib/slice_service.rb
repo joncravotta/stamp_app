@@ -7,6 +7,7 @@ class SliceService
     @image = data["image"]
     @email_width = data["imageWidth"]
     @email_name = data["emailName"]
+    @user_id = data["userId"]
     @slice_data = data
     @hash = {}
     format_data
@@ -19,12 +20,17 @@ class SliceService
 
   def slice(formatted_data)
     slices = Slice.new(@image, formatted_data)
-    response_json(slices.cropped_urls)
+    #TODO lower email count here!
+    create_template_in_db(slices.cropped_urls)
   end
 
   def create_template_in_db(images)
-    template = Template.new(user_id: current_user.id, name: @email_name, images: images, completed: false, email_width: @email_width)
-    response_json(images, template.id)
+    template = Template.new(user_id: @user_id, name: @email_name, images: images, completed: false, email_width: @email_width)
+    if template.save
+      response_json(images, template.id)
+    else
+      @hash[:error] = "ERROR creating template"
+    end
   end
 
   def response_json(images, template_id)

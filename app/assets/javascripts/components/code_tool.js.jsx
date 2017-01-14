@@ -46,6 +46,7 @@ var CodeTool = React.createClass({
     newApiObj.emailWidth = this.state.emailWidth;
     newApiObj.urlPath = this.state.urlPath;
     newApiObj.name = this.state.name;
+    newApiObj.templateId = this.props.templateId;
 
     this.setState({showLoadingIcon: true});
     var self = this;

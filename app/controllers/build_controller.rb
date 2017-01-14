@@ -1,15 +1,18 @@
 class BuildController < ApplicationController
   respond_to :json
   def new
-    template = params
+    #TODO White list these params
+    #template = params
+    @template = Template.find(params["templateId"])
     @build = EmailBuilderService.new(template)
     # respond_to do |format|
     #   format.json { render text: @build.response }
     #   format.text { render text: @build.response }
     # end
     @user = User.find(current_user)
-    @user.update(header: template["header"], footer: template["footer"], url_path: template["urlPath"], email_width: template["emailWidth"], header_active: template["headerCodeActive"], footer_active: template["footerCodeActive"])
-    @template = Template.new(user_id: current_user.id, html: @build.response, name: template["name"])
+    #TODO clean up user model
+    @user.update(header: params["header"], footer: params["footer"], url_path: params["urlPath"], email_width: params["emailWidth"], header_active: params["headerCodeActive"], footer_active: params["footerCodeActive"])
+    @template.update(html: @build.response, completed: true)
     if @template.save
       puts "LOG: Email saved"
     else

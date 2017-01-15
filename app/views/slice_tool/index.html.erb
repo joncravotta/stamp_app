@@ -20,7 +20,6 @@
     </div>
   </div>
   <% if @continued %>
-  <% raw =  (raw @template.images.to_json) %>
     <div class="width-100">
       <%= react_component('SliceToolManager',
        user: current_user,

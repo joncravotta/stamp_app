@@ -50,7 +50,9 @@
           <% if template.completed %>
             <span class="profile-table-cell"><span class="status-cell"><div class="status-cell-circle"></div>Completed</span></span>
           <% else %>
-            <span class="profile-table-cell"><span class="status-cell"><div class="status-cell-circle"></div>NOT COMPLETED</span></span>
+            <%= link_to slice_path(template, id:template.id) do %>
+              <span class="profile-table-cell"><span class="status-cell"><div class="status-cell-circle"></div>NOT COMPLETED</span></span>
+            <% end %>
           <% end %>
           <span class="profile-table-cell"><%= template.created_at.strftime("%m/%d/%Y") %></span>
           <span class="profile-table-cell"><%= link_to 'View', template_path(template) %></span>

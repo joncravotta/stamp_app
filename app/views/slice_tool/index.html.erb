@@ -19,8 +19,28 @@
       <%= image_tag('profile-gear.png') %>
     </div>
   </div>
-
-  <div class="width-100">
-    <%= react_component('SliceToolManager', user: current_user) %>
-  </div>
+  <% if @continued %>
+  <% raw =  (raw @template.images.to_json) %>
+    <div class="width-100">
+      <%= react_component('SliceToolManager',
+       user: current_user,
+       manager_state: @manager_state,
+       tracker_state: @tracker_state,
+       email_name: @template.name,
+       email_width: @template.email_width,
+       returned_urls: @images,
+       template_id: @template.id) %>
+   </div>
+  <% else %>
+    <div class="width-100">
+      <%= react_component('SliceToolManager',
+      user: current_user,
+      manager_state: 0,
+      tracker_state: 0,
+      email_name: '',
+      email_width: 0,
+      returned_urls: [],
+      template_id: '') %>
+    </div>
+  <% end %>
 </div>

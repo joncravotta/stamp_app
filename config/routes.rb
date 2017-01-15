@@ -6,10 +6,12 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'home#new_home'
   get 'app' => 'app#index'
+  get 'app/:id' => 'app#continue'
   post '/build/new' => 'build#new'
   resources :templates
   resources :charges
   get 'profile' => 'profile#index'
+  get 'slice/:id' => 'slice#continue'
   get 'slice' => 'slice_tool#index'
   post 'slice/new' => 'slice_tool#new'
   post 'webhook/stripe' => 'webhook#stripe'

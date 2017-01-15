@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170112015357) do
+ActiveRecord::Schema.define(version: 20170115053506) do
 
   create_table "email_logs", force: :cascade do |t|
     t.integer  "user_id"
@@ -30,6 +30,14 @@ ActiveRecord::Schema.define(version: 20170112015357) do
     t.boolean  "completed",   default: false
     t.string   "images",      default: "--- []\n"
     t.string   "email_width", default: ""
+  end
+
+  create_table "uploaded_images", force: :cascade do |t|
+    t.string   "user_id"
+    t.string   "template_id"
+    t.string   "url"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "users", force: :cascade do |t|

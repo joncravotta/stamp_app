@@ -4,7 +4,7 @@ class BuildController < ApplicationController
     #TODO White list these params
     #template = params
     @template = Template.find(params["templateId"])
-    @build = EmailBuilderService.new(template)
+    @build = EmailBuilderService.new(params)
     # respond_to do |format|
     #   format.json { render text: @build.response }
     #   format.text { render text: @build.response }

@@ -23,6 +23,7 @@ var CodeTool = React.createClass({
   },
   // TODO Should change to handle urls, no need to access file
   handleUrls: function() {
+    console.log(this.state.urls);
     console.log('setting up urls')
     var  emailObjectInt = {};
     for (var i = 0; i < this.state.urls.length; i++) {

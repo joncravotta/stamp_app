@@ -21,6 +21,7 @@
   //@include justify-content(center);
   @include align-items(center);
   @include flex-direction(column);
+  @extend .shadow;
   background-color: white;
   padding: 50px 0;
   width: 600px;

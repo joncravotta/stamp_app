@@ -13,22 +13,16 @@
 
 ActiveRecord::Schema.define(version: 20170115053506) do
 
-  create_table "email_logs", force: :cascade do |t|
-    t.integer  "user_id"
-    t.string   "user_email"
-    t.string   "email_type"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
+# Could not dump table "slices" because of following NoMethodError
+#   undefined method `[]' for nil:NilClass
 
   create_table "templates", force: :cascade do |t|
     t.string   "html"
     t.integer  "user_id"
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.string   "name"
     t.boolean  "completed",   default: false
-    t.string   "images",      default: "--- []\n"
     t.string   "email_width", default: ""
   end
 

@@ -36,28 +36,23 @@
       </div>
     </div>
     <div class="profile-table">
-      <div class="profile-table-header">
-        <span>Name</span>
-        <span>Label</span>
-        <span>Status</span>
-        <span>Created</span>
-        <span>Delete</span>
-      </div>
-      <% @templates.each do |template| %>
-        <div class="profile-table-row">
-          <span class="profile-table-cell"><%= template.name %></span>
-          <span class="profile-table-cell">name</span>
-          <% if template.completed %>
-            <span class="profile-table-cell"><span class="status-cell"><div class="status-cell-circle"></div>Completed</span></span>
-          <% else %>
-            <%= link_to slice_path(template, id:template.id) do %>
-              <span class="profile-table-cell"><span class="status-cell"><div class="status-cell-circle"></div>NOT COMPLETED</span></span>
-            <% end %>
-          <% end %>
-          <span class="profile-table-cell"><%= template.created_at.strftime("%m/%d/%Y") %></span>
-          <span class="profile-table-cell"><%= link_to 'View', template_path(template) %></span>
-        </div>
-      <% end %>
+        <% @templates.each do |template| %>
+          <div class="template-card">
+            <div class="template-row">
+              <div class="template-name"><%= template.name %></div>
+              <% if template.completed %>
+                <span class="status-cell"><div class="status-cell-circle"></div>Completed</span>
+              <% else %>
+                <%= link_to slice_path(template, id:template.id) do %>
+                  <span class="status-cell-incomplete"><div class="status-cell-circle"></div>Incomplete</span>
+                <% end %>
+              <% end %>
+            </div>
+            <div class="template-row template-small-label">Promotion</div>
+            <div class="template-row template-small-label-gray">Created: <%= template.created_at.strftime("%m/%d/%Y") %></div>
+            <!-- <div class="template-row template-small-label"><%= link_to 'View', template_path(template) %></div> -->
+            </div>
+        <% end %>
     </div>
   </div>
 </div>

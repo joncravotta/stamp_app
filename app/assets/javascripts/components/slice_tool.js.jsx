@@ -53,7 +53,7 @@ var SliceTool = React.createClass({
         self.props.updateState(returnedJson.urls);
         self.props.updateTemplateId(returnedJson.template_id);
       } else {
-        // load error screen
+        // TODO: load error screen
         console.log("there was a problem");
       }
     })

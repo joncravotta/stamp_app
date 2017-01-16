@@ -1,15 +1,16 @@
 var SliceToolManager = React.createClass({
   getInitialState: function() {
     return {
-      managerState: 0,
-      trackerState: 0,
+      managerState: this.props.manager_state,
+      trackerState: this.props.tracker_state,
       user: this.props.user,
       emailImageFile: "",
       emailImage:"",
       emailHeight:0,
-      emailWidth:0,
-      emailName: '',
-      returnedUrls: []
+      emailWidth:this.props.email_width,
+      emailName: this.props.email_name,
+      returnedUrls: this.props.returned_urls,
+      templateId: this.props.template_id
     };
   },
 
@@ -41,14 +42,20 @@ var SliceToolManager = React.createClass({
     })
   },
 
+  updateTemplateId: function(templateId) {
+    this.setState({
+      templateId: templateId
+    })
+  },
+
   handleOrderState: function() {
     switch (this.state.managerState) {
       case 0:
-        return (<SliceToolUploader updateUpload={this.propUpdateUpload} updateState={this.updateManagerState}/>);
+        return (<SliceToolUploader updateUpload={this.propUpdateUpload} updateTemplateId={this.updateTemplateId} updateState={this.updateManagerState}/>);
       case 1:
-        return (<SliceTool updateState={this.updateManagerStateWithUrls} file={this.state.emailImageFile} image={this.state.emailImage} imageWidth={this.state.emailWidth} imageHeight={this.state.emailHeight}/>);
+        return (<SliceTool userId={this.state.user.id} updateState={this.updateManagerStateWithUrls} file={this.state.emailImageFile} image={this.state.emailImage} imageWidth={this.state.emailWidth} imageHeight={this.state.emailHeight} emailName={this.state.emailName}/>);
       case 2:
-        return (<CodeTool urls={this.state.urls} user={this.state.user} urls={this.state.returnedUrls} emailWidth={this.state.emailWidth} updateState={this.updateTrackerState} name={this.state.emailName} />);
+        return (<CodeTool templateId={this.state.templateId} user={this.state.user} urls={this.state.returnedUrls} emailWidth={this.state.emailWidth} updateState={this.updateTrackerState} name={this.state.emailName} />);
       default:
         break;
     }

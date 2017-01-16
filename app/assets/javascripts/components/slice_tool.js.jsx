@@ -7,6 +7,7 @@ var SliceTool = React.createClass({
       image: this.props.image,
       imageWidth: this.props.imageWidth,
       imageHeight: this.props.imageHeight,
+      emailName: this.props.emailName,
       returnedUrls: [],
       makingRequest: false
     };
@@ -38,6 +39,8 @@ var SliceTool = React.createClass({
     dataObj.imageWidth = this.state.imageWidth;
     dataObj.imageHeight = this.state.imageHeight;
     dataObj.image = this.state.image;
+    dataObj.emailName = this.state.emailName;
+    dataObj.userId = this.props.userId;
     this.setState({makingRequest: true});
     $.ajax({
       url: '/slice/new',
@@ -47,8 +50,8 @@ var SliceTool = React.createClass({
     })
     .done(function(returnedJson){
       if (returnedJson.urls.length > 0) {
-        //self.setState({returnedUrls: returnedJson.urls});
         self.props.updateState(returnedJson.urls);
+        self.props.updateTemplateId(returnedJson.template_id);
       } else {
         // load error screen
         console.log("there was a problem");

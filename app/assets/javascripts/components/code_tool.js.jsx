@@ -23,6 +23,7 @@ var CodeTool = React.createClass({
   },
   // TODO Should change to handle urls, no need to access file
   handleUrls: function() {
+    console.log(this.state.urls);
     console.log('setting up urls')
     var  emailObjectInt = {};
     for (var i = 0; i < this.state.urls.length; i++) {
@@ -46,7 +47,8 @@ var CodeTool = React.createClass({
     newApiObj.emailWidth = this.state.emailWidth;
     newApiObj.urlPath = this.state.urlPath;
     newApiObj.name = this.state.name;
-    console.log(newApiObj);
+    newApiObj.templateId = this.props.templateId;
+
     this.setState({showLoadingIcon: true});
     var self = this;
     $.ajax({

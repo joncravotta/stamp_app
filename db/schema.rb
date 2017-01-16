@@ -11,17 +11,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170104025142) do
+ActiveRecord::Schema.define(version: 20170115053506) do
 
-# Could not dump table "slices" because of following NoMethodError
-#   undefined method `[]' for nil:NilClass
+  create_table "email_logs", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "user_email"
+    t.string   "email_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "templates", force: :cascade do |t|
     t.string   "html"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
     t.string   "name"
+    t.boolean  "completed",   default: false
+    t.string   "images",      default: "--- []\n"
+    t.string   "email_width", default: ""
+  end
+
+  create_table "uploaded_images", force: :cascade do |t|
+    t.string   "user_id"
+    t.string   "template_id"
+    t.string   "url"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "users", force: :cascade do |t|

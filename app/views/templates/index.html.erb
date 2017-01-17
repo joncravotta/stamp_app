@@ -37,21 +37,25 @@
     </div>
     <div class="profile-table">
         <% @templates.each do |template| %>
-          <div class="template-card">
-            <div class="template-row">
-              <div class="template-name"><%= template.name %></div>
-              <% if template.completed %>
+          <% if template.completed %>
+            <%= link_to template_path(template), class: "template-card" do %>
+              <div class="template-row">
+                <div class="template-name"><%= template.name %></div>
                 <span class="status-cell"><div class="status-cell-circle"></div>Completed</span>
-              <% else %>
-                <%= link_to slice_path(template, id:template.id) do %>
-                  <span class="status-cell-incomplete"><div class="status-cell-circle"></div>Incomplete</span>
-                <% end %>
-              <% end %>
-            </div>
-            <div class="template-row template-small-label">Promotion</div>
-            <div class="template-row template-small-label-gray">Created: <%= template.created_at.strftime("%m/%d/%Y") %></div>
-            <!-- <div class="template-row template-small-label"><%= link_to 'View', template_path(template) %></div> -->
-            </div>
+              </div>
+              <div class="template-row template-small-label">Promotion</div>
+              <div class="template-row template-small-label-gray">Created: <%= template.created_at.strftime("%m/%d/%Y") %></div>
+            <% end %>
+          <% else %>
+            <%= link_to slice_path(template, id:template.id), class: "template-card" do %>
+              <div class="template-row">
+                <div class="template-name"><%= template.name %></div>
+                <span class="status-cell-incomplete"><div class="status-cell-circle"></div>Incomplete</span>
+              </div>
+              <div class="template-row template-small-label">Promotion</div>
+              <div class="template-row template-small-label-gray">Created: <%= template.created_at.strftime("%m/%d/%Y") %></div>
+            <% end %>
+          <% end %>
         <% end %>
     </div>
   </div>

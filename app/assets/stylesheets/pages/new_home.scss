@@ -134,9 +134,9 @@
   @include display(flex);
   @include justify-content(center);
   @include flex-direction(column);
+  @extend .shadow;
   border-radius: 10px;
   width: 27%;
-  border: solid 1px $dark-gray;
   position: relative;
 }
 

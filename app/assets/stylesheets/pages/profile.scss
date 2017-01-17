@@ -226,12 +226,14 @@
 }
 
 .template-card {
+  @extend .shadow;
   @include display(flex);
   @include flex-direction(column);
   background-color: white;
   margin-top: 30px;
   width: 42%;
   padding: 20px;
+  cursor: pointer;
 }
 
 .template-row {
@@ -252,7 +254,8 @@
 }
 
 .template-small-label {
-  font-size: 15px;
+  font-size: 14px;
+  font-weight: lighter;
   color: $darkest-gray;
 }
 
@@ -283,5 +286,15 @@
 
   .status-cell-circle {
     background-color: $error;
+  }
+}
+
+@media (max-width: 900px) {
+  .profile-table  {
+    @include justify-content(center);
+    padding-bottom: 30px;
+  }
+  .template-card {
+    width: 80%;
   }
 }

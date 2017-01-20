@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   post 'slice/new' => 'slice_tool#new'
   post 'webhook/stripe' => 'webhook#stripe'
   get 'webhook/test' => 'webhook#test_stripe_event'
+  get 'account/name' => 'account#account_name'
 
 
   # Example of regular route:

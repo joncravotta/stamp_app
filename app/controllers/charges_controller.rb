@@ -16,19 +16,30 @@ def create
 
   charge = Stripe::Subscription.create(
     :customer => customer.id,
-    :plan => parameters[:stripePlanType],
+    :plan => parameters[:stripePlanType]
   )
 
+  # TODO need to make an account here or earlier, prob should use a react component to get the
+  # team account name
   @user = User.find(current_user.id)
 
+  @account = Account.new(
+    created_by: @user.email,
+    company_name: parameters[:teamName],
+    company_name_digital: company_name_stipper(parameters[:teamName]),
+    seat_count: seat_count(charge.plan.id),
+    stripe_plan_id: customer.id,
+    stripe_current_period_start: charge.current_period_start,
+    stripe_current_period_end: charge.current_period_end,
+    stripe_sub_type: charge.plan.id
+  )
+
+  @account.save
+
   if @user
-    @user.stripe_customer_id = customer.id
-    @user.stripe_current_period_start = charge.current_period_start
-    @user.stripe_current_period_end = charge.current_period_end
-    @user.stripe_plan_id = charge.id
-    @user.email_code_count = email_count(charge.plan.id)
-    @user.subscription_type = charge.plan.id
+    @user.admin = true
     @user.paid = true
+    @user.account_id = @account.id
     @user.save
   else
     flash[:error] = 'Must be logged in'
@@ -43,7 +54,7 @@ end
   private
 
   def sub_params
-    params.permit(:stripeEmail, :stripeToken, :stripePlanType)
+    params.permit(:stripeEmail, :stripeToken, :stripePlanType, :teamName)
   end
 
 end

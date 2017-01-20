@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170115053506) do
+ActiveRecord::Schema.define(version: 20170117020522) do
 
   create_table "email_logs", force: :cascade do |t|
     t.integer  "user_id"
@@ -19,6 +19,20 @@ ActiveRecord::Schema.define(version: 20170115053506) do
     t.string   "email_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "team_accounts", force: :cascade do |t|
+    t.string   "created_by"
+    t.integer  "seat_count"
+    t.integer  "email_count"
+    t.string   "company_name"
+    t.string   "stripe_plan_id"
+    t.string   "stripe_current_period_start"
+    t.string   "stripe_current_period_end"
+    t.string   "stripe_canceled_at"
+    t.string   "stripe_sub_type"
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
   create_table "templates", force: :cascade do |t|

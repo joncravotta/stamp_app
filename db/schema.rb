@@ -11,21 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170117020522) do
+ActiveRecord::Schema.define(version: 20170121030617) do
 
-  create_table "email_logs", force: :cascade do |t|
-    t.integer  "user_id"
-    t.string   "user_email"
-    t.string   "email_type"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "team_accounts", force: :cascade do |t|
+  create_table "accounts", force: :cascade do |t|
     t.string   "created_by"
     t.integer  "seat_count"
     t.integer  "email_count"
     t.string   "company_name"
+    t.string   "company_name_digital"
     t.string   "stripe_plan_id"
     t.string   "stripe_current_period_start"
     t.string   "stripe_current_period_end"
@@ -35,14 +28,16 @@ ActiveRecord::Schema.define(version: 20170117020522) do
     t.datetime "updated_at",                  null: false
   end
 
+# Could not dump table "slices" because of following NoMethodError
+#   undefined method `[]' for nil:NilClass
+
   create_table "templates", force: :cascade do |t|
-    t.string   "html"
+    t.string   "html",        default: ""
     t.integer  "user_id"
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.string   "name"
     t.boolean  "completed",   default: false
-    t.string   "images",      default: "--- []\n"
     t.string   "email_width", default: ""
   end
 
@@ -74,6 +69,8 @@ ActiveRecord::Schema.define(version: 20170117020522) do
     t.string   "email_width",                 default: "600"
     t.boolean  "header_active",               default: false
     t.boolean  "footer_active",               default: false
+    t.boolean  "admin",                       default: false
+    t.integer  "account_id"
     t.string   "stripe_customer_id"
     t.integer  "stripe_current_period_start"
     t.integer  "stripe_current_period_end"

@@ -23,11 +23,13 @@ def create
   # team account name
   @user = User.find(current_user.id)
 
-  @account = Account.new(
+  @account = Account.find(@user.account_id)
+
+
+  @account.update(
     created_by: @user.email,
-    company_name: parameters[:teamName],
-    company_name_digital: company_name_stipper(parameters[:teamName]),
     seat_count: seat_count(charge.plan.id),
+    email_count: email_count(charge.plan.id),
     stripe_plan_id: customer.id,
     stripe_current_period_start: charge.current_period_start,
     stripe_current_period_end: charge.current_period_end,

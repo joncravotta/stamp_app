@@ -1,0 +1,11 @@
+<!-- <div class="account-name-container"> -->
+  <%= form_for @account,:html => { :class => "account-name-container" } do |f| %>
+    <span class="account-name-title">Whats your company/team name?</span>
+    <span class="account-name-subtitle">This will be your account name + we'll use it<br />when you invite users to the app!</span>
+    <div class="slice-component-container">
+      <%= f.text_field :company_name, class: "input-lg", placeholder: "Team Name" %>
+      <!-- <input class="input-lg" placeholder="Team Name" type="text" /> -->
+    </div>
+    <%= f.submit "Enter", class:"dark-button" %>
+  <% end %>
+<!-- </div> -->

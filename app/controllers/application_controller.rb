@@ -45,4 +45,19 @@ class ApplicationController < ActionController::Base
       400
     end
   end
+
+  def seat_count(plan_type)
+    case plan_type
+    when 'SUB_199'
+      1
+    when 'SUB_299'
+      3
+    when 'SUB_399'
+      5
+    end
+  end
+
+  def company_name_stipper(name)
+    name.gsub(/\s+/, "_")
+  end
 end

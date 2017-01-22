@@ -7,9 +7,9 @@ class CreateAccounts < ActiveRecord::Migration
       t.string :company_name, default: nil
       t.string :company_name_digital, default: nil
       t.string :stripe_plan_id, default: nil
-      t.string :stripe_current_period_start, default: nil
-      t.string :stripe_current_period_end, default: nil
-      t.string :stripe_canceled_at, default: nil
+      t.integer :stripe_current_period_start, default: nil
+      t.integer :stripe_current_period_end, default: nil
+      t.integer :stripe_canceled_at, default: nil
       t.string :stripe_sub_type, default: nil
       t.timestamps null: false
       t.timestamps null: false

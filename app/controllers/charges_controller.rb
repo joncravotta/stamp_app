@@ -43,6 +43,7 @@ def create
     @user.paid = true
     @user.account_id = @account.id
     @user.save
+    redirect_to slice_tool_path
   else
     flash[:error] = 'Must be logged in'
     redirect_to root_path

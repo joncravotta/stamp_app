@@ -24,8 +24,9 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
+    # TODO this is shitty af
     if resource.sign_in_count == 1
-      new_charge_path
+      new_account_path
     else
       root_path
     end

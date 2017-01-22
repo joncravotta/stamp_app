@@ -20,9 +20,9 @@ ActiveRecord::Schema.define(version: 20170121030617) do
     t.string   "company_name"
     t.string   "company_name_digital"
     t.string   "stripe_plan_id"
-    t.string   "stripe_current_period_start"
-    t.string   "stripe_current_period_end"
-    t.string   "stripe_canceled_at"
+    t.integer  "stripe_current_period_start"
+    t.integer  "stripe_current_period_end"
+    t.integer  "stripe_canceled_at"
     t.string   "stripe_sub_type"
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false

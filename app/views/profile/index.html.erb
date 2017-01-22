@@ -25,7 +25,7 @@
       <div class="profile-top-dashboard-item-group">
           <i class="fa fa-file-text-o  fa-lg" aria-hidden="true"></i>
           <span class="profile-dashboard-item-title">Emails left:</span>
-          <% if @profile.email_code_count == -399 %>
+          <% if @account.email_count == -399 %>
             <span class="profile-dashboard-item-count">Unlimited</span>
           <% else %>
             <span class="profile-dashboard-item-count"><%= @profile.email_code_count %></span>
@@ -37,7 +37,7 @@
         <i class="fa fa-calendar fa-lg" aria-hidden="true"></i>
         <span class="profile-dashboard-item-title">Next Bill</span>
         <span class="profile-dashboard-item-count">
-        <% time = Time.at(@profile.stripe_current_period_end) %>
+        <% time = Time.at(@account.stripe_current_period_end) %>
         <%= time.strftime("%m/%d/%Y")  %></span>
       </div>
     </div>

@@ -10,8 +10,8 @@ class AccountsController < ApplicationController
     if @user
       @account = Account.new(
         created_by: @user.email,
-        company_name: parameters[:account][:company_name],
-        company_name_digital: company_name_stipper(parameters[:account][:company_name])
+        company_name: parameters[:company_name],
+        company_name_digital: company_name_stipper(parameters[:company_name])
       )
       @account.save
 

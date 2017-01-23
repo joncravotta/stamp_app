@@ -29,7 +29,7 @@ gem 'responders', '~> 2.2'
 # Getting images size
 gem 'fastimage', '~> 1.8'
 # Auth
-gem 'devise', '~> 3.5', '>= 3.5.6'
+gem 'devise', '~> 4.2'
 # Payments
 gem 'stripe'
 # Carrier wave
@@ -40,6 +40,9 @@ gem 'fog', '~> 1.38'
 gem 'cloudinary', '~> 1.2', '>= 1.2.2'
 
 gem 'rails_real_favicon'
+
+# devise add on for inviting users to app
+gem 'devise_invitable', '~> 1.7.0'
 
 
 # Use ActiveModel has_secure_password

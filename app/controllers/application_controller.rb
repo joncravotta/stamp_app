@@ -19,21 +19,25 @@ class ApplicationController < ActionController::Base
     @user = User.find(current_user)
     if !@user.paid?
       flash[:danger] = "Your payment has failed, please update your card on file."
-      redirect_to new_charge_path
+      redirect_to new_account_path
     end
   end
 
   def after_sign_in_path_for(resource)
     # TODO this is shitty af
+    byebug
     if resource.sign_in_count == 1
-      new_account_path
-    else
-      root_path
-    end
-  end
+      #if current_user.paid
+      if current_user.invited_by_id.nil?
+        new_account_path
+      else
+        add_user_to_account
+        templates_path
+      end
 
-  def after_sign_in_path_for(resource_or_scope)
-    templates_path
+    else
+      templates_path
+    end
   end
 
   def email_count(plan_type)
@@ -60,5 +64,25 @@ class ApplicationController < ActionController::Base
 
   def company_name_stipper(name)
     name.gsub(/\s+/, "_")
+  end
+
+  private
+
+  def add_user_to_account
+    byebug
+    @user = current_user
+    @inviter = User.find(@user.invited_by_id)
+    @account = Account.find(@inviter.account_id)
+
+    if @account.seat_count > 0
+      @account.seat_count = @account.seat_count - 1
+      @account.save
+
+      @user.account_id = @inviter.account_id
+      @user.paid = true
+      @user.save
+
+      #TODO else clause
+    end
   end
 end

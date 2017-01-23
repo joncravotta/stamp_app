@@ -24,18 +24,18 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    # TODO this is shitty af
-    byebug
-    if resource.sign_in_count == 1
-      #if current_user.paid
+    if resource.sign_in_count == 1 && resource.paid == false
+
       if current_user.invited_by_id.nil?
+        # signing up and not part of an account
         new_account_path
       else
+        # got an invite
         add_user_to_account
         templates_path
       end
-
     else
+      # reg user
       templates_path
     end
   end
@@ -69,7 +69,6 @@ class ApplicationController < ActionController::Base
   private
 
   def add_user_to_account
-    byebug
     @user = current_user
     @inviter = User.find(@user.invited_by_id)
     @account = Account.find(@inviter.account_id)

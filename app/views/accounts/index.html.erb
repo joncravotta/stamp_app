@@ -1,0 +1,46 @@
+<div class="profile-container">
+  <div class="profile-sidebar">
+    <div class="profile-sidebar-item">
+      <%= link_to 'slice' do %>
+        <%= image_tag('profile-code.png') %>
+      <% end %>
+    </div>
+    <div class="profile-sidebar-item">
+      <%= link_to 'templates' do %>
+        <%= image_tag('profile-list.png') %>
+      <% end %>
+    </div>
+    <div class="profile-sidebar-item">
+      <%= link_to 'profile' do %>
+        <%= image_tag('profile-user.png') %>
+      <% end %>
+    </div>
+    <div class="profile-sidebar-item-active">
+      <%= image_tag('profile-gear.png') %>
+    </div>
+  </div>
+  <div class="profile-content">
+    <div class="profile-content-header">
+      <div class="profile-content-header-title">Account</div>
+      <div class="profile-content-header-underline"></div>
+    </div>
+
+    <div class="profile-content-button-row">
+      <div class="rounded-primary-button">
+        Invite
+      </div>
+    </div>
+
+    <div class="profile-table">
+      <% @users.each do |user| %>
+        <%= link_to templates_path, class: "template-card" do %>
+          <div class="template-row">
+            <div class="template-name"><%= user.email %></div>
+          </div>
+          <div class="template-row template-small-label"><%= user.admin ? "Admin": "Not Admin" %></div>
+          <div class="template-row template-small-label-gray">Joined: <%= user.created_at.strftime("%m/%d/%Y") %></div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

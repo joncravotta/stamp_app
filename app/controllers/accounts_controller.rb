@@ -1,6 +1,11 @@
 class AccountsController < ApplicationController
   before_action :require_user
 
+  def index
+    @account = Account.find(current_user.account_id)
+    @users = User.where(account_id: @account.id)
+  end
+
   def new
     @account = Account.new
   end

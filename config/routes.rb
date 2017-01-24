@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   post '/build/new' => 'build#new'
   resources :templates
   resources :charges
-  resources :accounts, only: [:new, :create]
+  resources :accounts, only: [:new, :create, :index]
   get 'profile' => 'profile#index'
   get 'slice/:id' => 'slice#continue'
   get 'slice' => 'slice_tool#index'

@@ -1,0 +1,26 @@
+<% sliceClass = active == 1 ? "profile-sidebar-item-active" : "profile-sidebar-item" %>
+<% templatesClass = active == 2 ? "profile-sidebar-item-active" : "profile-sidebar-item" %>
+<% accountClass = active == 4 ? "profile-sidebar-item-active" : "profile-sidebar-item"  %>
+<% profileClass = active == 3 ? "profile-sidebar-item-active" : "profile-sidebar-item" %>
+<div class="profile-sidebar">
+  <div class=<%= sliceClass %>>
+    <%= link_to 'slice' do %>
+      <%= image_tag('profile-code.png') %>
+    <% end %>
+  </div>
+  <div class=<%= templatesClass %>>
+    <%= link_to 'templates' do %>
+      <%= image_tag('profile-list.png') %>
+    <% end %>
+  </div>
+  <div class=<%= profileClass %>>
+    <%= link_to 'profile' do %>
+      <%= image_tag('profile-user.png') %>
+    <% end %>
+  </div>
+  <div class=<%= accountClass %>>
+    <%= link_to 'accounts' do %>
+      <%= image_tag('profile-gear.png') %>
+    <% end %>
+  </div>
+</div>

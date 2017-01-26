@@ -3,7 +3,7 @@
   @include align-items(center);
   @include flex-direction(column);
   width: 100%;
-  background-color: white;
+  background-color: $lightest-gray;
   padding: 100px 0;
   height: 100vh;
 }
@@ -25,6 +25,7 @@
   width: 22%;
   @include display(flex);
   @include flex-direction(column);
+  background-color: white;
   margin: 0 25px;
   padding: 25px 0;
   position: relative;

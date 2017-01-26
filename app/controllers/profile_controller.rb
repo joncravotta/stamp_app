@@ -1,7 +1,8 @@
 class ProfileController < ApplicationController
   def index
     @profile = User.find(current_user)
-    @sub_type = sub_type(@profile.subscription_type)
+    @account = Account.find(@profile.account_id)
+    @sub_type = sub_type(@account.stripe_sub_type)
   end
 
   private

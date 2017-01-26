@@ -10,12 +10,14 @@ Rails.application.routes.draw do
   post '/build/new' => 'build#new'
   resources :templates
   resources :charges
+  resources :accounts, only: [:new, :create, :index]
   get 'profile' => 'profile#index'
   get 'slice/:id' => 'slice#continue'
   get 'slice' => 'slice_tool#index'
   post 'slice/new' => 'slice_tool#new'
   post 'webhook/stripe' => 'webhook#stripe'
   get 'webhook/test' => 'webhook#test_stripe_event'
+  get 'account/name' => 'account#account_name'
 
 
   # Example of regular route:

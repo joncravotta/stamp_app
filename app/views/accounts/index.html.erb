@@ -1,0 +1,31 @@
+<div class="profile-container">
+  <%= render :partial => "partials/side_nav", :locals => {:active => 4} %>
+  <div class="profile-content">
+    <div class="profile-content-header">
+      <div class="profile-content-header-title">Account</div>
+      <div class="profile-content-header-underline"></div>
+    </div>
+
+    <div class="profile-content-button-row">
+      <%= link_to new_user_invitation_path do %>
+      <div class="rounded-primary-button">
+        Invite
+      </div>
+      <% end %>
+    </div>
+
+    <div class="profile-table">
+      <% @users.each do |user| %>
+        <%= link_to templates_path, class: "template-card" do %>
+          <div class="template-row">
+            <div class="template-name"><%= user.email %></div>
+          </div>
+          <div class="template-row template-small-label"><%= user.admin ? "Admin": "Not Admin" %></div>
+          <div class="template-row template-small-label-gray">Joined: <%= user.created_at.strftime("%m/%d/%Y") %></div>
+          <div class="template-row template-small-label">Make Admin</div>
+          <div class="template-row template-small-label">Remove User</div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

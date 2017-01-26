@@ -1,0 +1,22 @@
+.account-name-container {
+  @include display(flex);
+  @include justify-content(center);
+  @include align-items(center);
+  @include flex-direction(column);
+  width: 100%;
+  height: 100vh;
+  background-color: $lightest-gray;
+}
+
+.account-name-title {
+  @include primary-font(50px);
+  font-weight: lighter;
+  margin-bottom: 10px;
+}
+
+.account-name-subtitle {
+  @include primary-font(30px);
+  font-weight: lighter;
+  margin-bottom: 50px;
+  text-align: center;
+}

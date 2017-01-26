@@ -1,24 +1,5 @@
 <div class="profile-container">
-  <div class="profile-sidebar">
-    <div class="profile-sidebar-item-active">
-      <%= link_to 'slice' do %>
-        <%= image_tag('profile-code.png') %>
-      <% end %>
-    </div>
-    <div class="profile-sidebar-item">
-      <%= link_to 'templates' do %>
-        <%= image_tag('profile-list.png') %>
-      <% end %>
-    </div>
-    <div class="profile-sidebar-item">
-      <%= link_to 'profile' do %>
-        <%= image_tag('profile-user.png') %>
-      <% end %>
-    </div>
-    <div class="profile-sidebar-item">
-      <%= image_tag('profile-gear.png') %>
-    </div>
-  </div>
+  <%= render :partial => "partials/side_nav", :locals => {:active => 1} %>
   <% if @continued %>
     <div class="width-100">
       <%= react_component('SliceToolManager',

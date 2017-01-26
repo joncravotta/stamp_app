@@ -1,31 +1,12 @@
 <div class="profile-container">
-  <div class="profile-sidebar">
-    <div class="profile-sidebar-item">
-      <%= link_to 'slice' do %>
-        <%= image_tag('profile-code.png') %>
-      <% end %>
-    </div>
-    <div class="profile-sidebar-item">
-      <%= link_to 'templates' do %>
-        <%= image_tag('profile-list.png') %>
-      <% end %>
-    </div>
-    <div class="profile-sidebar-item-active">
-      <%= link_to 'profile' do %>
-        <%= image_tag('profile-user.png') %>
-      <% end %>
-    </div>
-    <div class="profile-sidebar-item">
-      <%= image_tag('profile-gear.png') %>
-    </div>
-  </div>
+  <%= render :partial => "partials/side_nav", :locals => {:active => 3} %>
   <div class="profile-content">
   <div class="profile-top-dashboard-container">
     <div class="profile-top-dashboard-item">
       <div class="profile-top-dashboard-item-group">
           <i class="fa fa-file-text-o  fa-lg" aria-hidden="true"></i>
           <span class="profile-dashboard-item-title">Emails left:</span>
-          <% if @profile.email_code_count == -399 %>
+          <% if @account.email_count == -399 %>
             <span class="profile-dashboard-item-count">Unlimited</span>
           <% else %>
             <span class="profile-dashboard-item-count"><%= @profile.email_code_count %></span>
@@ -37,7 +18,7 @@
         <i class="fa fa-calendar fa-lg" aria-hidden="true"></i>
         <span class="profile-dashboard-item-title">Next Bill</span>
         <span class="profile-dashboard-item-count">
-        <% time = Time.at(@profile.stripe_current_period_end) %>
+        <% time = Time.at(@account.stripe_current_period_end) %>
         <%= time.strftime("%m/%d/%Y")  %></span>
       </div>
     </div>

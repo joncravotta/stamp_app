@@ -11,24 +11,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170115053506) do
+ActiveRecord::Schema.define(version: 20170122220640) do
 
-  create_table "email_logs", force: :cascade do |t|
-    t.integer  "user_id"
-    t.string   "user_email"
-    t.string   "email_type"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table "accounts", force: :cascade do |t|
+    t.string   "created_by"
+    t.integer  "seat_count"
+    t.integer  "email_count"
+    t.string   "company_name"
+    t.string   "company_name_digital"
+    t.string   "stripe_plan_id"
+    t.integer  "stripe_current_period_start"
+    t.integer  "stripe_current_period_end"
+    t.integer  "stripe_canceled_at"
+    t.string   "stripe_sub_type"
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
+# Could not dump table "slices" because of following NoMethodError
+#   undefined method `[]' for nil:NilClass
+
   create_table "templates", force: :cascade do |t|
-    t.string   "html"
+    t.string   "html",        default: ""
     t.integer  "user_id"
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.string   "name"
     t.boolean  "completed",   default: false
-    t.string   "images",      default: "--- []\n"
     t.string   "email_width", default: ""
   end
 
@@ -60,6 +69,8 @@ ActiveRecord::Schema.define(version: 20170115053506) do
     t.string   "email_width",                 default: "600"
     t.boolean  "header_active",               default: false
     t.boolean  "footer_active",               default: false
+    t.boolean  "admin",                       default: false
+    t.integer  "account_id"
     t.string   "stripe_customer_id"
     t.integer  "stripe_current_period_start"
     t.integer  "stripe_current_period_end"
@@ -70,10 +81,21 @@ ActiveRecord::Schema.define(version: 20170115053506) do
     t.string   "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
+    t.string   "invitation_token"
+    t.datetime "invitation_created_at"
+    t.datetime "invitation_sent_at"
+    t.datetime "invitation_accepted_at"
+    t.integer  "invitation_limit"
+    t.integer  "invited_by_id"
+    t.string   "invited_by_type"
+    t.integer  "invitations_count",           default: 0
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
   add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["invitation_token"], name: "index_users_on_invitation_token", unique: true
+  add_index "users", ["invitations_count"], name: "index_users_on_invitations_count"
+  add_index "users", ["invited_by_id"], name: "index_users_on_invited_by_id"
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
 end

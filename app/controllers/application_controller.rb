@@ -40,33 +40,37 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def email_count(plan_type)
-    case plan_type
-    when 'SUB_199'
-      100
-    when 'SUB_299'
-      225
-    when 'SUB_399'
-      400
-    end
-  end
-
-  def seat_count(plan_type)
-    case plan_type
-    when 'SUB_199'
-      1
-    when 'SUB_299'
-      3
-    when 'SUB_399'
-      5
-    end
-  end
-
   def company_name_stipper(name)
     name.gsub(/\s+/, "_")
   end
 
   private
+
+  def email_count(sub_type)
+    case sub_type
+    when "birdy"
+      Pricing.new(Pricing::BIRDY).get_email_count
+    when "flock"
+      Pricing.new(Pricing::FLOCK).get_email_count
+    when "nest"
+      Pricing.new(Pricing::NEST).get_email_count
+    else
+      #TODO bubble up an error
+    end
+  end
+
+  def seat_count(sub_type)
+    case sub_type
+    when "birdy"
+      Pricing.new(Pricing::BIRDY).get_seat_count
+    when "flock"
+      Pricing.new(Pricing::FLOCK).get_seat_count
+    when "nest"
+      Pricing.new(Pricing::NEST).get_seat_count
+    else
+      #TODO bubble up an error
+    end
+  end
 
   def add_user_to_account
     @user = current_user

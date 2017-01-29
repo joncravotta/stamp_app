@@ -26,4 +26,9 @@ class PricingTest < MiniTest::Unit::TestCase
     assert_equal 500, @nest.get_email_count
   end
 
+  def teat_sub_id
+    assert_equal "", @birdy.get_sub_id
+    assert_equal "", @flock.get_sub_id
+    assert_equal "", @nest.get_sub_id
+  end
 end

@@ -15,3 +15,15 @@
   @include primary-font(22px);
   color: $darkest-gray;
 }
+
+.title-dark {
+  @include primary-font(24px);
+  font-weight: 300;
+  color: $darkest-gray;
+}
+
+.body-dark {
+  font-size: 14px;
+  color: $dark-gray;
+  font-weight: 100;
+}

@@ -46,6 +46,9 @@ gem 'rails_real_favicon'
 # devise add on for inviting users to app
 gem 'devise_invitable', '~> 1.7.0'
 
+gem 'font-awesome-sass', '~> 4.7.0'
+
+
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

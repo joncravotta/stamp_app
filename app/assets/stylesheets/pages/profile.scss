@@ -42,15 +42,24 @@
   @include display(flex);
   @include justify-content(center);
   width: 100%;
-  color: $white;
+  color: $light-gray;
   padding: 15px 0;
   cursor: pointer;
   font-size: 17px;
   border-left: 3px solid white;
   padding-right: 3px;
+
+  i {
+    color: $dark-gray;
+  }
+
   &:hover {
     border-left: 3px solid $primary;
     color: $white;
+
+    i {
+      color: $primary;
+    }
 
     a {
       color: $white;
@@ -68,6 +77,10 @@
 .profile-sidebar-item-active {
   @extend .profile-sidebar-item;
   border-left: 3px solid $primary;
+
+  i {
+    color: $primary;
+  }
 }
 
 .profile-content {
@@ -271,6 +284,10 @@
   @include align-items(center);
   color: $accent;
   font-size: 15px;
+
+  i {
+    padding-left: 2px;
+  }
 }
 
 .status-cell-circle {

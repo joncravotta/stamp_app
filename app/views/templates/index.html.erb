@@ -22,7 +22,7 @@
             <%= link_to template_path(template), class: "template-card" do %>
               <div class="template-row">
                 <div class="template-name"><%= template.name %></div>
-                <span class="status-cell"><div class="status-cell-circle"></div>Completed</span>
+                <span class="status-cell">Completed<i class="fa fa-check-circle fa-1x" aria-hidden="true"></i></span>
               </div>
               <div class="template-row template-small-label">Promotion</div>
               <div class="template-row template-small-label-gray">Created: <%= template.created_at.strftime("%m/%d/%Y") %></div>
@@ -31,7 +31,7 @@
             <%= link_to slice_path(template, id:template.id), class: "template-card" do %>
               <div class="template-row">
                 <div class="template-name"><%= template.name %></div>
-                <span class="status-cell-incomplete"><div class="status-cell-circle"></div>Incomplete</span>
+                <span class="status-cell-incomplete">Incomplete<i class="fa fa-exclamation-circle" aria-hidden="true"></i></span>
               </div>
               <div class="template-row template-small-label">Promotion</div>
               <div class="template-row template-small-label-gray">Created: <%= template.created_at.strftime("%m/%d/%Y") %></div>

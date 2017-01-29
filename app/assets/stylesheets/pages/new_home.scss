@@ -1,6 +1,21 @@
 .new_home-container {
   width: 100%;
 }
+
+.new_home-nav-button-container {
+  position: fixed;
+  z-index: 1979;
+  right: 0;
+  @include display(flex);
+  @include justify-content(space-between);
+  padding: 20px;
+}
+
+.nav_home-button-rounded-border {
+  @extend .rounded-border-button;
+  margin-left: 20px;
+}
+
 .new_landing-container {
   width: 100%;
   height: 100vh;

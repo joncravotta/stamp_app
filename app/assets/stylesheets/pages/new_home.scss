@@ -1,6 +1,21 @@
 .new_home-container {
   width: 100%;
 }
+
+.new_home-nav-button-container {
+  position: fixed;
+  z-index: 1979;
+  right: 0;
+  @include display(flex);
+  @include justify-content(space-between);
+  padding: 20px;
+}
+
+.nav_home-button-rounded-border {
+  @extend .rounded-border-button;
+  margin-left: 20px;
+}
+
 .new_landing-container {
   width: 100%;
   height: 100vh;
@@ -68,8 +83,7 @@
 }
 
 .new_landing-first-section-cta-body {
-  @include primary-font(18px);
-  font-weight: lighter;
+  @extend .body-dark;
   padding: 20px 0;
 }
 
@@ -147,7 +161,8 @@
   height: 40px;
   width: 40px;
   border-radius: 20px;
-  background-color: #fff353;
+  background-color: $primary;
+  color: white;
   position: absolute;
   top: -20px;
   left: -20px;
@@ -193,9 +208,8 @@
 }
 
 .new-landing-review-card-bottom-title {
-  @include primary-font(18px);
-  color: $darkest-gray;
-  padding-bottom: 10px;
+  @extend .title-dark;
+  padding-bottom: 20px;
 }
 
 .new-landing-review-card-bottom-line {
@@ -205,8 +219,7 @@
 }
 
 .new-landing-review-card-bottom-body {
-  @include primary-font(18px);
-  font-weight: lighter;
+  @extend .body-dark;
   padding: 20px;
 }
 

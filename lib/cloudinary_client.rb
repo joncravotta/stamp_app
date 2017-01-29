@@ -1,7 +1,8 @@
 require 'cloudinary'
 
 class CloudinaryClient
-  def initialize
+  def initialize(company_name)
+    @company_name = company_name
     @api_name = 'dunnw3dw2'
     @api_key = '533599645552823'
     @api_secret = 'BxY7uft7-3mNAiCQuAXma-MacZA'
@@ -11,7 +12,8 @@ class CloudinaryClient
     {
       cloud_name: @api_name,
       api_key:    @api_key,
-      api_secret: @api_secret
+      api_secret: @api_secret,
+      folder: "#{@company_name}/"
     }
   end
 

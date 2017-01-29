@@ -8,6 +8,8 @@ class SliceService
     @email_width = data["imageWidth"]
     @email_name = data["emailName"]
     @user_id = data["userId"]
+    @user = User.find(@user_id)
+    @account = Account.find(@user.account_id)
     @slice_data = data
     @hash = {}
     format_data
@@ -19,8 +21,9 @@ class SliceService
   end
 
   def slice(formatted_data)
-    slices = Slice.new(@image, formatted_data)
-    #TODO lower email count here!
+    slices = Slice.new(@image, formatted_data, @account.company_name_digital)
+    @account.email_count = @account.email_count - 1
+    @account.save
     create_template_in_db(slices.cropped_urls)
   end
 

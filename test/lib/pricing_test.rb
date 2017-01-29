@@ -26,9 +26,17 @@ class PricingTest < MiniTest::Unit::TestCase
     assert_equal 500, @nest.get_email_count
   end
 
-  def teat_sub_id
+  def test_sub_id
     assert_equal "", @birdy.get_sub_id
     assert_equal "", @flock.get_sub_id
     assert_equal "", @nest.get_sub_id
+  end
+
+  def test_get_all_details
+    birdy_details = @birdy.get_all_details
+    assert_equal 228, birdy_details[:price]
+    assert_equal 1, birdy_details[:seat_count]
+    assert_equal 100, birdy_details[:email_count]
+    assert_equal "", birdy_details[:sub_id]
   end
 end

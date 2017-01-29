@@ -3,8 +3,33 @@ class Pricing
   FLOCK=2
   NEST=3
 
+  ALL_PLANS=[BIRDY, FLOCK, NEST]
+
   def initialize(pricing_type)
     @pricing_type = pricing_type
+  end
+
+  def get_all_details
+    {
+      price: get_price,
+      seat_count: get_seat_count,
+      email_count: get_email_count,
+      sub_id: get_sub_id,
+      name: get_name
+    }
+  end
+
+  def get_name
+    case @pricing_type
+    when 1
+      "birdy"
+    when 2
+      "flock"
+    when 3
+      "nest"
+    else
+      ""
+    end
   end
 
   def get_price

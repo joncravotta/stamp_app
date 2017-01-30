@@ -6,7 +6,16 @@ class Pricing
   ALL_PLANS=[BIRDY, FLOCK, NEST]
 
   def initialize(pricing_type)
-    @pricing_type = pricing_type
+    case pricing_type
+    when "birdy"
+      @pricing_type = BIRDY
+    when "flock"
+      @pricing_type = FLOCK
+    when "nest"
+      @pricing_type = NEST
+    else
+      @pricing_type = nil
+    end
   end
 
   def get_all_details

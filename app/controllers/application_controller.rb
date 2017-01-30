@@ -47,29 +47,11 @@ class ApplicationController < ActionController::Base
   private
 
   def email_count(sub_type)
-    case sub_type
-    when "birdy"
-      Pricing.new(Pricing::BIRDY).get_email_count
-    when "flock"
-      Pricing.new(Pricing::FLOCK).get_email_count
-    when "nest"
-      Pricing.new(Pricing::NEST).get_email_count
-    else
-      #TODO bubble up an error
-    end
+    Pricing.new(sub_type).get_email_count
   end
 
   def seat_count(sub_type)
-    case sub_type
-    when "birdy"
-      Pricing.new(Pricing::BIRDY).get_seat_count
-    when "flock"
-      Pricing.new(Pricing::FLOCK).get_seat_count
-    when "nest"
-      Pricing.new(Pricing::NEST).get_seat_count
-    else
-      #TODO bubble up an error
-    end
+    Pricing.new(sub_type).get_seat_count
   end
 
   def add_user_to_account

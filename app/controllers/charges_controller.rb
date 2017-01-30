@@ -4,14 +4,13 @@ def new
 end
 
 def create
+  byebug
   parameters = sub_params
 
   customer = Stripe::Customer.create(
     :email => parameters[:stripeEmail],
-    :source  => parameters[:stripeToken],
-    :plan => parameters[:stripePlanType]
+    :source  => parameters[:stripeToken]
   )
-
 
   charge = Stripe::Subscription.create(
     :customer => customer.id,
@@ -42,7 +41,7 @@ def create
     @user.paid = true
     @user.account_id = @account.id
     @user.save
-    redirect_to slice_tool_path
+    redirect_to slice_path
   else
     flash[:error] = 'Must be logged in'
     redirect_to root_path

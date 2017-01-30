@@ -4,8 +4,8 @@ require 'stripe'
 class WebhookController < ApplicationController
   protect_from_forgery :except => :stripe
 
-  CHARGE_FAILED = 'charge.failed'
-  CHARGE_SUCCEEDED = 'charge.succeeded'
+  #CHARGE_FAILED = 'charge.failed'
+  #CHARGE_SUCCEEDED = 'charge.succeeded'
   INVOICE_SUCCEEDED = 'invoice.payment_succeeded'
   INVOICE_FAILED = 'invoice.payment_failed'
   CUSTOMER_SUBSCRIPTION_UPDATED = 'customer.subscription.updated'
@@ -26,11 +26,11 @@ class WebhookController < ApplicationController
 
     case event.type
     when INVOICE_FAILED
-      update_user_to_inactive(event)
+      update_customer_inactive(data)
     when INVOICE_SUCCEEDED
-      update_user_to_active(event)
+      update_customer_active(event)
     when CUSTOMER_SUBSCRIPTION_UPDATED
-      update_sub_period
+      update_customer_subscription(event)
     end
   end
 

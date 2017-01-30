@@ -3,9 +3,9 @@ require_relative '../../lib/pricing.rb'
 
 class PricingTest < MiniTest::Unit::TestCase
   def setup
-    @birdy = Pricing.new(Pricing::BIRDY)
-    @flock = Pricing.new(Pricing::FLOCK)
-    @nest  = Pricing.new(Pricing::NEST)
+    @birdy = Pricing.new("birdy")
+    @flock = Pricing.new("flock")
+    @nest  = Pricing.new("nest")
   end
 
   def test_plan_price

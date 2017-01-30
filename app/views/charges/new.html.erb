@@ -53,10 +53,10 @@ var handler = StripeCheckout.configure({
 });
 document.getElementById('birdyButton').addEventListener('click', function(e) {
   var birdyPlan = {
-    desc:"215 Email",
-    amount:19900,
+    desc:"100 Emails",
+    amount:22800,
     planName:"Birdy Plan",
-    id:'SUB_199'
+    id:'birdy'
   };
 
   openStripeModal(birdyPlan);
@@ -65,10 +65,10 @@ document.getElementById('birdyButton').addEventListener('click', function(e) {
 
 document.getElementById('flockButton').addEventListener('click', function(e) {
   var flockPlan = {
-    desc:"365 Emails",
-    amount:29900,
+    desc:"250 Emails",
+    amount:34800,
     planName:"Flock Plan",
-    id: 'SUB_299'
+    id: 'flock'
   }
   openStripeModal(flockPlan);
   e.preventDefault();
@@ -79,9 +79,9 @@ document.getElementById('nestButton').addEventListener('click', function(e) {
 
   var nestPlan = {
     desc:"500 Emails",
-    amount:39900,
+    amount:46800,
     planName:"Nest Plan",
-    id: 'SUB_399'
+    id: 'nest'
   }
 
   openStripeModal(nestPlan);

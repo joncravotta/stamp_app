@@ -40,30 +40,37 @@ class WebhookController < ApplicationController
 
   private
 
+  # we get this when we know a customer has paid
   def update_customer_active(event)
     # serach by stripe customer id
     object = event.data.object
     @user = User.find(object.customer)
-    if @user
-      @user.subscription_status = "authorized"
-      @user.stripe_plan_id = object.subscription #"sub_9lnD5e3zjbOmex"?
-      @user.save
+    @account = Account.find(@user.account_id)
+
+    if @account
+      @account.subscription_status = "authorized"
+      @account.stripe_sub_type = object.subscription #"sub_9lnD5e3zjbOmex"?
+      @account.save
     end
   end
 
-  # only used when a customer changes plan
+  # used when a customer changes plan
   def update_customer_subscription(event)
     object = event.data.object
     @user = User.find(object.customer)
-    if @user
-      @user.subscription_status = "authorized"
-      @user.stripe_plan_id = object.plan.id
-      @user.current_period_start = object.current_period_start
-      @user.current_period_end = object.current_period_end
-      @user.email_code_count = email_count(object.plan.id)
+    @account = Account.find(@user.account_id)
+
+    if @account
+      @account.subscription_status = "authorized"
+      #TODO figure out how to update seat count and email count logic
+      @account.stripe_sub_type = object.plan.id
+      @account.stripe_current_period_start = object.current_period_start
+      @account.stripe_current_period_end = object.current_period_end
+      @account.email_count = email_count(object.plan.id)
     end
   end
 
+  # TODO need to look into this more
   def update_customer_inactive(data)
     # serach by stripe customer id
     @user = User.find(data['data']['object']['customer'])

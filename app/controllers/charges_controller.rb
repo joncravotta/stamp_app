@@ -4,7 +4,6 @@ def new
 end
 
 def create
-  byebug
   parameters = sub_params
 
   customer = Stripe::Customer.create(

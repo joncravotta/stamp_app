@@ -30,7 +30,7 @@ def create
     stripe_plan_id: customer.id,
     stripe_current_period_start: charge.current_period_start,
     stripe_current_period_end: charge.current_period_end,
-    stripe_sub_type: charge.plan.id
+    stripe_sub_type: charge.plan.id,
   )
 
   @account.save

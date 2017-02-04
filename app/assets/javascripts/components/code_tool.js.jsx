@@ -166,7 +166,7 @@ var CodeTool = React.createClass({
 
   renderLoadingIcon: function() {
     return (
-      <LoadingScreenOverlay/>
+      <LoadingScreenOverlay loadingCta="Our pigeons are coding your email"/>
     );
   },
 

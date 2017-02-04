@@ -180,7 +180,7 @@ var SliceTool = React.createClass({
     }
 
     if (this.state.makingRequest == true) {
-      showLoadingOverlay = <LoadingScreenOverlay/>;
+      showLoadingOverlay = <LoadingScreenOverlay loadingCta="Our pigeons are slicing and dicing your email"/>;
     } else {
       showLoadingOverlay = '';
     }

@@ -1,62 +1,134 @@
 .loading-overlay-container {
+  @include display(flex);
+  //@include align-items(center);
+  @include justify-content(center);
+  @include flex-direction(column);
   width: 100%;
   height: 100%;
   position: fixed;
   top: 0;
   left: 0;
   z-index: 19;
-}
-.loading-overlay-blur {
-  @include display(flex);
-  @include align-items(center);
-  @include justify-content(center);
-  position: fixed;
-  width: 100%;
-  height: 100vh;
-  background-color: white;
-  z-index: 20;
-  opacity: 0.9;
+  //background-color: #f2ffe8;
+  background-color: $lightest-gray;
+  text-align: center;
+
 }
 
-.loading-overlay {
-  @include display(flex);
-  @include align-items(center);
-  @include justify-content(center);
-  position: fixed;
-  width: 100%;
-  height: 100vh;
-  z-index: 21;
+.loading-overlay-cta {
+  @include primary-font(35px);
+  font-weight: 100;
+  color: $darkest-gray;
+  margin-top: -200px;
+}
+// Loading
+
+@-webkit-keyframes flap-r {
+  0%,10%   { 	border-top-width: 60px; }
+  40%,60%  { 	border-top-width: 10px; }
+  100%     { 	border-top-width: 60px; }
 }
 
-.sk-three-bounce {
-  margin: 40px auto;
-  width: 80px;
-  text-align: center; }
-  .sk-three-bounce .sk-child {
-    width: 20px;
-    height: 20px;
-    background-color: $darkest-gray;
-    border-radius: 100%;
-    display: inline-block;
-    -webkit-animation: sk-three-bounce 1.4s ease-in-out 0s infinite both;
-            animation: sk-three-bounce 1.4s ease-in-out 0s infinite both; }
-  .sk-three-bounce .sk-bounce1 {
-    -webkit-animation-delay: -0.32s;
-            animation-delay: -0.32s; }
-  .sk-three-bounce .sk-bounce2 {
-    -webkit-animation-delay: -0.16s;
-            animation-delay: -0.16s; }
-@-webkit-keyframes sk-three-bounce {
-  0%, 80%, 100% {
-    -webkit-transform: scale(0);
-            transform: scale(0); }
-  40% {
-    -webkit-transform: scale(1);
-            transform: scale(1); } }
-@keyframes sk-three-bounce {
-  0%, 80%, 100% {
-    -webkit-transform: scale(0);
-            transform: scale(0); }
-  40% {
-    -webkit-transform: scale(1);
-            transform: scale(1); } }
+@-webkit-keyframes flap-l {
+  0%       { 	border-bottom-width: 0px; }
+  40%,60%  { 	border-bottom-width: 40px; }
+  100%     { 	border-bottom-width: 0px; }
+}
+
+@-webkit-keyframes fly {
+  0%   { 	left: 0%; top:100px;-webkit-transform:scale3d(0.5,0.5,1) }
+  100% { 	left: 100%; top:100px; -webkit-transform:scale3d(1,1,1) }
+}
+
+@-webkit-keyframes bob {
+  0%   { 	top: 25px; }
+  50%   { 	top: 0px; }
+  100% { 	top: 25px; }
+}
+
+#pictureframe {
+  position:relative;
+  width:100px;
+  margin-top:50px;
+  -webkit-animation: fly 3.5s infinite linear;
+}
+
+#shadow {
+  position:absolute;
+  width: 0px; height: 0px;
+  top: 140px; left: 00px;
+  border-width: 10px;
+  border-left-width:50px;
+  border-top-width:0px;
+  border-right-width: 40px;
+  border-color: transparent;
+  border-bottom-color: rgba(210,210,210,0.6);
+  border-style:solid;
+  -webkit-filter: blur(5px);
+}
+
+#shadow:after {
+  content: " ";
+  position:absolute;
+  width: 00px; height: 0px;
+  top: 10px; left: -50px;
+  border-width: 10px;
+  border-left-width:50px;
+  border-bottom-width:0px;
+  border-right-width: 40px;
+  border-color: transparent;
+  border-top-color: rgba(210,210,210,0.6);
+  border-style:solid;
+}
+
+#bird div {
+  position:absolute;
+}
+
+#bird {
+  position:absolute;
+  -webkit-animation: bob 0.7s infinite cubic-bezier(0.7, 0.7, 0.1, 0.4);
+ }
+
+
+#body1,#body2,#wing-l,#wing-r {
+  	width: 0px; height: 0px;
+    border-color: transparent;
+    border-style: solid;
+}
+#body1 {
+	border-width: 15px;
+  border-left-width:25px;
+  border-top-width:15px;
+  border-right-width: 55px;
+  border-top-color: $accent;
+}
+
+#body2 {
+  left: 50px; bottom: 0px;
+	border-width: 10px;
+  border-left-width:5px;
+  border-top-width:0px;
+  border-right-width: 15px;
+  border-bottom-color: lighten($primary, 5%);
+}
+
+#wing-l {
+  left: 22px; bottom: 0px;
+	border-width: 60px;
+  border-left-width:20px;
+  border-top-width:0px;
+  border-right-width: 6px;
+  border-bottom-color: darken($primary, 10%);
+  -webkit-animation: flap-l 0.7s infinite;
+}
+
+#wing-r {
+  left: 22px; top:0px;
+	border-width: 60px;
+  border-left-width:20px;
+  border-bottom-width:0px;
+  border-right-width: 6px;
+  border-top-color: lighten($primary, 5%);
+  -webkit-animation: flap-r 0.7s infinite;
+}

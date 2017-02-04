@@ -2,13 +2,15 @@ var LoadingScreenOverlay = React.createClass({
   render: function() {
     return (
       <div className="loading-overlay-container">
-        <div className="loading-overlay-blur"></div>
-        <div className="loading-overlay">
-          <div className="sk-three-bounce">
-            <div className="sk-child sk-bounce1"></div>
-            <div className="sk-child sk-bounce2"></div>
-            <div className="sk-child sk-bounce3"></div>
-          </div>
+          <span className="loading-overlay-cta">{this.props.loadingCta}</span>
+          <div id="pictureframe">
+            <div id="bird">
+              <div id="body2"></div>
+              <div id="body1"></div>
+              <div id="wing-l"></div>
+              <div id="wing-r"></div>
+            </div>
+            <div id="shadow"></div>
         </div>
       </div>
     );

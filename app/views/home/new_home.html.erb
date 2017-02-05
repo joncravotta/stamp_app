@@ -1,11 +1,11 @@
 <div class="new_home-container">
   <div class="new_home-nav-button-container">
-    <div class="rounded-primary-button">
+    <%= link_to new_user_registration_path , class: "rounded-primary-button" do %>
       Sign Up
-    </div>
-    <div class="nav_home-button-rounded-border">
+    <% end %>
+    <%= link_to new_user_session_path, class: "nav_home-button-rounded-border" do %>
       Sign In
-    </div>
+    <% end %>
   </div>
   <div class="new_landing-container">
     <div class="new_landing-body-container">
@@ -69,7 +69,13 @@
       </div>
     </div>
 
-    <div class="new-landing-review-card">
+    <div class="new-landing-review-cta-container">
+      <span class="new-landing-review-cta-title">We make life easy</span>
+      <span class="new-landing-review-cta-body">In omnesque adipisci dissentias eos. Ei dicat apeirian imperdiet sed, sit cibo ocurreret in. Movet clita eirmod eam ea, docendi oportere neglegentur no has. Amet primis indoctum ad duo, mei ei rebum adipisci. In omnesque adipisci dissentias eos. Ei dicat apeirian imperdiet sed, sit cibo ocurreret in. Movet clita eirmod eam ea, docendi oportere neglegentur no has. Amet primis indoctum ad duo, mei ei rebum adipisci.</span>
+      <a class="new_landing-link">Let our pigeons help you</a>
+    </div>
+
+    <!-- <div class="new-landing-review-card">
       <span class="new-landing-review-card-circle"><%= icon('star') %></span>
       <div class="new-landing-review-card-image-2">
 
@@ -91,7 +97,7 @@
         <span class="new-landing-review-card-bottom-line"></span>
         <div class="new-landing-review-card-bottom-body">In omnesque adipisci dissentias eos. Ei dicat apeirian imperdiet sed, sit cibo ocurreret in. Movet clita eirmod eam ea, docendi oportere neglegentur no has. Amet primis indoctum ad duo, mei ei rebum adipisci.</div>
       </div>
-    </div>
+    </div> -->
   </div>
 
   <!-- Pricing -->

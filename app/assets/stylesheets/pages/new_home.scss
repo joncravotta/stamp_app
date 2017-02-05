@@ -140,7 +140,7 @@
   @include display(flex);
   @include justify-content(space-around);
   @include flex-direction(row);
-  padding: 125px 0;
+  padding: 200px 0;
   width: 100%;
 }
 
@@ -150,8 +150,25 @@
   @include flex-direction(column);
   @extend .shadow;
   border-radius: 10px;
-  width: 27%;
+  width: 40%;
   position: relative;
+}
+
+.new-landing-review-cta-container {
+  @include display(flex);
+  @include justify-content(center);
+  @include flex-direction(column);
+  width: 40%;
+}
+
+.new-landing-review-cta-title {
+  @extend .title-dark;
+  font-size: 30px;
+}
+
+.new-landing-review-cta-body {
+  @extend .body-dark;
+  margin: 20px 0;
 }
 
 .new-landing-review-card-circle {
@@ -179,7 +196,7 @@
   background: image-url('review_1.jpg');
   border-radius: 10px 10px 0 0;
   background-size: cover;
-  height: 200px;
+  height: 350px;
   width: 100%;
 }
 

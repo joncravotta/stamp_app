@@ -49,9 +49,7 @@
 
 .new_landing-body-icon {
   padding-top: 50px;
-  img {
-    width: 50px;
-  }
+  //width: 300px;
 }
 
 .new_landing-accent-block {
@@ -100,7 +98,7 @@
   @include flex-direction(column);
   width: 100%;
   padding: 125px 0 0 0;
-  background: linear-gradient(145deg,  $primary 0%, #C96DD8 100%);
+  background: linear-gradient(145deg,  $primary 0%, $accent 100%);
 }
 
 .new_landing-second-section-image {
@@ -247,7 +245,7 @@
   @include justify-content(center);
   width: 100%;
   padding: 125px 0;
-  background: $accent;
+  background: $primary;
 }
 
 #mc_embed_signup {
@@ -325,4 +323,10 @@
   text-decoration: none;
   color: $primary;
   cursor: pointer;
+}
+
+.new_landing-link-white {
+  @extend .new_landing-link;
+  color: white;
+  font-weight: bold;
 }

@@ -234,7 +234,7 @@
   @include flex-wrap(wrap);
   @include justify-content(space-between);
   @include primary-font(20px);
-
+  color: $darkest-gray;
   width: 80%;
 }
 
@@ -248,6 +248,48 @@
   padding: 20px;
   cursor: pointer;
   text-decoration: none;
+}
+
+.template-card-image-links {
+  @extend .template-card;
+  cursor: text;
+
+  ul {
+    font-weight: lighter;
+    font-size: 16px;
+    overflow-x: scroll;
+  }
+
+}
+
+.template-rendered-email {
+  margin-top: 30px;
+}
+
+.template-code-box {
+  @extend .shadow;
+  @include display(flex);
+  @include flex-direction(column);
+  background-color: white;
+  margin-top: 30px;
+  width: 100%;
+  padding: 20px;
+  cursor: text;
+  text-decoration: none;
+  max-height: 250px;
+  overflow-y: scroll;
+}
+
+.template-code-box-title {
+  @include primary-font(22px);
+  color: $darkest-gray;
+}
+
+.template-code-box-content {
+  padding-top: 20px;
+  font-style: monospace;
+  font-size: 12px;
+  font-weight: lighter;
 }
 
 .template-row {

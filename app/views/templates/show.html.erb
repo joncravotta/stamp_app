@@ -1,4 +1,51 @@
-<div class="profile-container-show">
+<div class="profile-container">
+  <%= link_to destroy_user_session_path, :method => :delete do %>
+    <div class="profile-account-user">
+      Jon
+    </div>
+  <% end %>
+  <%= render :partial => "partials/side_nav", :locals => {:active => 2} %>
+  <div class="profile-content">
+    <div class="profile-content-header">
+      <div class="profile-content-header-title"><%= @template.name %></div>
+      <div class="profile-content-header-underline"></div>
+    </div>
+
+    <div class="profile-content-button-row">
+      <div class="rounded-primary-button">
+        Delete Email
+      </div>
+    </div>
+
+    <div class="profile-table">
+      <div class="template-code-box">
+          <span class="template-code-box-title">Code</span>
+          <span class="template-code-box-content"><%= @template.html %></span>
+      </div>
+      <div class="template-card-image-links">
+        Slice Urls
+        <ul>
+          <% @images.each do |image| %>
+            <li><%= image.url %></li>
+          <% end %>
+        </ul>
+      </div>
+      <div class="template-card">
+        <div class="template-row">
+          Details
+        </div>
+        <div class="template-row template-small-label">Created by: <%= @created_by.email %></div>
+        <div class="template-row template-small-label">Created date: <%= @template.created_at %></div>
+
+      </div>
+    </div>
+    <div class="template-rendered-email">
+      <%= @template.html.html_safe %>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="profile-container-show">
   <div class="profile-title">
     Created: <%= @template.created_at.strftime("%m/%d/%Y") %>
   </div>
@@ -6,4 +53,4 @@
     <%= @template.html %>
   </div>
   <%= @template.html.html_safe %>
-</div>
+</div> -->

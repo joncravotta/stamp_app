@@ -16,12 +16,9 @@ def create
     :plan => parameters[:stripePlanType]
   )
 
-  # TODO need to make an account here or earlier, prob should use a react component to get the
-  # team account name
   @user = User.find(current_user.id)
 
   @account = Account.find(@user.account_id)
-
 
   @account.update(
     created_by: @user.email,
@@ -31,6 +28,9 @@ def create
     stripe_current_period_start: charge.current_period_start,
     stripe_current_period_end: charge.current_period_end,
     stripe_sub_type: charge.plan.id,
+    subscription_status: "authorized",
+    is_valid: true
+
   )
 
   @account.save

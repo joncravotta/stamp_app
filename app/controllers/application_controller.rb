@@ -16,10 +16,10 @@ class ApplicationController < ActionController::Base
   end
 
   def require_paid
-    @user = User.find(current_user)
-    if !@user.paid?
-      flash[:danger] = "Your payment has failed, please update your card on file."
-      redirect_to new_account_path
+    @account = Account.find(current_user.account_id)
+    if !@account.is_valid?
+      flash[:alert] = "Your payment has failed, please update your card on file. Otherwise you will not be able to create anymore emails."
+      redirect_to profile_path
     end
   end
 

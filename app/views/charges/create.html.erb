@@ -1,12 +1,6 @@
 <div class="charge-form-container">
-  <div class="charge-card">
-    <div class="charge-card-top">
-      Thanks for your payment! You are now ready to use our pigeons.
-    </div>
-    <div class="charge-card-bottom">
-      <%= link_to slice_path do %>
-        <div class="dark-button">BUILD EMAILS</div>
-      <% end %>
-    </div>
-  </div>
+  <span class="title-dark">Thanks for your payment! You are now ready to use our pigeons.</span>
+  <%= link_to slice_path, class: 'dark-button' do %>
+    BUILD EMAILS
+  <% end %>
 </div>

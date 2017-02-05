@@ -1,13 +1,15 @@
 require 'json'
 require 'stripe'
+require 'byebug'
 
 class WebhookController < ApplicationController
   protect_from_forgery :except => :stripe
 
-  #CHARGE_FAILED = 'charge.failed'
+
   #CHARGE_SUCCEEDED = 'charge.succeeded'
   INVOICE_SUCCEEDED = 'invoice.payment_succeeded'
   INVOICE_FAILED = 'invoice.payment_failed'
+  CHARGE_FAILED = 'charge.failed'
   CUSTOMER_SUBSCRIPTION_UPDATED = 'customer.subscription.updated'
 
   def test_stripe_event
@@ -25,7 +27,7 @@ class WebhookController < ApplicationController
     event = Stripe::Event.retrieve(event_json["id"])
 
     case event.type
-    when INVOICE_FAILED
+    when INVOICE_FAILED || CHARGE_FAILED
       update_customer_inactive(data)
     when INVOICE_SUCCEEDED
       update_customer_active(event)
@@ -42,14 +44,15 @@ class WebhookController < ApplicationController
 
   # we get this when we know a customer has paid
   def update_customer_active(event)
-    # serach by stripe customer id
     object = event.data.object
-    @user = User.find(object.customer)
-    @account = Account.find(@user.account_id)
+    @account = Account.find(stripe_plan_id: object.customer)
 
     if @account
+      @account.stripe_current_period_start = object.current_period_start,
+      @acount.stripe_current_period_end = object.current_period_end,
       @account.subscription_status = "authorized"
       @account.stripe_sub_type = object.subscription #"sub_9lnD5e3zjbOmex"?
+      @account.is_valid
       @account.save
     end
   end
@@ -57,8 +60,7 @@ class WebhookController < ApplicationController
   # used when a customer changes plan
   def update_customer_subscription(event)
     object = event.data.object
-    @user = User.find(object.customer)
-    @account = Account.find(@user.account_id)
+    @account = Account.find(stripe_plan_id: object.customer)
 
     if @account
       @account.subscription_status = "authorized"
@@ -67,15 +69,18 @@ class WebhookController < ApplicationController
       @account.stripe_current_period_start = object.current_period_start
       @account.stripe_current_period_end = object.current_period_end
       @account.email_count = email_count(object.plan.id)
+      @account.is_valid = true
     end
   end
 
-  # TODO need to look into this more
-  def update_customer_inactive(data)
-    # serach by stripe customer id
-    @user = User.find(data['data']['object']['customer'])
-    if @user
-      @user.subscription_status = "unauthorized"
+  def update_customer_inactive(event)
+    object = event.data.object
+    @account = Account.find(stripe_plan_id: object.customer)
+    if @account
+      @account.subscription_status = "invoice_failed"
+      @account.is_valid = false
+      # TODO send email to notify team
+
     end
   end
 end

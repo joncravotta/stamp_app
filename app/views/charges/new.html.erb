@@ -1,4 +1,15 @@
 <div class="charge-form-container">
+  <%= form_tag charges_path, id: 'chargeForm' do %>
+    <% if flash[:error].present? %>
+      <div class="notifications">
+        <span class="close-notification-button">✕</span>
+        <span class="alert"><%= flash[:error] %></span>
+      </div>
+    <% end %>
+    <%= hidden_field_tag 'stripeToken' %>
+    <%= hidden_field_tag 'stripeEmail' %>
+    <%= hidden_field_tag 'stripePlanType' %>
+  <% end %>
   <div class="charge-form-title">
     Pick your plan
   </div>
@@ -22,15 +33,6 @@
       <div class="charge-button">$299/year</div>
     </div>
   </div>
-  <%= form_tag charges_path, id: 'chargeForm' do %>
-    <% if flash[:error].present? %>
-      <%= flash[:error] %></p>
-    <% end %>
-    <%= hidden_field_tag 'stripeToken' %>
-    <%= hidden_field_tag 'stripeEmail' %>
-    <%= hidden_field_tag 'stripePlanType' %>
-  <% end %>
-
 </div>
 
 <script src="https://checkout.stripe.com/checkout.js"></script>

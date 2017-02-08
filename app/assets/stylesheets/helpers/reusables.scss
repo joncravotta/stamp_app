@@ -69,15 +69,28 @@
 .button {
   font-family: 'Helvetica Neue';
   font-weight: normal;
-  letter-spacing: 2px;
+  //letter-spacing: 1px;
   padding: 14px 95px;
   font-size: 18px;
   cursor: pointer;
   border: none;
 }
+
 .dark-button {
   @extend .button;
   background-color: $darkest-gray;
+  color: white;
+}
+
+.danger-button {
+  @extend .button;
+  background-color: $error;
+  color: white;
+}
+
+.primary-button {
+  @extend .button;
+  background-color: $primary;
   color: white;
 }
 

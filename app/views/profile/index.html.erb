@@ -6,11 +6,7 @@
       <div class="profile-top-dashboard-item-group">
           <i class="fa fa-file-text-o  fa-lg" aria-hidden="true"></i>
           <span class="profile-dashboard-item-title">Emails left:</span>
-          <% if @account.email_count == -399 %>
-            <span class="profile-dashboard-item-count">Unlimited</span>
-          <% else %>
-            <span class="profile-dashboard-item-count"><%= @profile.email_code_count %></span>
-          <% end %>
+            <span class="profile-dashboard-item-count"><%= @account.email_count %></span>
         </div>
       </div>
     <div class="profile-top-dashboard-item">
@@ -27,7 +23,16 @@
         <i class="fa fa-tags fa-lg" aria-hidden="true"></i>
         <span class="profile-dashboard-item-title">Subscription type</span>
         <span class="profile-dashboard-item-count">
-        <%= @sub_type %> emails
+        <%= @account.stripe_sub_type %>
+        </span>
+      </div>
+    </div>
+    <div class="profile-top-dashboard-item">
+      <div class="profile-top-dashboard-item-group">
+        <i class="fa fa-users fa-lg" aria-hidden="true"></i>
+        <span class="profile-dashboard-item-title">Seats left</span>
+        <span class="profile-dashboard-item-count">
+        <%= @account.seat_count %>
         </span>
       </div>
     </div>
@@ -39,19 +44,32 @@
     <span class="profile-dashboard-card-desc">
       If you cancel your membership you will have acces to pigeon post until your next bill date.
     </span>
-    <div class="accent-button margin-top-50px">
+    <div class="profile-button-width primary-button margin-top-50px">
       Upgrade
     </div>
   </div>
+
   <div class="profile-dashboard-card">
     <span class="profile-dashboard-card-title">
-      Cancel Membership
+      Update Card Info
     </span>
     <span class="profile-dashboard-card-desc">
       If you cancel your membership you will have acces to pigeon post until your next bill date.
     </span>
-    <div class="alert-button margin-top-50px">
-      CANCEL
+    <div class="profile-button-width dark-button margin-top-50px">
+      Update
+    </div>
+  </div>
+
+  <div class="profile-dashboard-card">
+    <span class="profile-dashboard-card-title">
+      Cancel Subscription
+    </span>
+    <span class="profile-dashboard-card-desc">
+      If you cancel your membership you will have acces to pigeon post until your next bill date.
+    </span>
+    <div class="profile-button-width danger-button margin-top-50px">
+      Cancel
     </div>
   </div>
   </div>

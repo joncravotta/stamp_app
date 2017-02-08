@@ -141,7 +141,8 @@
   width: 90%;
   background-color: $white;
   height: 200px;
-  margin-top: 25px;
+  margin: 25px 0;
+  @extend .shadow;
 }
 
 .profile-top-dashboard-item {
@@ -171,10 +172,14 @@
 }
 
 .profile-dashboard-card {
+  @include display(flex);
+  @include align-items(center);
+  @include flex-direction(column);
+  @extend .shadow;
   width: 70%;
   height: 150px;
   background-color: $white;
-  margin: 25px auto 0 auto;
+  margin-bottom: 25px;
   padding: 75px 25px;
   text-align: center;
 }
@@ -225,6 +230,10 @@
   //float: right;
   display: inline;
   float: right;
+}
+
+.profile-button-width {
+  width: 250px;
 }
 
 // Template cards

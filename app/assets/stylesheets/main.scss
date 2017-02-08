@@ -21,10 +21,6 @@
    width: 100%;
  }
 
-.primary-button {
-   @include primary-button;
-}
-
 .circle-add-button {
    @include display(flex);
    @include align-items(center);

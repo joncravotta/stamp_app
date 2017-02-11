@@ -28,9 +28,7 @@ def create
     stripe_current_period_start: charge.current_period_start,
     stripe_current_period_end: charge.current_period_end,
     stripe_sub_type: charge.plan.id,
-    subscription_status: "authorized",
     is_valid: true
-
   )
 
   @account.save

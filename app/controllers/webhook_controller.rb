@@ -33,6 +33,8 @@ class WebhookController < ApplicationController
       update_customer_active(event)
     when CUSTOMER_SUBSCRIPTION_UPDATED
       update_customer_subscription(event)
+    else
+      puts "LOG: event sent but not used - #{event.type}"
     end
   end
 
@@ -45,40 +47,44 @@ class WebhookController < ApplicationController
   # we get this when we know a customer has paid
   def update_customer_active(event)
     object = event.data.object
-    @account = Account.find(stripe_plan_id: object.customer)
+    @account = Account.where(stripe_plan_id: object.customer).first
 
-    if @account
-      @account.stripe_current_period_start = object.current_period_start,
-      @acount.stripe_current_period_end = object.current_period_end,
-      @account.subscription_status = "authorized"
-      @account.stripe_sub_type = object.subscription #"sub_9lnD5e3zjbOmex"?
-      @account.is_valid
-      @account.save
-    end
+    @account.update(
+      stripe_current_period_start: object.period_start,
+      stripe_current_period_end:   object.period_end,
+      stripe_sub_type:             object.subscription,
+      is_valid:                    true
+    )
+    @account.save
   end
 
   # used when a customer changes plan
   def update_customer_subscription(event)
     object = event.data.object
-    @account = Account.find(stripe_plan_id: object.customer)
+    @account = Account.where(stripe_plan_id: object.customer)
 
-    if @account
-      @account.subscription_status = "authorized"
-      #TODO figure out how to update seat count and email count logic
-      @account.stripe_sub_type = object.plan.id
-      @account.stripe_current_period_start = object.current_period_start
-      @account.stripe_current_period_end = object.current_period_end
-      @account.email_count = email_count(object.plan.id)
-      @account.is_valid = true
+    @account.update(
+      stripe_current_period_start: object.period_start,
+      stripe_current_period_end:   object.period_end,
+      stripe_sub_type:             object.subscription,
+      email_count:                 email_count(object.plan.id),
+      is_valid:                    true
+    )
+
+    @account.save
     end
   end
 
   def update_customer_inactive(event)
     object = event.data.object
     @account = Account.find(stripe_plan_id: object.customer)
-    if @account
-      @account.subscription_status = "invoice_failed"
-      @account.is_valid = false
+
+    @account.update(
+        @account.is_valid = false
+    )
+
+    @account.save
+
       # TODO send email to notify team
 
     end

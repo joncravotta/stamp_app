@@ -33,7 +33,7 @@ class SliceService
     if template.save
 
       images.each do |image|
-        image_log = UploadedImage.new(user_id: @user_id, template_id: template.id, url: image)
+        image_log = UploadedImage.new(user_id: @user_id, template_id: template.id, url: image, account_id: @account.id)
         image_log.save
       end
 

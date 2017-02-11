@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
   def require_paid
     @account = Account.find(current_user.account_id)
     if !@account.is_valid?
-      flash[:alert] = "Your payment has failed, please update your card on file. Otherwise you will not be able to create anymore emails."
+      flash[:alert] = "Your payment has failed, please update your card on file. Otherwise you will not be able to create any emails."
       redirect_to profile_path
     end
   end

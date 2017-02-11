@@ -133,12 +133,23 @@
   margin-bottom: 45px;
 }
 
+// Dashboard section
+
+.new_landing-dashboard-section-image  {
+  width: 45%;
+
+  img {
+    width: 100%;
+    @extend .shadow;
+  }
+}
+
 //Review section
 .new_landing-review-section-container {
   @include display(flex);
   @include justify-content(space-around);
   @include flex-direction(row);
-  padding: 200px 0;
+  padding: 150px 0;
   width: 100%;
 }
 

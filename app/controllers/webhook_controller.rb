@@ -68,7 +68,7 @@ class WebhookController < ApplicationController
       stripe_current_period_end:   object.period_end,
       stripe_sub_type:             object.subscription,
       email_count:                 email_count(object.plan.id),
-      is_valid:                    true
+      is_valid:                    true  
     )
 
     @account.save

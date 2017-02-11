@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170208004726) do
+ActiveRecord::Schema.define(version: 20170211212602) do
 
   create_table "accounts", force: :cascade do |t|
     t.string   "created_by"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20170208004726) do
     t.datetime "created_at",                                  null: false
     t.datetime "updated_at",                                  null: false
     t.boolean  "is_valid",                    default: false
+    t.string   "cc_last_four"
   end
 
 # Could not dump table "slices" because of following NoMethodError

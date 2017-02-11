@@ -1,5 +1,6 @@
 class ChargesController < ApplicationController
 before_filter :require_user
+
 def new
 end
 
@@ -28,7 +29,8 @@ def create
     stripe_current_period_start: charge.current_period_start,
     stripe_current_period_end: charge.current_period_end,
     stripe_sub_type: charge.plan.id,
-    is_valid: true
+    is_valid: true,
+    cc_last_four: customer.sources.data[0].last4
   )
 
   @account.save

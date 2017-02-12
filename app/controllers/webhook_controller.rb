@@ -1,6 +1,5 @@
 require 'json'
 require 'stripe'
-require 'byebug'
 
 class WebhookController < ApplicationController
   protect_from_forgery :except => :stripe

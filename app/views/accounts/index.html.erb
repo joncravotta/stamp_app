@@ -16,15 +16,28 @@
 
     <div class="profile-table">
       <% @users.each do |user| %>
-        <%= link_to templates_path, class: "template-card" do %>
+        <div class="template-card">
           <div class="template-row">
             <div class="template-name"><%= user.email %></div>
           </div>
           <div class="template-row template-small-label"><%= user.admin ? "Admin": "Not Admin" %></div>
           <div class="template-row template-small-label-gray">Joined: <%= user.created_at.strftime("%m/%d/%Y") %></div>
-          <div class="template-row template-small-label">Make Admin</div>
-          <div class="template-row template-small-label">Remove User</div>
-        <% end %>
+          <% if user.admin %>
+            <%= form_for @account, :url => account_remove_admin_path(user), :method => :post do |f| %>
+              <%= f.hidden_field :user_id, :value => user.id %>
+              <%= f.submit "Revoke Admin", class:"template-row template-small-label-primary" %>
+            <% end %>
+          <% else %>
+            <%= form_for @account, :url => account_make_admin_path(user), :method => :post do |f| %>
+              <%= f.hidden_field :user_id, :value => user.id %>
+              <%= f.submit "Grant Admin Access", class:"template-row template-small-label-primary" %>
+            <% end %>
+          <% end %>
+          <%= form_for @account, :url => account_make_admin_path(user), :method => :post do |f| %>
+            <%= f.hidden_field :user_id, :value => user.id %>
+            <%= f.submit "Delete User", class:"template-row template-small-label-danger", data: {confirm: "Are you sure?"} %>
+          <% end %>
+        </div>
       <% end %>
     </div>
   </div>

@@ -322,6 +322,18 @@
   font-size: 14px;
   font-weight: lighter;
   color: $darkest-gray;
+  border: none;
+  background: none;
+}
+
+.template-small-label-danger {
+  @extend .template-small-label;
+  color: $error;
+}
+
+.template-small-label-primary {
+  @extend .template-small-label;
+  color: $primary;
 }
 
 .template-small-label-gray {

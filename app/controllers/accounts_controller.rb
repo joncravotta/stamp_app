@@ -32,7 +32,41 @@ class AccountsController < ApplicationController
 
   def destroy
     User.find(params[:id]).destroy
-    flash[:success] = "Successfully deleted"
+    flash[:notice] = "Successfully deleted"
+    redirect_to accounts_path
+  end
+
+  def make_admin
+    parameters = user_params
+
+    @user = User.find(parameters[:user_id])
+    @user.update(
+      admin: true
+    )
+    @user.save
+
+    flash[:notice] = "#{@user.email} is now an admin"
+    redirect_to accounts_path
+  end
+
+  def remove_admin
+    parameters = user_params
+    @user = User.find(parameters[:user_id])
+    @user.update(
+      admin: false
+    )
+    @user.save
+
+    flash[:notice] = "#{@user.email} has been removed as an admin"
+    redirect_to accounts_path
+  end
+
+  def remove_user_from_account
+    parameters = user_params
+    @user = User.find(parameters[:user_id])
+    @user.destroy
+
+    flash[:notice] = "Successfully removed"
     redirect_to accounts_path
   end
 
@@ -40,5 +74,9 @@ class AccountsController < ApplicationController
 
   def safe_params
     params.require(:account).permit(:company_name)
+  end
+
+  def user_params
+    params.require(:account).permit(:user_id)
   end
 end

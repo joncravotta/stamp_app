@@ -17,8 +17,9 @@ Rails.application.routes.draw do
   post 'slice/new' => 'slice_tool#new'
   post 'webhook/stripe' => 'webhook#stripe'
   get 'webhook/test' => 'webhook#test_stripe_event'
-  get 'account/name' => 'account#account_name'
-
+  post 'account/make_admin' => 'accounts#make_admin'
+  post 'account/remove_admin' => 'accounts#remove_admin'
+  post 'account/remove_user' => 'accounts#remove_user_from_account'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

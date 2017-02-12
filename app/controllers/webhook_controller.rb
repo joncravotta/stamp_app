@@ -16,9 +16,6 @@ class WebhookController < ApplicationController
     event = Stripe::Event.retrieve('evt_19SFdNAbdjxMHYRyVF0MBvWD')
   end
 
-  def cancel_subscription
-  end
-
   def stripe
     # should prob just get the event id and make a request on our own, once we make request we can feel
     # feel safe about the data we are receiving
@@ -39,7 +36,7 @@ class WebhookController < ApplicationController
   end
 
   def cancel_membership
-    # post to cancel a user membership
+    # TODO post to cancel a user membership
   end
 
   private
@@ -68,11 +65,10 @@ class WebhookController < ApplicationController
       stripe_current_period_end:   object.period_end,
       stripe_sub_type:             object.subscription,
       email_count:                 email_count(object.plan.id),
-      is_valid:                    true  
+      is_valid:                    true
     )
 
     @account.save
-    end
   end
 
   def update_customer_inactive(event)
@@ -84,9 +80,6 @@ class WebhookController < ApplicationController
     )
 
     @account.save
-
-      # TODO send email to notify team
-
-    end
+    # TODO send email to notify team
   end
 end

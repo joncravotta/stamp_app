@@ -1,391 +1,422 @@
-.home-container {
-  position: relative;
-}
-.hero-container {
+.new_home-container {
   width: 100%;
-  height: 600px;
-  position: relative;
 }
 
-.hero-primary {
+.new_home-nav-button-container {
+  position: fixed;
+  z-index: 1979;
+  right: 0;
+  @include display(flex);
+  @include justify-content(space-between);
+  padding: 20px;
+}
+
+.nav_home-button-rounded-border {
+  @extend .rounded-border-button;
+  margin-left: 20px;
+}
+
+.new_landing-container {
   width: 100%;
-  height: 50%;
-  background-color: $primary;
-}
-
-.hero-white {
-  @extend .hero-primary;
-  background-color: $white;
-  background: linear-gradient( rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6) ), image-url('topo_bg.png') repeat;
-}
-
-.hero-video {
-  height: 400px;
-  width: 60%;
-  background: linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) ), image-url('video.jpg');
+  height: 100vh;
+  background: image-url('bg_image_new.jpg');
   background-size: cover;
-  margin: auto;
-  position: absolute;
-  top: 0; left: 0; bottom: 0; right: 0;
-  z-index: 2;
   @include display(flex);
-  @include justify-content(center);
+  @include justify-content(flex-end);
   @include align-items(center);
-  border-radius: 25px;
 }
 
-.play-icon-circle {
-  @include display(flex);
-  @include justify-content(center);
-  @include align-items(center);
-  width: 70px;
-  height: 70px;
-  background-color: $secondary-dark;
-  border-radius: 50%;
-  cursor: pointer;
-  box-shadow: 0px 9px 10px -5px rgba(0,0,0,0.4);
-  transition: all ease-in-out 300ms;
-
-  &:hover {
-    box-shadow: 0px 37px 40px -22px rgba(0,0,0,0.4);
-    transform: translate(0px, -3px) scale(1.01);
-  }
-}
-
-.play-icon-triangle {
-  width: 0;
-  height: 0;
-  border-bottom: 10px solid transparent;  /* left arrow slant */
-  border-top: 10px solid transparent; /* right arrow slant */
-  border-left: 15px solid $white; /* bottom, add background color here */
-  font-size: 0;
-  line-height: 0;
-}
-
-
-.main-cta-container {
-  @include display(flex);
-  @include align-items(center);
-  @include flex-direction(column);
-  height: 500px;
-  padding: 25px;
-  background: linear-gradient( rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6) ), image-url('topo_bg.png') repeat;
-
-  img {
-    width: 75px;
-    padding: 45px 0;
-  }
-}
-
-.main-cta-body {
-  max-width: 500px;
-  padding-bottom: 20px;
-}
-
-.how-to-container {
-  background-color: $light-primary;
-  width: 100%;
-  padding: 100px 0;
-}
-
-.how-to-box-container {
-  width: 100%;
-  height: 500px;
-  margin: auto;
-}
-
-.how-to-card-container {
-  @include display(flex);
-  @include flex-direction(row);
-  @include justify-content(center);
-  padding: 50px 0;
-}
-
-.how-to-card {
+.new_landing-body-container {
   @include display(flex);
   @include flex-direction(column);
-  height: 500px;
-  width: 22%;
-  background-color: $white;
-  margin: 0 10px;
-  border-radius: 25px;
-  box-shadow: 0px 17px 10px -7px rgba(0,0,0,0.4);
-  transition: all ease-in-out 300ms;
-
-  &:hover {
-    box-shadow: 0px 37px 40px -22px rgba(0,0,0,0.4);
-    transform: translate(0px, -3px) scale(1.01);
-  }
+  width: 50%;
+  color: white;
+  padding-right: 50px;
 }
 
-.how-to-card-title {
-  @include primary-font(25px);
-  color: $white;
-  background-color: $primary;
-  width: 100%;
-  border-radius: 25px 25px 0 0;
-  padding: 10px 0 10px 25px;
-  box-sizing: border-box;
-}
-
-.how-to-card-icon {
-  @include display(flex);
-  @include align-items(center);
-  padding: 40px 0;
-  width: 100%;
-  img {
-    width: 25%;
-    margin: auto;
-  }
-}
-
-.how-to-card-type {
-  @include primary-font(16px);
-  font-weight: bolder;
-  color: $secondary-dark;
-  padding-left: 25px;
-}
-
-.how-to-card-body {
-  @include primary-font(16px);
-  color: $dark-gray;
-  padding: 10px 25px;
-}
-
-.review-container {
-  @include display(flex);
-  @include flex-direction(row);
-  @include justify-content(center);
-  padding: 200px 0;
-  background: linear-gradient( rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6) ), image-url('topo_bg.png') repeat;
-}
-
-.review-card {
-  width: 25%;
-  border-radius: 25px;
-  border: 1px solid $light-gray;
-  padding: 25px;
-  margin: 0 20px;
-  box-shadow: 0px 17px 10px -7px rgba(0,0,0,0.4);
-  transition: all ease-in-out 300ms;
-  background-color: $white;
-
-  &:hover {
-    box-shadow: 0px 37px 40px -22px rgba(0,0,0,0.4);
-    transform: translate(0px, -3px) scale(1.01);
-  }
-}
-
-.review-card-top {
-  @include display(flex);
-  @include flex-direction(row);
-  @include align-items(center);
-}
-
-.review-image {
-  width: 55px;
-  height: 55px;
-  border: 1px solid $light-gray;
-  border-radius: 50%;
-}
-
-.review-name-group {
-  padding-left: 10px;
-}
-
-.review-name {
-  @include primary-font(25px);
-  font-weight: 600;
-  color: $dark-gray;
-  font-style: italic;
-}
-
-.review-stars {
-  img{
-    height: 20px;
-  }
-}
-
-.review-bottom {
-  padding-top: 50px;
-}
-
-.review-title {
-  @include primary-font(22px);
-  color: $light-primary;
-  padding-bottom: 10px;
-}
-
-.review-body {
-  @include primary-font(16px);
-  color: $dark-gray;
-  font-weight: normal;
-  font-style: italic;
-}
-
-.cta-container {
-  padding: 150px 0;
-  background-color: $light-primary;
-  width: 100%;
-  @include display(flex);
-  @include align-items(center);
-  @include justify-content(center);
-}
-
-.cta-card {
-  border-radius: 25px;
-  background-color: $white;
-  @include display(flex);
-  @include align-items(center);
-  @include justify-content(center);
-  @include flex-direction(column);
-  background: linear-gradient( rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6) ), image-url('topo_bg.png') repeat;
-  // box-shadow: 0px 17px 10px -7px rgba(0,0,0,0.4);
-  // transition: all ease-in-out 300ms;
-  //
-  // &:hover {
-  //   box-shadow: 0px 47px 47px -32px rgba(0,0,0,0.4);
-  //   transform: translate(0px, -3px) scale(1.01);
-  // }
-}
-
-.cta-top {
-  @include display(flex);
-  @include align-items(center);
-  @include justify-content(center);
-  @include flex-direction(column);
-  background-color: $primary;
-  padding: 60px;
-  border-radius: 25px 25px 0 0;
-}
-
-.cta-bottom {
-  @include display(flex);
-  @include align-items(center);
-  @include justify-content(center);
-  @include flex-direction(column);
-  padding: 60px;
-}
-
-.cta-title {
-  @include primary-font(35px);
-  color: $white;
-  text-align: center;
-}
-
-.cta-subtitle {
-  @include primary-font(25px);
-  color: $white;
-  text-align: center;
-}
-
-.cta-subtitle-primary {
-  @extend .cta-subtitle;
-  font-size: 35px;
-  color: $primary;
-}
-
-.cta-icon {
-  img {
-    width: 75px;
-    padding: 20px 0;
-  }
-}
-
-.cta-price {
+.new_landing-body-title {
   @include primary-font(80px);
-  color: $primary;
-  text-align: center;
-  font-weight: normal;
+  font-weight: lighter;
+  color: white;
 }
 
-.cta-month {
-  @include primary-font(16px);
-  color: $secondary-dark;
+.new_landing-body-sub-title {
+  @include primary-font(34px);
+  color: white;
+  padding-top: 50px;
+  font-weight: lighter;
 }
 
-.footer {
+.new_landing-body-icon {
+  padding-top: 50px;
+  //width: 300px;
+}
+
+.new_landing-accent-block {
   width: 100%;
-  padding: 50px 0;
+  height: 5px;
+  background-color: $accent;
+}
+
+// Second section
+.new_landing-first-section-container {
+  @include display(flex);
+  @include flex-direction(row);
+  @include justify-content(space-around);
+  width: 80%;
+  margin: auto;
+  padding: 125px 0;
+  background-color: white;
+}
+
+.new_landing-first-section-cta {
+  @include display(flex);
+  @include flex-direction(column);
+  @include justify-content(center);
+  width: 50%;
+}
+
+.new_landing-first-section-cta-title {
+  @include primary-font(24px);
+  font-weight: lighter;
+}
+
+.new_landing-first-section-cta-body {
+  @extend .body-dark;
+  padding: 20px 0;
+}
+
+.new_landing-first-section-icon-container {
+  @include display(flex);
+  @include justify-content(center);
+  @include align-items(center);
+  width: 40%;
+}
+
+// Third section
+.new_landing-second-section-container {
+  @include display(flex);
+  @include flex-direction(column);
+  width: 100%;
+  padding: 125px 0 0 0;
+  background: linear-gradient(145deg,  $primary 0%, $accent 100%);
+}
+
+.new_landing-second-section-image {
+  width: 50%;
+  background: image-url('knapsack-bg.jpg');
+  background-size: cover;
+  height: 450px;
+}
+
+.new_landing-second-section-bottom-container {
+  width: 100%;
+  @include display(flex);
+  //@include justify-content(center);
+  @include align-items(center);
+  @include flex-direction(column);
+  margin-bottom: 100px;
+}
+
+.new_landing-second-section-title {
+  @include primary-font(30px);
+  color: white;
+  font-weight: bold;
+  margin-bottom: 25px;
+}
+
+.new_landing-second-section-body {
+  @include primary-font(18px);
+  color: white;
+  font-weight:lighter;
+  width: 100%;
   text-align: center;
-  background: linear-gradient( rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6) ), image-url('topo_bg.png') repeat;
+  margin-bottom: 45px;
+}
+
+// Dashboard section
+
+.new_landing-dashboard-section-image  {
+  width: 45%;
 
   img {
-    width: 100px;
+    width: 100%;
+    @extend .shadow;
   }
 }
 
-.contact {
-  @include primary-font(25px);
-  color: $primary;
+//Review section
+.new_landing-review-section-container {
+  @include display(flex);
+  @include justify-content(space-around);
+  @include flex-direction(row);
+  padding: 150px 0;
+  width: 100%;
+}
+
+.new-landing-review-card {
+  @include display(flex);
+  @include justify-content(center);
+  @include flex-direction(column);
+  @extend .shadow;
+  border-radius: 10px;
+  width: 40%;
+  position: relative;
+}
+
+.new-landing-review-cta-container {
+  @include display(flex);
+  @include justify-content(center);
+  @include flex-direction(column);
+  width: 40%;
+}
+
+.new-landing-review-cta-title {
+  @extend .title-dark;
+  font-size: 30px;
+}
+
+.new-landing-review-cta-body {
+  @extend .body-dark;
+  margin: 20px 0;
+}
+
+.new-landing-review-card-circle {
+  @include display(flex);
+  @include align-items(center);
+  @include justify-content(center);
+  height: 40px;
+  width: 40px;
+  border-radius: 20px;
+  background-color: $primary;
+  color: white;
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  bottom: 0;
+  right: 0;
+  z-index: 2;
+
+  img {
+    width: 20px;
+  }
+}
+
+.new-landing-review-card-image-1 {
+  background: image-url('review_1.jpg');
+  border-radius: 10px 10px 0 0;
+  background-size: cover;
+  height: 350px;
+  width: 100%;
+}
+
+.new-landing-review-card-image-2 {
+  background: image-url('review_3.jpg');
+  border-radius: 10px 10px 0 0;
+  background-size: cover;
+  height: 200px;
+  width: 100%;
+}
+
+.new-landing-review-card-image-3 {
+  background: image-url('review_2.jpg');
+  border-radius: 10px 10px 0 0;
+  background-size: cover;
+  height: 200px;
+  width: 100%;
+}
+
+.new-landing-review-card-bottom {
+  @include display(flex);
+  @include align-items(center);
+  @include flex-direction(column);
+  padding: 25px 0;
+  width: 100%;
+}
+
+.new-landing-review-card-bottom-title {
+  @extend .title-dark;
   padding-bottom: 20px;
 }
 
-.made-by {
-  @include primary-font(20px);
-  padding: 25px 0;
-  color: $light-primary;
+.new-landing-review-card-bottom-line {
+  height: 1px;
+  width: 50%;
+  background-color: $light-gray;
 }
 
-// Mobile Screens
-@media (max-width: 900px) {
-  .hero-video {
-    width: 85%;
-    height: 300px;
-  }
-  .how-to-card-container {
-    @include flex-direction(column);
-    @include justify-content(center);
-    @include align-items(center);
-  }
-
-  .how-to-card {
-    width: 85%;
-    margin: 25px 0;
-  }
-
-  .review-container {
-    @include flex-direction(column);
-    @include justify-content(center);
-    @include align-items(center);
-    padding: 100px 0;
-  }
-
-  .review-card {
-    margin: 25px 0;
-    width: 75%;
-  }
-
-  .cta-card {
-    width: 85%;
-  }
-
-  .cta-top {
-    padding: 60px;
-  }
-
-  .cta-bottom {
-    padding: 45px;
-  }
-
-  .cta-price {
-    font-size: 60px;
-  }
+.new-landing-review-card-bottom-body {
+  @extend .body-dark;
+  padding: 20px;
 }
 
-
-.video-overlay {
-  position: absolute;
-  display: none;
+//Mailing list
+.new-landning-mailing-list-container {
+  @include display(flex);
+  @include align-items(center);
+  @include justify-content(center);
   width: 100%;
-  height: 100%;
-  background-color: rgba(255,255,255,0.7);
-  z-index: 100;
+  padding: 125px 0;
+  background: $primary;
+}
 
+#mc_embed_signup {
+  @include display(flex);
+  @include align-items(center);
+  //@include justify-content(center);
+  @include flex-direction(column);
+}
 
-  video {
-    top: 0; left: 0; bottom: 0; right: 0;
-    margin: auto;
-    width: 60%;
+#mc_embed_signup_scroll {
+  @include display(flex);
+  @include align-items(center);
+  //@include justify-content(center);
+  @include flex-direction(column);
+
+  label {
+    @include primary-font(36px);
+    font-weight: lighter;
+    color: white;
+  }
+}
+
+#mc_embed_signup {
+  width: 100%;
+  form {
+    width: 100%;
+  }
+}
+#mc-embedded-subscribe {
+  background-color: white;
+  padding: 20px;
+}
+
+#mc-embedded-subscribe {
+  @include primary-font(16px);
+  margin-top: 30px;
+  font-weight: lighter;
+  -webkit-border-radius: 5;
+  -moz-border-radius: 5;
+  border-radius: 5px;
+  color: $darkest-gray;
+  background: #ffffff;
+  padding: 10px 70px 10px 70px;
+  border: solid #fff 1px;
+  text-decoration: none;
+  cursor: pointer;
+  outline: none;
+}
+
+#mc-embedded-subscribe:hover {
+  background: #f0f0f0;
+  text-decoration: none;
+}
+
+#mc_embed_signup_scroll input[type="email"]  {
+  margin-top: 30px;
+  padding: 10px;
+  border: none;
+  border-bottom: solid 2px $light-gray;
+  transition: border 0.3s;
+  width: 50%;
+}
+#mc_embed_signup_scroll input[type="email"]:focus,
+#mc_embed_signup_scroll input[type="email"].focus {
+  border: none;
+  outline: none;
+  border-bottom: solid 2px $dark-gray;
+
+}
+
+//General
+.new_landing-link {
+  @include primary-font(18px);
+  font-weight: 400;
+  text-decoration: none;
+  color: $primary;
+  cursor: pointer;
+}
+
+.new_landing-link-white {
+  @extend .new_landing-link;
+  color: white;
+  font-weight: bold;
+}
+
+@media (max-width: 800px) {
+
+  .new_landing-body-container {
+    //@include align-items(center);
+    @include justify-content(flex-start);
+    width: 100%;
+    padding: 0 40px;
+  }
+
+  .new_landing-body-title {
+    font-size: 60px;
+    text-align: left;
+  }
+
+  .new_landing-body-sub-title {
+    font-size: 22px;
+    text-align: left;
+  }
+
+  .new_landing-first-section-container {
+    @include flex-direction(column);
+    @include align-items(center);
+  }
+
+  .new_landing-first-section-cta {
+    width: 100%;
+  }
+
+  .new_landing-first-section-icon-container  {
+    padding-top: 50px;
+
+    img {
+      width: 150px;
+    }
+  }
+
+  .new_landing-second-section-bottom-container {
+    img {
+      width: 80%;
+    }
+  }
+
+  .new_landing-review-section-container {
+    @include align-items(center);
+    @include flex-direction(column);
+    padding: 50px 0;
+  }
+
+  .new-landing-review-cta-container {
+    width: 80%;
+  }
+
+  .new_landing-dashboard-section-image {
+    @include display(flex);
+    @include align-items(center);
+    width: 100%;
+    img {
+      margin: auto;
+      width: 80%;
+    }
+  }
+
+  .new-landing-review-card {
+    width: 90%;
+    margin-bottom: 60px;
+  }
+
+  #mc_embed_signup_scroll {
+    label {
+      text-align: center;
+    }
+  }
+
+  #mc_embed_signup_scroll input[type="email"]  {
+    width: 80%;
   }
 }

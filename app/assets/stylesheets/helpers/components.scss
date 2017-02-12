@@ -73,3 +73,22 @@
   @extend .body-dark;
   margin: 3px 0;
 }
+
+@media (max-width: 800px) {
+  .pricing-parent-container {
+    height: auto;
+  }
+
+  .pricing-container {
+    @include flex-direction(column);
+    @include align-items(center);
+    position: relative;
+    top: 0;
+    left: 0;
+    padding-top: 60px;
+  }
+
+  .pricing-card  {
+    margin-bottom: 60px
+  }
+}

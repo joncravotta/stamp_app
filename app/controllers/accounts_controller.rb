@@ -64,6 +64,11 @@ class AccountsController < ApplicationController
   def remove_user_from_account
     parameters = user_params
     @user = User.find(parameters[:user_id])
+    @account = Account.find(@user.account_id)
+    @account.update(
+      seat_count: @account.seat_count + 1
+    )
+    @account.save
     @user.destroy
 
     flash[:notice] = "Successfully removed"

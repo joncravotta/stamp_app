@@ -1,5 +1,5 @@
 class AccountsController < ApplicationController
-  before_action :require_user
+  before_action :require_admin_user
 
   def index
     @account = Account.find(current_user.account_id)

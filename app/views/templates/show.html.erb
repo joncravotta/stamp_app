@@ -12,9 +12,9 @@
     </div>
 
     <div class="profile-content-button-row">
-      <div class="rounded-primary-button">
+      <%= link_to template_path(@template), method: :delete,  class: "rounded-primary-button", data: { confirm: "Are you sure? You will lose this forever and ever." } do %>
         Delete Email
-      </div>
+      <% end %>
     </div>
 
     <div class="profile-table">
